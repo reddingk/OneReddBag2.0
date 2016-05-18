@@ -29,6 +29,11 @@ html, body {
 
   #orb-main-nav {
     background-color: rgba(0,0,0,0.9);
+    &.screenPass {
+      position:fixed;
+      top:0;
+      width:100%;
+    }
     .container {
       .navbar-collapse {
         #orb-inside-nav {
@@ -42,6 +47,11 @@ html, body {
               &:hover, &:focus{
                 background-color: rgba(204,204,204,0.5);
                 border-top:2px solid rgba(204,204,204,0.2);
+              }
+              &.active {
+                color:@red-font;
+                border-top: 2px solid @red-font;
+                font-weight: bold;
               }
             }
           }

@@ -18,39 +18,9 @@
 
 <body ng-app="ORBApp">
   <!--Header Navigation-->
-  <div class="nav-container">
-			<div class="nav-top">
-				<div class="header-logo">
-					<img class="" alt="" src="">
-					<div class="logo-text">ONE <span>RED</span> BAG</div>
-				</div>
-			</div>
-
-			<nav class="nav navbar-inverse" id="orb-main-nav" role="navigation">
-				<div class="container">
-					<div class="navbar-header">
-						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-						<span class="sr-only">Toggle navigation</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						</button>
-					</div>
-					<div class="navbar-collapse collapse">
-						<ul class="nav navbar-nav" id="orb-inside-nav">
-							<li><a href="">Home</a></li>
-							<li><a href="">News</a></li>
-              <li><a href="">Our Story</a></li>
-              <li><a href="">Help Us</a></li>
-              <li><a href="">Media</a></li>
-              <li><a href="">Contact Us</a></li>
-						</ul>
-					</div>
-				</div>
-			</nav>
-		</div>
+  <div class="header" ui-view="header"></div>
   <!--Main Body-->
-  <div class="mainBody" ui-view></div>
+  <div class="mainBody" id="content" ui-view="content" autoscroll="true" aria-relevant="all" aria-live="assertive"></div>
 </body>
 
 </html>

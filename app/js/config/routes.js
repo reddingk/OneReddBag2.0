@@ -4,14 +4,27 @@
     .module('config')
     .config(['$stateProvider', '$urlRouterProvider','$locationProvider', function($stateProvider, $urlRouterProvider, $locationProvider) {
       $stateProvider
-      .state('home', {
+      .state('app', {
         url: "/",
-        templateUrl: 'views/home.html',
-        controller: 'HomeController as hc'
+        views: {
+          'content':{
+            templateUrl: 'views/home.html',
+            controller: 'HomeController as hc'
+          },
+          'header':{
+            templateUrl: 'views/templates/_header.html',
+            controller: 'HeaderController as hdc'
+          },
+          'footer':{}
+        }
       })
-      .state('construction', {
+      .state('app.construction', {
         url: "/underconstruction",
-        templateUrl: 'views/construction.html'        
+        views: {
+          'content@': {
+            templateUrl: 'views/construction.html'
+          }
+        }
       });
 
 
