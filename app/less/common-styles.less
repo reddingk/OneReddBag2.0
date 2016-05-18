@@ -1,0 +1,53 @@
+@font-size: 16px;
+@red-font: #DB4D4D;
+html, body {
+  font-size: @font-size;
+  height: 100%;
+  color: #000;
+}
+.mainBody {
+  height:100%;
+}
+
+// Navigation
+.nav-container {
+  .nav-top {
+    position: relative;
+  	width: 100%;
+  	text-align: center;
+  	padding: 10px 0px;
+  	background-color: #ffffff;
+    .header-logo {
+      .logo-text {
+        font-size: 1.8rem;
+        span {
+          color: @red-font;
+        }
+      }
+    }
+  }
+
+  #orb-main-nav {
+    background-color: rgba(0,0,0,0.9);
+    .container {
+      .navbar-collapse {
+        #orb-inside-nav {
+          width:100%;
+          li {
+            width:16%;
+            a {
+              text-align: center;
+              border-top:2px solid rgba(0,0,0,1);
+              color: rgba(255,255,255,1);
+              &:hover, &:focus{
+                background-color: rgba(204,204,204,0.5);
+                border-top:2px solid rgba(204,204,204,0.2);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+}
