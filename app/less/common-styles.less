@@ -1,16 +1,22 @@
 @font-size: 16px;
-@red-font: #DB4D4D;
+@mainColor: rgb(219,77,77);
+
 html, body {
   font-size: @font-size;
   height: 100%;
   color: #000;
 }
+.header {
+  z-index:100;
+}
 .mainBody {
   height:100%;
+  z-index:50;
 }
 
 // Navigation
 .nav-container {
+  z-index: 100;
   .nav-top {
     position: relative;
   	width: 100%;
@@ -21,7 +27,7 @@ html, body {
       .logo-text {
         font-size: 1.8rem;
         span {
-          color: @red-font;
+          color: @mainColor;
         }
       }
     }
@@ -29,6 +35,7 @@ html, body {
 
   #orb-main-nav {
     background-color: rgba(0,0,0,0.9);
+    z-index: 100;
     &.screenPass {
       position:fixed;
       top:0;
@@ -49,8 +56,8 @@ html, body {
                 border-top:2px solid rgba(204,204,204,0.2);
               }
               &.active {
-                color:@red-font;
-                border-top: 2px solid @red-font;
+                color:@mainColor;
+                border-top: 2px solid @mainColor;
                 font-weight: bold;
               }
             }

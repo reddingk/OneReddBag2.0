@@ -1,2 +1,17 @@
-<h1>HOME PAGE</h1>
-<p>This is the [ {{hc.title}} ] Page</p>
+<div class="homeBody">
+    <section class="orb-carousel">
+      <uib-carousel active="active" interval="hc.myInterval" no-wrap="false" no-pause="true">
+        <uib-slide ng-repeat="slide in hc.slides track by slide.id" index="slide.id">
+          <img ng-src="{{slide.image}}" style="margin:auto;">
+          <div class="carousel-caption">
+            <p>{{slide.text}}</p>
+          </div>
+        </uib-slide>
+      </uib-carousel>
+    </section>
+
+    <section>
+      <h1>HOME PAGE</h1>
+      <p>This is the [ {{hc.title}} ] Page</p>
+    </section>
+</div>
