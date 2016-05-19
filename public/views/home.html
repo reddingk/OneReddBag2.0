@@ -1,6 +1,10 @@
 <div class="homeBody">
     <section class="orb-carousel">
       <uib-carousel active="active" interval="hc.myInterval" no-wrap="false" no-pause="true">
+        <div class="carousel-cover">
+          <div class="cover-title">One <span>Red</span> Bag</div>
+          <div class="cover-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+        </div>
         <uib-slide ng-repeat="slide in hc.slides track by slide.id" index="slide.id">
           <img ng-src="{{slide.image}}" style="margin:auto;">
           <div class="carousel-caption">
@@ -10,8 +14,8 @@
       </uib-carousel>
     </section>
 
-    <section>
-      <h1>HOME PAGE</h1>
-      <p>This is the [ {{hc.title}} ] Page</p>
+    <section class="bag-count">
+      <div class="bg-count-text">Feeding Those In Need 1 Bag At A Time</div>
+	    <div class="bg-count-number">350 <span>bags</span></div>
     </section>
 </div>

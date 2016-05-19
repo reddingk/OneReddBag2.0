@@ -1,16 +1,48 @@
 .homeBody {
   section {
-    max-height: 300px;
-    .carousel {
-
-      .carousel-inner {
-        .item {
-          img {
-            height: 500px;
-            width: 100%;
+    min-height: 500px;
+    &.orb-carousel {
+      .carousel {
+        .carousel-inner {
+          min-height: 500px;
+          .carousel-cover {
+            position: absolute;
+            top: 0;
+            background-color: rgba(255,0,0,0.3);
+            z-index:8;
+            height:100%;
+            padding: 10%;
+            text-align: center;
+            .cover-title {
+              font-size: 9rem;
+              font-weight: bold;
+              color:rgba(255,255,255,1);
+              span { color:rgba(0,0,0,1);}
+            }
+            .cover-text {
+              font-size: 1rem;
+              font-weight: bold;
+              color:rgba(255,255,255,1);
+              padding: 0 20%;
+            }
+          }
+          .item {
+            img {
+              height: 500px;
+              width: 100%;
+            }
           }
         }
+        .carousel-control, .carousel-indicators { z-index: 9;}
       }
     }
+
+    &.bag-count {
+      background-color: rgba(204,204,204,1);
+      padding: 10%;
+      .bg-count-text { display: inline-block;}
+      .bg-count-number { display: inline-block;}
+    }
+
   }
 }
