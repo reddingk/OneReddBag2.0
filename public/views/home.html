@@ -21,5 +21,14 @@
 
     <section class="content-links">
       <h1>More Information</h1>
+      <div class="cards-container">
+        <div class="content-card" ng-repeat="card in hc.cards">
+          <div class="card-icon"><i class="fa fa-5x" ng-class="card.icon"></i></div>
+          <div class="card-text">
+  					<h2>{{card.header}}</h2>
+  					<p>{{card.text}}</p>
+				  </div>
+        </div>
+      </div>
     </section>
 </div>

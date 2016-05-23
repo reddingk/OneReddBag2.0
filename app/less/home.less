@@ -56,5 +56,36 @@
       }
     }
 
+    &.content-links {
+      min-height: 500px;
+      padding: 2% 10%;
+      h1 {
+        text-align: center;
+        font-weight: bold;
+      }
+      .cards-container {
+        margin-top: 5%;
+        padding: 0% 2%;
+        .content-card {
+          display: table-cell;
+          width:33%;
+          padding:2%;
+          .card-icon {
+            text-align: center;
+            color: @mainColor;
+          }
+          .card-text {
+            h2 {
+              font-size: 1.9rem;
+              text-align: center;
+            }
+            p {
+              font-size: .9rem;
+            }
+          }
+        }
+      }
+    }
+
   }
 }
