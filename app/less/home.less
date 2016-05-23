@@ -1,7 +1,7 @@
 .homeBody {
   section {
-    min-height: 500px;
     &.orb-carousel {
+      min-height: 500px;
       .carousel {
         .carousel-inner {
           min-height: 500px;
@@ -38,10 +38,22 @@
     }
 
     &.bag-count {
-      background-color: rgba(204,204,204,1);
-      padding: 10%;
-      .bg-count-text { display: inline-block;}
-      .bg-count-number { display: inline-block;}
+      background-color: rgba(239,241,245,1);
+      padding: 2% 10%;
+      max-height: 200px;
+      color: rgba(115,115,115,1);
+      .bg-count-text {
+        display: inline-block;
+        border-right: 1px solid #000;
+        width: 50%;
+        font-size: 2rem;
+      }
+      .bg-count-number {
+        display: inline-block;
+        text-align: center;
+        width: 49%;
+        font-size: 3rem;
+      }
     }
 
   }
