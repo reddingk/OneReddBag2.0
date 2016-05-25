@@ -15,7 +15,9 @@
             templateUrl: 'views/templates/_header.html',
             controller: 'HeaderController as hdc'
           },
-          'footer':{}
+          'footer':{
+            templateUrl: 'views/templates/_footer.html'
+          }
         }
       })
       .state('app.construction', {
