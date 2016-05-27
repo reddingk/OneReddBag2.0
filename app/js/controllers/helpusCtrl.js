@@ -6,23 +6,24 @@
       var vm = this;
       vm.title = "Help Us";
       vm.mainImage = "img/helpus.jpg";
-
       vm.trips = redInfo.trips.all();
+      vm.selectedTrip = null;
 
       /*Calender*/
       vm.uiConfig = {
         "calendar":{
           "height": 450,
-          "editable": true,
+          "editable": false,
           "header":{
             "left": "title", "center": '', "right": 'today prev, next'
-          }
+          },
+          eventClick: vm.alertOnEventClick
         }
       };
 
       vm.eventSource = {
             url: "http://www.google.com/calendar/feeds/usa__en%40holiday.calendar.google.com/public/basic",
-            className: 'gcal-event', currentTimezone: 'America/Washington DC' // an option!
+            className: 'gcal-event', currentTimezone: 'America/Washington DC'
       };
 
       vm.eventsF = function (start, end, timezone, callback) {
@@ -34,6 +35,9 @@
       };
       vm.eventSources = [vm.trips, vm.eventSource, vm.eventsF];
 
+      vm.alertOnEventClick = function(date, jsEvent, view) {
+        vm.selectedTrip = date;
+      }
     }]);
 
 })();

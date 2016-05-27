@@ -75,9 +75,15 @@
     .factory("redBagData", ['$q', function($q){
      function RedBagInfoData() {
        var vm = this;
+       //TEST
+       var date = new Date();
+       var d = date.getDate();
+       var m = date.getMonth();
+       var y = date.getFullYear();
+
        vm.bag_date = [{"date":"2015-07-01", "delivered":52}];
        vm.newsfeed = [{"date":"2016-06-24", "title":"Website Release", "content":"The Website is now live"}, {"date":"2015-07-01", "title":"TEST", "content":"Test News"}];
-       vm.trips_date = [{"title":"D.C. meetup", "start":new Date(2016, 6, 25, 13, 0), "end":new Date(2016, 6, 25, 18, 0), "allDay":false, "location":"Washington D.C. Union Station"}];
+       vm.trips_date = [{title:'D.C. meetup', start:new Date("2016-06-25 13:00:00"), end:new Date("2016-06-25 18:00:00"), allDay:false, location: "Washington D.C. Union Station"}];
      }
 
      return new RedBagInfoData();
@@ -157,23 +163,24 @@
       var vm = this;
       vm.title = "Help Us";
       vm.mainImage = "img/helpus.jpg";
-
       vm.trips = redInfo.trips.all();
+      vm.selectedTrip = null;
 
       /*Calender*/
       vm.uiConfig = {
         "calendar":{
           "height": 450,
-          "editable": true,
+          "editable": false,
           "header":{
             "left": "title", "center": '', "right": 'today prev, next'
-          }
+          },
+          eventClick: vm.alertOnEventClick
         }
       };
 
       vm.eventSource = {
             url: "http://www.google.com/calendar/feeds/usa__en%40holiday.calendar.google.com/public/basic",
-            className: 'gcal-event', currentTimezone: 'America/Washington DC' // an option!
+            className: 'gcal-event', currentTimezone: 'America/Washington DC'
       };
 
       vm.eventsF = function (start, end, timezone, callback) {
@@ -185,6 +192,9 @@
       };
       vm.eventSources = [vm.trips, vm.eventSource, vm.eventsF];
 
+      vm.alertOnEventClick = function(date, jsEvent, view) {
+        vm.selectedTrip = date;
+      }
     }]);
 
 })();
