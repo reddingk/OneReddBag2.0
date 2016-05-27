@@ -2,9 +2,12 @@
 	"use strict";
 	  angular.module('headerCtrl', ['ui.bootstrap']);
     angular.module('homeCtrl', ['ui.bootstrap']);
+		angular.module('helpUsCtrl', ['ui.bootstrap', 'ui.calendar']);
+		//
+		angular.module('dataconfig', []);
     angular.module('directives', []);
 
-    angular.module('ORBApp', ['ngMaterial','ngAnimate', 'ui.router', 'directives', 'config','homeCtrl','headerCtrl']);
+    angular.module('ORBApp', ['ngMaterial','ngAnimate', 'ui.router','directives', 'config','dataconfig','homeCtrl','headerCtrl','helpUsCtrl']);
 
 })();
 
@@ -19,15 +22,16 @@
   'use strict';
 
   angular
-    .module('config')
-    .factory('data', function(){
-      var bag_date = [{"date":"2015-07-01", "delivered":52}];
-      var newsfeed = [{"date":"2015-07-01", "title":"TEST", "content":"Test News"}];
+    .module('dataconfig')
+    .service('redInfo', [ 'redBagData', function RedInfo(redBagData){
+      var bags = redBagData.bag_date;
+      var news = redBagData.newsfeed;
+      var trips = redBagData.trips_date;
 
       return {
         bags: {
           all: function(){
-            return bag_date;
+            return bags;
           },
           count: function(){
             return;
@@ -43,7 +47,7 @@
         },
         news: {
           all: function(){
-            return newsfeed;
+            return news;
           },
           byYear: function(year) {
             // Get all news in year
@@ -56,9 +60,28 @@
           recent: function() {
             return;
           }
+        },
+        trips:{
+          all: function() {
+            return trips;
+          },
+          byMonth: function(month) {
+            // Get all trips for month
+            return;
+          }
         }
       }
-    });
+    }])
+    .factory("redBagData", ['$q', function($q){
+     function RedBagInfoData() {
+       var vm = this;
+       vm.bag_date = [{"date":"2015-07-01", "delivered":52}];
+       vm.newsfeed = [{"date":"2016-06-24", "title":"Website Release", "content":"The Website is now live"}, {"date":"2015-07-01", "title":"TEST", "content":"Test News"}];
+       vm.trips_date = [{"title":"D.C. meetup", "start":new Date(2016, 6, 25, 13, 0), "end":new Date(2016, 6, 25, 18, 0), "allDay":false, "location":"Washington D.C. Union Station"}];
+     }
+
+     return new RedBagInfoData();
+    }]);
 
 })();
 
@@ -84,8 +107,17 @@
           }
         }
       })
+      .state('app.helpus', {
+        url: "helpus",
+        views: {
+          'content@': {
+            templateUrl: 'views/helpus.html',
+            controller: 'HelpUsController as huc'
+          }
+        }
+      })
       .state('app.construction', {
-        url: "/underconstruction",
+        url: "underconstruction",
         views: {
           'content@': {
             templateUrl: 'views/construction.html'
@@ -95,7 +127,7 @@
 
 
       $urlRouterProvider.otherwise('/');
-      $locationProvider.html5Mode(true);
+      //$locationProvider.html5Mode(true);
     }]);
 
 
@@ -120,6 +152,46 @@
 (function(){
    "use strict";
 
+    angular.module('helpUsCtrl').controller('HelpUsController', ['$state','redInfo', function($state, redInfo){
+      //uiCalendarConfig
+      var vm = this;
+      vm.title = "Help Us";
+      vm.mainImage = "img/helpus.jpg";
+
+      vm.trips = redInfo.trips.all();
+
+      /*Calender*/
+      vm.uiConfig = {
+        "calendar":{
+          "height": 450,
+          "editable": true,
+          "header":{
+            "left": "title", "center": '', "right": 'today prev, next'
+          }
+        }
+      };
+
+      vm.eventSource = {
+            url: "http://www.google.com/calendar/feeds/usa__en%40holiday.calendar.google.com/public/basic",
+            className: 'gcal-event', currentTimezone: 'America/Washington DC' // an option!
+      };
+
+      vm.eventsF = function (start, end, timezone, callback) {
+        var s = new Date(start).getTime() / 1000;
+        var e = new Date(end).getTime() / 1000;
+        var m = new Date(start).getMonth();
+        var events = [{title: 'Defalt ' + m,start: s + (50000),end: s + (100000),allDay: false, className: ['customFeed']}];
+        callback(events);
+      };
+      vm.eventSources = [vm.trips, vm.eventSource, vm.eventsF];
+
+    }]);
+
+})();
+
+(function(){
+   "use strict";
+
     angular.module('homeCtrl').controller('HomeController', ['$state',function($state){
       var vm = this;
       vm.title = "Home";
@@ -137,7 +209,7 @@
       vm.cards = [
         {"id":"0", "type":"text-link", "icon":"fa-heartbeat", "header":"Our Mission", "text":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."},
         {"id":"1", "type":"text-link", "icon":"fa-users", "header":"How To Help", "text":"Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."},
-        {"id":"2", "type":"news-link", "icon":"fa-newspaper-o", "header":"News", "date":"05-20-2016", "text":"Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."}
+        {"id":"2", "type":"news-link", "icon":"fa-newspaper-o", "header":"News", "date":"2016-05-20", "text":"Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."}
       ];
     }]);
 

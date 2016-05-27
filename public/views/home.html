@@ -26,7 +26,7 @@
           <div class="card-icon"><i class="fa fa-5x" ng-class="card.icon"></i></div>
           <div class="card-text">
   					<h2>{{card.header}}</h2>
-  					<p><span ng-show="card.type == 'news-link'">{{card.date}}:</span> {{card.text}}</p>
+  					<p><span ng-show="card.type == 'news-link'">{{card.date | date: 'MM/dd/yyyy'}}:</span> {{card.text}}</p>
 				  </div>
           <div class="more-link"><span>See More <i class="fa fa-angle-double-right"></i></span></div>
         </div>

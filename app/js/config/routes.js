@@ -20,8 +20,17 @@
           }
         }
       })
+      .state('app.helpus', {
+        url: "helpus",
+        views: {
+          'content@': {
+            templateUrl: 'views/helpus.html',
+            controller: 'HelpUsController as huc'
+          }
+        }
+      })
       .state('app.construction', {
-        url: "/underconstruction",
+        url: "underconstruction",
         views: {
           'content@': {
             templateUrl: 'views/construction.html'
@@ -31,7 +40,7 @@
 
 
       $urlRouterProvider.otherwise('/');
-      $locationProvider.html5Mode(true);
+      //$locationProvider.html5Mode(true);
     }]);
 
 

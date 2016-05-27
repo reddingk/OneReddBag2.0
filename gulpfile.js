@@ -27,14 +27,19 @@ var config = {
       'app/libs/angular-ui-router/release/angular-ui-router.min.js',
       'app/libs/angular-bootstrap/ui-bootstrap.min.js',
       'app/libs/angular-bootstrap/ui-bootstrap-tpls.min.js',
-      'app/libs/randomcolor/randomColor.js'
+      'app/libs/randomcolor/randomColor.js',
+      'app/libs/moment/min/moment.min.js',
+      'app/libs/angular-ui-calendar/src/calendar.js',
+      'app/libs/fullcalendar/dist/fullcalendar.min.js',
+      'app/libs/fullcalendar/dist/gcal.js'
     ],
     libsCSS: [
       'app/libs/angular-material/angular-material.min.css',
       'app/libs/bootstrap/dist/css/bootstrap.min.css',
       'app/libs/font-awesome/css/font-awesome.min.css',
       'app/libs/animate.css/animate.min.css',
-      'app/libs/angular-bootstrap/ui-bootstrap-csp.css'
+      'app/libs/angular-bootstrap/ui-bootstrap-csp.css',
+      'app/libs/fullcalendar/dist/fullcalendar.min.css'
     ]
   },
   dest:{
