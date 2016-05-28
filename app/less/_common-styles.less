@@ -28,10 +28,19 @@ html, body {
   	padding: 10px 0px;
   	background-color: #ffffff;
     .header-logo {
+      cursor: pointer;
+      .logo-img {
+        width: 100px;
+        opacity: .5;
+      }
       .logo-text {
-        font-size: 1.8rem;
+        font-size: 2rem;
+        width:100%;
+        position: absolute;
+        top:35%;
         span {
           color: @mainColor;
+          margin: 0px 10px;
         }
       }
     }
@@ -115,7 +124,7 @@ html, body {
   background-color: @mainColorBack;
   .header-img {
     padding: 2% 3%;
-    img { width: 100%;}
+    img { width: 100%; max-height: 400px;}
   }
   .header-text {
     text-align: center;
@@ -123,9 +132,44 @@ html, body {
     padding: 2% 4% 2% 0%;
 
     h1 { font-size: 3rem; font-weight: bold; }
-    p {  font-size: 1.3rem; line-height: 3.4rem; }
+    p {  font-size: 1.2rem; line-height: 3.4rem; }
   }
 }
 
 .left-sub { display: table-cell; width:50%;}
 .right-sub { display: table-cell; width: 49%;}
+
+.cards-container {
+  margin-top: 5%;
+  padding: 0% 2%;
+  .content-card {
+    display: table-cell;
+    width:33%;
+    padding:2%;
+
+    &:hover {
+      background-color: @mainColorBack;
+      color: rgba(255,255,255,1);
+      cursor: pointer;
+      -webkit-transition: all 1s;
+      transition: all 1s;
+      .card-icon { color: rgba(0,0,0,1); }
+      .more-link { display: block; }
+    }
+    .card-icon {
+      text-align: center;
+      color: @mainColor;
+    }
+    .card-text {
+      h2 {
+        font-size: 1.9rem;
+        text-align: center;
+      }
+      p {
+        font-size: .9rem;
+        span { font-weight: bold;}
+      }
+    }
+    .more-link { margin-top: 2.5rem; text-align: right; display: none; color: rgba(0,0,0,1); font-weight: bold;}
+  }
+}

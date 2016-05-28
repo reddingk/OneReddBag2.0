@@ -7,9 +7,20 @@
       vm.title = "Help Us";
       vm.mainImage = "img/helpus.jpg";
       vm.trips = redInfo.trips.all();
+      vm.newFewTrips = redInfo.trips.nextFew();
       vm.selectedTrip = null;
 
+      /*Cards*/
+      vm.cards = [
+        {"id":"0", "type":"text-link", "icon":"fa-envelope", "header":"Join Email List", "text":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."},
+        {"id":"1", "type":"text-link", "icon":"fa-usd", "header":"Donate", "text":"Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."},
+        {"id":"2", "type":"text-link", "icon":"fa-sign-language", "header":"Become A Sponsor", "text":"Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."}
+      ];
       /*Calender*/
+      vm.alertOnEventClick = function(date, jsEvent, view) {
+        vm.selectedTrip = date;
+      }
+      /*Configurations*/
       vm.uiConfig = {
         "calendar":{
           "height": 450,
@@ -34,10 +45,6 @@
         callback(events);
       };
       vm.eventSources = [vm.trips, vm.eventSource, vm.eventsF];
-
-      vm.alertOnEventClick = function(date, jsEvent, view) {
-        vm.selectedTrip = date;
-      }
     }]);
 
 })();

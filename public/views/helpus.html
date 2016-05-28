@@ -14,12 +14,38 @@
         <div ui-calendar="huc.uiConfig.calendar" class="span8 calendar" ng-model="huc.eventSources"></div>
       </div>
       <div class="right-sub">
-        OTHER INFO
-        <div>Location: {{ huc.selectedTrip.location }}</div>
+        <h3>Come join us on one of our missions to feed the homless.  Be apart of the team and meet us at one of the next locations.</h3>
+        <div class="meetups">
+          <h2>Next meet ups:</h2>
+          <table class="future-meetups">
+            <tbody>
+              <tr ng-repeat="next in huc.newFewTrips">
+                <td>{{next.start | date: 'MMM-dd-yy'}}</td>
+                <td>{{next.start | date: 'hh:mm a'}}</td>
+                <td>{{next.location}}</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h2>Contact Us:</h2>
+          <p class="contact-email">For more information or to directly speak with a member of the One Red Bag team email us at <a href="mailto:1Reddbag@gmail.com">1Reddbag@gmail.com</a></p>
+        </div>
       </div>
     </div>
   </section>
 
-  <section></section>
+  <section class="support-section">
+    <h1>Support Us</h1>
+    <div class="cards-container">
+      <div class="content-card" ng-repeat="card in huc.cards">
+        <div class="card-icon"><i class="fa fa-5x" ng-class="card.icon"></i></div>
+        <div class="card-text">
+          <h2>{{card.header}}</h2>
+          <p><span ng-show="card.type == 'news-link'">{{card.date | date: 'MM/dd/yyyy'}}:</span> {{card.text}}</p>
+        </div>
+        <div class="more-link"><span>More Information <i class="fa fa-angle-double-right"></i></span></div>
+      </div>
+    </div>
+  </section>
 
 </div>

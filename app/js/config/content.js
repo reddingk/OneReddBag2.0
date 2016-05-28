@@ -48,6 +48,16 @@
           byMonth: function(month) {
             // Get all trips for month
             return;
+          },
+          nextFew: function() {
+            var today = new Date();
+            var futureTrips = [];
+
+            for(var i=0; i < trips.length; i++){
+              if(trips[i].start >= today && futureTrips.length <= 3)
+                futureTrips.push(trips[i]);
+            }
+            return futureTrips;
           }
         }
       }
@@ -63,7 +73,7 @@
 
        vm.bag_date = [{"date":"2015-07-01", "delivered":52}];
        vm.newsfeed = [{"date":"2016-06-24", "title":"Website Release", "content":"The Website is now live"}, {"date":"2015-07-01", "title":"TEST", "content":"Test News"}];
-       vm.trips_date = [{title:'D.C. meetup', start:new Date("2016-06-25 13:00:00"), end:new Date("2016-06-25 18:00:00"), allDay:false, location: "Washington D.C. Union Station"}];
+       vm.trips_date = [{title:'D.C. meetup', start:new Date("2016-06-25 13:00:00"), end:new Date("2016-06-25 18:00:00"), allDay:false, location: "Washington D.C. Union Station"},{title:'D.C. meetup', start:new Date("2016-07-02 13:00:00"), end:new Date("2016-07-02 18:00:00"), allDay:false, location: "Washington D.C. Union Station"}];
      }
 
      return new RedBagInfoData();

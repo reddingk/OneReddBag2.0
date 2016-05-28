@@ -1,11 +1,32 @@
 .helpUsBody {
+  h2 { font-size: 1.5rem;}
+  .fc-event { border: @mainColor !important; background-color: @mainColor !important;}
   section {
     &.volenteer-section {
       background-color: @secondColorBack;
       max-height: 600px;
       padding: 2% 10%;
       h1 { display: block; text-align: center; font-weight: bold;}
-      .info { width: 100%; .left-sub,.right-sub {padding: 2%; } }
+      .info {
+        width: 100%;
+        .left-sub,.right-sub {padding: 2%; }
+        .right-sub {
+          h3 { font-size: 1.1rem; text-align: center; line-height: 2rem; }
+          .meetups {
+            h2 { text-decoration: underline;}
+            .contact-email { text-align: left;}
+            .future-meetups {
+              width: 100%;
+              tbody { tr { td { padding: 4px 0px; text-align: center; }}}
+            }
+          }
+        }
+      }
     }
+    &.support-section {
+      min-height: 500px;
+      h1 { display: block; text-align: center; font-weight: bold;}
+    }
+
   }
 }

@@ -29,6 +29,15 @@
           }
         }
       })
+      .state('app.contact', {
+        url: "contact",
+        views: {
+          'content@': {
+            templateUrl: 'views/contact.html',
+            controller: 'ContactController as cc'
+          }
+        }
+      })
       .state('app.construction', {
         url: "underconstruction",
         views: {
