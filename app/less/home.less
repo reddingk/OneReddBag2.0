@@ -1,16 +1,103 @@
 .homeBody {
   section {
-    max-height: 300px;
-    .carousel {
-
-      .carousel-inner {
-        .item {
-          img {
-            height: 500px;
-            width: 100%;
+    &.orb-carousel {
+      min-height: 500px;
+      .carousel {
+        .carousel-inner {
+          min-height: 500px;
+          .carousel-cover {
+            position: absolute;
+            top: 0;
+            background-color: rgba(255,0,0,0.3);
+            z-index:8;
+            height:100%;
+            padding: 10%;
+            text-align: center;
+            .cover-title {
+              font-size: 9rem;
+              font-weight: bold;
+              color:rgba(255,255,255,1);
+              span { color:rgba(0,0,0,1);}
+            }
+            .cover-text {
+              font-size: 1rem;
+              font-weight: bold;
+              color:rgba(255,255,255,1);
+              padding: 0 20%;
+            }
           }
+          .item {
+            img {
+              height: 500px;
+              width: 100%;
+            }
+          }
+        }
+        .carousel-control, .carousel-indicators { z-index: 9;}
+      }
+    }
+
+    &.bag-count {
+      background-color: @secondColorBack;
+      padding: 2% 10%;
+      max-height: 200px;
+      color: rgba(115,115,115,1);
+      .bg-count-text {
+        display: inline-block;
+        border-right: 1px solid #000;
+        width: 50%;
+        font-size: 2rem;
+      }
+      .bg-count-number {
+        display: inline-block;
+        text-align: center;
+        width: 49%;
+        font-size: 3rem;
+      }
+    }
+
+    &.content-links {
+      min-height: 500px;
+      padding: 2% 10%;
+      h1 {
+        text-align: center;
+        font-weight: bold;
+      }
+      .cards-container {
+        margin-top: 5%;
+        padding: 0% 2%;
+        .content-card {
+          display: table-cell;
+          width:33%;
+          padding:2%;
+
+          &:hover {
+            background-color: @mainColorBack;
+            color: rgba(255,255,255,1);
+            cursor: pointer;
+            -webkit-transition: all 1s;
+            transition: all 1s;
+            .card-icon { color: rgba(0,0,0,1); }
+            .more-link { display: block; }
+          }
+          .card-icon {
+            text-align: center;
+            color: @mainColor;
+          }
+          .card-text {
+            h2 {
+              font-size: 1.9rem;
+              text-align: center;
+            }
+            p {
+              font-size: .9rem;
+              span { font-weight: bold;}
+            }
+          }
+          .more-link { margin-top: 2.5rem; text-align: right; display: none; color: rgba(0,0,0,1); font-weight: bold;}
         }
       }
     }
+
   }
 }

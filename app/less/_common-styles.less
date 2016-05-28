@@ -1,7 +1,11 @@
 @font-size: 16px;
 @mainColor: rgb(219,77,77);
+@mainColorBack: rgba(219,77,77,0.5);
+@secondColorBack: rgba(239,241,245,1);
 
 html, body {
+  font-family: 'Lato', sans-serif;
+  //font-family: 'Arapey', serif;
   font-size: @font-size;
   height: 100%;
   color: #000;
@@ -10,8 +14,8 @@ html, body {
   z-index:100;
 }
 .mainBody {
-  height:100%;
   z-index:50;
+  min-height: 100%;
 }
 
 // Navigation
@@ -68,3 +72,60 @@ html, body {
   }
 
 }
+
+// Footer
+.footer {
+  z-index:51;
+  width: 100%;
+  background-color: #000;
+  min-height: 200px;
+
+  .footer-container {
+    padding:2%;
+    div {
+      .footer-title {
+        color: #ffffff;
+	      font-weight:bold;
+	      font-size: 1.2rem;
+        margin-bottom: 1%;
+        &.title2 { margin-top: 3%;}
+      }
+      font-size: .8rem;
+    }
+    .nav-links {
+      a {
+        display: block;
+        color: @mainColor;
+      }
+    }
+    .contact-links {
+      a {
+        display: inline-block;
+        color: @mainColor;
+        padding: 1% 2%;
+      }
+      span { color: rgba(255,255,255,1);}
+    }
+  }
+}
+
+/*Main Body*/
+.page-section-header {
+  min-height: 500px;
+  background-color: @mainColorBack;
+  .header-img {
+    padding: 2% 3%;
+    img { width: 100%;}
+  }
+  .header-text {
+    text-align: center;
+    vertical-align: top;
+    padding: 2% 4% 2% 0%;
+
+    h1 { font-size: 3rem; font-weight: bold; }
+    p {  font-size: 1.3rem; line-height: 3.4rem; }
+  }
+}
+
+.left-sub { display: table-cell; width:50%;}
+.right-sub { display: table-cell; width: 49%;}
