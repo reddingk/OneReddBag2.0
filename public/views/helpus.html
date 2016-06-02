@@ -14,7 +14,7 @@
         <div ui-calendar="huc.uiConfig.calendar" class="span8 calendar" ng-model="huc.eventSources"></div>
       </div>
       <div class="right-sub">
-        <h3>Come join us on one of our missions to feed the homless.  Be apart of the team and meet us at one of the next locations.</h3>
+        <h3>Become a part of our team and help to impact the lives of others. View our calender of events to see when you can help us with our next meet up.</h3>
         <div class="meetups">
           <h2>Next meet ups:</h2>
           <table class="future-meetups">
@@ -37,7 +37,7 @@
   <section class="support-section">
     <h1>Support Us</h1>
     <div class="cards-container">
-      <div class="content-card" ng-repeat="card in huc.cards">
+      <div class="content-card" ng-repeat="card in huc.cards" ui-sref="{{card.link}}">
         <div class="card-icon"><i class="fa fa-5x" ng-class="card.icon"></i></div>
         <div class="card-text">
           <h2>{{card.header}}</h2>

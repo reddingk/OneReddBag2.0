@@ -1,0 +1,70 @@
+.ourStoryBody {
+  section {
+    h2 { text-align: center; font-weight: bold;}
+
+    &.page-section-header {
+      min-height: 450px;
+      background-color: rgba(236,183,19,.5);
+      .header-text { vertical-align: middle; text-align: right; h1 { font-size: 5rem;}}
+    }
+    &.mission-section {
+      background-color: @secondColorBack;
+      padding: 2% 10%;
+      max-height: 200px;
+    }
+
+    &.stories-section {
+      min-height: 500px;
+      padding: 2% 10%;
+
+      .nav-tabs {
+        li { a { color:rgba(236,183,19,1); } &.active { a { background-color:rgba(236,183,19,1); color: #555;}}}
+      }
+      .tab-content {
+        border: 1px solid #ddd;
+        border-top: none;
+        padding:2%;
+        max-height: 300px;
+        overflow-y: auto;
+        .tab-pane {
+          .main-story {
+            .left-sub { width: 30%; padding: 1%; img { width: 100%; }}
+            .right-sub {
+              width: 69%; vertical-align: middle; padding: 1%; text-align: center;
+              h3 { margin-top: 0px;}
+            }
+          }
+          .member-stories {
+            .content-card {
+              display: inline-block;
+              padding: 1%;
+              width: 33%;
+              vertical-align: top;
+              text-align: center;
+            }
+          }
+          .story-timeline {
+            .story-cards {
+              display: inline-block;
+              width: 33%;
+              vertical-align: top;
+              .content-card {
+                display: inline-block;
+                padding: 1%;
+                width: 90%;
+                vertical-align: top;
+                text-align: center;
+
+                .card-icon {
+                  img { height: 48px; }
+                }
+              }
+
+              .story-arrow { display: inline-block; padding-top: 15%; }
+            }
+          }
+        }
+      }
+    }
+  }
+}

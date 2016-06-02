@@ -12,9 +12,9 @@
 
       /*Cards*/
       vm.cards = [
-        {"id":"0", "type":"text-link", "icon":"fa-envelope", "header":"Join Email List", "text":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."},
-        {"id":"1", "type":"text-link", "icon":"fa-usd", "header":"Donate", "text":"Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."},
-        {"id":"2", "type":"text-link", "icon":"fa-sign-language", "header":"Become A Sponsor", "text":"Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."}
+        {"id":"0", "type":"mail-link", "icon":"fa-envelope", "header":"Join Email List", "link":"mailto:1Reddbag@gmail.com?subject=Join The Email List", "text":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."},
+        {"id":"1", "type":"text-link", "icon":"fa-usd", "header":"Donate", "link":"app.construction", "text":"Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."},
+        {"id":"2", "type":"text-link", "icon":"fa-sign-language", "header":"Become A Sponsor", "link":"app.construction", "text":"Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."}
       ];
       /*Calender*/
       vm.alertOnEventClick = function(date, jsEvent, view) {
@@ -23,7 +23,7 @@
       /*Configurations*/
       vm.uiConfig = {
         "calendar":{
-          "height": 450,
+          //"height": 400,
           "editable": false,
           "header":{
             "left": "title", "center": '', "right": 'today prev, next'

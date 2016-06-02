@@ -38,6 +38,15 @@
           }
         }
       })
+      .state('app.ourstory', {
+        url: "ourstory",
+        views: {
+          'content@': {
+            templateUrl: 'views/ourstory.html',
+            controller: 'OurStoryController as oc'
+          }
+        }
+      })
       .state('app.construction', {
         url: "underconstruction",
         views: {

@@ -1,3 +1,19 @@
-.contactUsBody { 
+.contactUsBody {
 
+  section {
+    &.connection-section {
+      min-height: 500px;
+      padding: 2% 10%;
+      h1 { display: block; text-align: center; font-weight: bold;}
+      .cards-container {
+        display: table;
+        width: 100%;
+        .content-card {
+          &.email { &:hover { background-color:rgba(44,178,160,0.5); } .card-icon { color: rgba(44,178,160,1); }}
+          &.facebook { &:hover { background-color:rgba(59,89,152,0.5);} .card-icon { color:rgba(59,89,152,1); }}
+          &.instagram { &:hover { background-color:rgba(155, 105, 84,0.5); } .card-icon { color:rgba(155, 105, 84,1); }}
+        }
+      }
+    }
+  }
 }

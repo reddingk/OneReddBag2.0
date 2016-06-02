@@ -7,6 +7,7 @@
       var bags = redBagData.bag_date;
       var news = redBagData.newsfeed;
       var trips = redBagData.trips_date;
+      var testimonies = redBagData.testimonies;
 
       return {
         bags: {
@@ -59,6 +60,26 @@
             }
             return futureTrips;
           }
+        },
+        testimonies: {
+          all: function() {
+            return testimonies;
+          },
+          byName: function(name) {
+            return;
+          }
+        },
+        links: function(external){
+          switch(external) {
+            case 'ex.facebook':
+              return "http://www.facebook.com";
+              break;
+            case 'ex.mail':
+              return "mailto:1Reddbag@gmail.com";
+              break;            
+            default:
+              return;
+          }
         }
       }
     }])
@@ -74,6 +95,11 @@
        vm.bag_date = [{"date":"2015-07-01", "delivered":52}];
        vm.newsfeed = [{"date":"2016-06-24", "title":"Website Release", "content":"The Website is now live"}, {"date":"2015-07-01", "title":"TEST", "content":"Test News"}];
        vm.trips_date = [{title:'D.C. meetup', start:new Date("2016-06-25 13:00:00"), end:new Date("2016-06-25 18:00:00"), allDay:false, location: "Washington D.C. Union Station"},{title:'D.C. meetup', start:new Date("2016-07-02 13:00:00"), end:new Date("2016-07-02 18:00:00"), allDay:false, location: "Washington D.C. Union Station"}];
+       vm.testimonies = [
+          {"name":"Test Redding","img":"", "story":"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem."},
+          {"name":"Test Wilson","img":"", "story":"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit."},
+          {"name":"Test Star","img":"", "story":"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem."},
+          {"name":"Test Johnson","img":"", "story":"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem."}];
      }
 
      return new RedBagInfoData();

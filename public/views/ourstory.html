@@ -1,0 +1,58 @@
+<div class="ourStoryBody">
+  <section class="page-section-header">
+    <div class="header-text left-sub">
+      <h1>Our Story</h1>
+    </div>
+    <div class="header-img right-sub"><img ng-src="{{oc.mainImage}}" ></div>
+  </section>
+
+  <section class="mission-section">
+    <h2>Our Mission</h2>
+    <p>"Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem."</p>
+  </section>
+
+  <section class="stories-section">
+    <h2>Stories</h2>
+    <uib-tabset active="active">
+      <uib-tab ng-repeat="tab in oc.tabs" index="tab.id" heading="{{tab.title}}">
+        <!--Main Story-->
+        <div ng-if="tab.type == 'main-story'" class="{{tab.type}}">
+          <div class="left-sub"><img ng-src="{{tab.img}}"></div>
+          <div class="right-sub"><h3>{{tab.contentTitle}}</h3><p>"{{tab.content}}"</p></div>
+        </div>
+        <!--Member Stories-->
+        <div ng-if="tab.type == 'member-stories'" class="{{tab.type}}">
+          <div class="content-card" ng-repeat="card in tab.stories">
+            <div class="card-icon">
+              <i class="fa fa-3x fa-user" ng-if="card.img == ''"></i>
+              <img ng-src="{{card.img}}" ng-if="card.img != ''">
+            </div>
+            <div class="card-text">
+    					<h3>{{card.name}}</h3>
+    					<p>"{{card.story}}"</p>
+  				  </div>
+          </div>
+        </div>
+        <!--What We Do-->
+        <div ng-if="tab.type == 'story-timeline'" class="{{tab.type}}">
+          <div class="story-cards" ng-repeat="card in tab.stories">
+            <div class="content-card">
+              <div class="card-icon">
+                <i class="fa fa-3x {{ card.img }}" ng-if="card.img.indexOf('img/') < 0 "></i>
+                <img ng-src="{{card.img}}" ng-if="card.img.indexOf('img/') >= 0 ">
+              </div>
+              <div class="card-text">
+      					<h3>{{card.title}}</h3>
+      					<p>{{card.content}}</p>
+    				  </div>
+            </div>
+
+            <div class="story-arrow" ng-if="!$last"><i class="fa fa-arrow-right"></i></div>
+          </div>
+        </div>
+
+      </uib-tab>
+    </uib-tabset>
+  </section>
+
+</div>
