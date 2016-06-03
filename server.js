@@ -1,5 +1,7 @@
-// server.js
+//Send Email from Node
+//https://codeforgeek.com/2014/07/send-e-mail-node-js/
 
+// server.js
 // modules
 var express = require('express');
 var app = express();
