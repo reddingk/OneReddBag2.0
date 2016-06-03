@@ -72,11 +72,11 @@
         links: function(external){
           switch(external) {
             case 'ex.facebook':
-              return "http://www.facebook.com";
+              return "http://www.facebook.com/1Reddbag";
               break;
             case 'ex.mail':
               return "mailto:1Reddbag@gmail.com";
-              break;            
+              break;
             default:
               return;
           }
