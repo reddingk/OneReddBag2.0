@@ -47,6 +47,15 @@
           }
         }
       })
+      .state('app.news', {
+        url: "news",
+        views: {
+          'content@': {
+            templateUrl: 'views/news.html',
+            controller: 'NewsController as nc'
+          }
+        }
+      })
       .state('app.construction', {
         url: "underconstruction",
         views: {

@@ -52,7 +52,9 @@
         display: inline-block;
         text-align: center;
         width: 49%;
-        font-size: 3rem;
+        vertical-align: top;
+        .count { font-size: 3rem; display: block; color: @mainColor; }
+        .helper-text { span { vertical-align: super; font-size: .8rem; } img { height:25px; vertical-align: baseline;} }
       }
     }
 
