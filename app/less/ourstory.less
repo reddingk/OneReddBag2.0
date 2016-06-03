@@ -18,7 +18,10 @@
       padding: 2% 10%;
 
       .nav-tabs {
-        li { a { color:rgba(236,183,19,1); } &.active { a { background-color:rgba(236,183,19,1); color: #555;}}}
+        li {
+          @media @tablet-screen, @mobile-screen { display: block; width:100%; }
+          a { color:rgba(236,183,19,1); } &.active { a { background-color:rgba(236,183,19,1); color: #555;}}
+        }
       }
       .tab-content {
         border: 1px solid #ddd;
@@ -41,6 +44,8 @@
               width: 33%;
               vertical-align: top;
               text-align: center;
+
+              @media @tablet-screen, @mobile-screen { display: block; width:100%; }
             }
           }
           .story-timeline {
@@ -48,6 +53,7 @@
               display: inline-block;
               width: 33%;
               vertical-align: top;
+              @media @tablet-screen, @mobile-screen { display: block; width:100%; }
               .content-card {
                 display: inline-block;
                 padding: 1%;

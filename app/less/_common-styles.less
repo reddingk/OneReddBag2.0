@@ -1,3 +1,7 @@
+@medium-screen: ~"only screen and (min-width: 801px) and (max-width: 1024px)";
+@tablet-screen: ~"only screen and (min-width: 641px) and (max-width: 800px)";
+@mobile-screen: ~"only screen and (max-width: 640px)";
+
 @font-size: 16px;
 @mainColor: rgb(219,77,77);
 @mainColorBack: rgba(219,77,77,0.5);
@@ -5,10 +9,14 @@
 
 html, body {
   font-family: 'Lato', sans-serif;
-  //font-family: 'Arapey', serif;
-  font-size: @font-size;
   height: 100%;
   color: #000;
+
+  font-size: @font-size;
+
+  @media @medium-screen { font-size: 14px; }
+  @media @tablet-screen { font-size: 12px; }
+  @media @mobile-screen { font-size: 10px; }
 }
 .header {
   z-index:100;
@@ -60,6 +68,8 @@ html, body {
           width:100%;
           li {
             width:16%;
+            @media @tablet-screen { width:100%; }
+            @media @mobile-screen { width:100%; }
             a {
               text-align: center;
               border-top:2px solid rgba(0,0,0,1);
@@ -142,8 +152,14 @@ html, body {
   }
 }
 
-.left-sub { display: table-cell; width:50%;}
-.right-sub { display: table-cell; width: 49%;}
+.left-sub {
+  display: table-cell; width:50%;
+  @media @tablet-screen, @mobile-screen { display: block; width:100%; }
+}
+.right-sub {
+  display: table-cell; width: 49%;
+  @media @tablet-screen, @mobile-screen { display: block; width:100%; }
+}
 
 .cards-container {
   margin-top: 5%;
@@ -153,6 +169,7 @@ html, body {
     width:33%;
     padding:2%;
 
+    @media @tablet-screen, @mobile-screen { display: block; width:100%; }    
     &:hover {
       background-color: @mainColorBack;
       color: rgba(255,255,255,1);
