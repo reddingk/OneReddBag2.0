@@ -81,6 +81,9 @@
             case 'ex.mail':
               return "mailto:1Reddbag@gmail.com";
               break;
+            case 'ex.youtube':
+              return "https://www.youtube.com/watch?v=raoNTII7JGM";
+              break;
             default:
               return;
           }
