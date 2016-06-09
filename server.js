@@ -7,6 +7,9 @@ var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
+var fs = require('fs');
+var path = require("path");
+var recursive = require('recursive-readdir');
 
 // configuration
 
@@ -38,6 +41,30 @@ app.use(express.static(__dirname + '/public'));
 // routes
 // Route for database set up
 //require('./app/routes')(app);
+
+// file list of imgs
+var media = null;
+var folders = [];
+fs.readdir(__dirname + '/public/img/media_imgs', function(err, files) {
+    if (err) return;
+
+    files.map(function (file) {
+        return path.join(__dirname + '\\public\\img\\media_imgs', file);
+    }).filter(function (file) {
+        return fs.statSync(file).isDirectory();
+    }).forEach(function (file) {
+        folders.push(file.substring(file.lastIndexOf("\\") + 1, file.length))
+    });
+
+});
+recursive(__dirname + '/public/img/media_imgs', function (err, files) {
+  // Files is an array of filename
+  media = {"folders": folders, "images":files};
+});
+
+app.get('/imgapi/all/:paramID',function(req, res){
+        return res.json(media);
+});
 
 // start app
 app.listen(port);

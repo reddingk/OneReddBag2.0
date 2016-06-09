@@ -56,6 +56,15 @@
           }
         }
       })
+      .state('app.media', {
+        url: "media",
+        views: {
+          'content@': {
+            templateUrl: 'views/media.html',
+            controller: 'MediaController as mc'
+          }
+        }
+      })
       .state('app.construction', {
         url: "underconstruction",
         views: {

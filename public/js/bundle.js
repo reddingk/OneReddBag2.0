@@ -6,11 +6,12 @@
 		angular.module('ourStoryCtrl', ['ui.bootstrap']);
 		angular.module('contactCtrl', ['ui.bootstrap']);
 		angular.module('newsCtrl', ['ui.bootstrap']);
+		angular.module('mediaCtrl', ['ui.bootstrap']);
 		//
 		angular.module('dataconfig', []);
     angular.module('directives', []);
 
-    angular.module('ORBApp', ['ngMaterial','ngAnimate', 'ui.router','directives', 'config','dataconfig','homeCtrl','headerCtrl','helpUsCtrl','ourStoryCtrl','contactCtrl','newsCtrl']);
+    angular.module('ORBApp', ['ngMaterial','ngAnimate', 'ui.router','directives', 'config','dataconfig','homeCtrl','headerCtrl','helpUsCtrl','ourStoryCtrl','contactCtrl','newsCtrl', 'mediaCtrl']);
 
 })();
 
@@ -110,10 +111,29 @@
             default:
               return;
           }
+        },
+        media: {
+          all: function() {
+            return;
+          },
+          imgs: {
+            all: function() {
+              return redBagData.get_imgs().then(
+                function(results) { return results; },
+                function(error) { console.log("ERROR - No Results")}
+              );
+            },
+            byFolder:function(folder) {
+              return;
+            },
+            tst:function() {
+              return {"folders":["test2"]};
+            }
+          }
         }
       }
     }])
-    .factory("redBagData", ['$q', function($q){
+    .factory("redBagData", ['$q', '$http', function($q, $http){
      function RedBagInfoData() {
        var vm = this;
        //TEST
@@ -141,6 +161,19 @@
           {"name":"Test Wilson","img":"", "story":"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit."},
           {"name":"Test Star","img":"", "story":"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem."},
           {"name":"Test Johnson","img":"", "story":"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem."}];
+
+       //vm.folder_imgs = null;//{"folders":["test"]};
+
+       vm.get_imgs = function() {
+         var def = $q.defer();
+
+         $http({ method: 'GET', url: "/imgapi/all/77"})
+         .then(function successCallback(response) {
+            def.resolve(response.data);            
+          }, function errorCallback(response) { def.reject(response); });
+
+          return def.promise;
+       }
      }
 
      return new RedBagInfoData();
@@ -203,6 +236,15 @@
           'content@': {
             templateUrl: 'views/news.html',
             controller: 'NewsController as nc'
+          }
+        }
+      })
+      .state('app.media', {
+        url: "media",
+        views: {
+          'content@': {
+            templateUrl: 'views/media.html',
+            controller: 'MediaController as mc'
           }
         }
       })
@@ -339,6 +381,37 @@
       ];
 
     }]);
+
+})();
+
+(function(){
+ "use strict";
+
+  angular.module('mediaCtrl').controller('MediaController', ['$state', 'redInfo', '$filter', function($state, redInfo, $filter){
+    var vm = this;
+    vm.title = "Media";
+    vm.mainImage = "img/";
+    vm.media = undefined;
+    vm.selectedFolderImages =[];
+
+    vm.getMedia = function() {
+      redInfo.media.imgs.all().then(
+        function(retResults) {
+          vm.media = retResults;
+          // TEST
+          vm.getFolderImages("6-27-15");
+         },
+        function(error) { console.log("ERROR - No Results")}
+      );
+    }();
+
+    vm.getFolderImages = function(folder) {
+      vm.media.images
+      .filter(function(image) { return (image.indexOf("media_imgs\\"+folder) > -1)})
+      .forEach(function (image) { vm.selectedFolderImages.push(image.substring(image.lastIndexOf("\\") + 1, image.length)); });
+    }
+
+  }]);
 
 })();
 

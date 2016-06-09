@@ -87,10 +87,29 @@
             default:
               return;
           }
+        },
+        media: {
+          all: function() {
+            return;
+          },
+          imgs: {
+            all: function() {
+              return redBagData.get_imgs().then(
+                function(results) { return results; },
+                function(error) { console.log("ERROR - No Results")}
+              );
+            },
+            byFolder:function(folder) {
+              return;
+            },
+            tst:function() {
+              return {"folders":["test2"]};
+            }
+          }
         }
       }
     }])
-    .factory("redBagData", ['$q', function($q){
+    .factory("redBagData", ['$q', '$http', function($q, $http){
      function RedBagInfoData() {
        var vm = this;
        //TEST
@@ -118,6 +137,19 @@
           {"name":"Test Wilson","img":"", "story":"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit."},
           {"name":"Test Star","img":"", "story":"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem."},
           {"name":"Test Johnson","img":"", "story":"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem."}];
+
+       //vm.folder_imgs = null;//{"folders":["test"]};
+
+       vm.get_imgs = function() {
+         var def = $q.defer();
+
+         $http({ method: 'GET', url: "/imgapi/all/77"})
+         .then(function successCallback(response) {
+            def.resolve(response.data);            
+          }, function errorCallback(response) { def.reject(response); });
+
+          return def.promise;
+       }
      }
 
      return new RedBagInfoData();

@@ -1,0 +1,22 @@
+<div class="mediaBody">
+  <section class="page-section-header">
+    <div class="header-text">
+      <i class="fa fa-3x fa-picture-o"></i>
+      <h1>Media</h1>
+    </div>
+  </section>
+
+  <section>
+    <h2>Folders:</h2>
+    <p ng-repeat="folder in mc.media.folders">{{folder}}</p>
+
+    <h2>Images:</h2>
+    <p ng-repeat="image in mc.media.images">{{image}}</p>
+
+    <h2>Selected TEST:</h2>
+    <p ng-repeat="simg in mc.selectedFolderImages">{{simg}}</p>
+
+  </section>
+
+  <div style="clear:both"></div>
+</div>
