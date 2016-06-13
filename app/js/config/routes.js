@@ -65,6 +65,15 @@
           }
         }
       })
+      .state('app.donate', {
+        url: "donate",
+        views: {
+          'content@': {
+            templateUrl: 'views/donate.html',
+            controller: 'DonateController as dc'
+          }
+        }
+      })
       .state('app.construction', {
         url: "underconstruction",
         views: {

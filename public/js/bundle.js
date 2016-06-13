@@ -7,11 +7,12 @@
 		angular.module('contactCtrl', ['ui.bootstrap']);
 		angular.module('newsCtrl', ['ui.bootstrap']);
 		angular.module('mediaCtrl', ['ui.bootstrap']);
+		angular.module('donateCtrl', ['ui.bootstrap']);
 		//
 		angular.module('dataconfig', []);
     angular.module('directives', []);
 
-    angular.module('ORBApp', ['ngMaterial','ngAnimate', 'ui.router','directives', 'config','dataconfig','homeCtrl','headerCtrl','helpUsCtrl','ourStoryCtrl','contactCtrl','newsCtrl', 'mediaCtrl']);
+    angular.module('ORBApp', ['ngMaterial','ngAnimate', 'ui.router','directives', 'config','dataconfig','homeCtrl','headerCtrl','helpUsCtrl','ourStoryCtrl','contactCtrl','newsCtrl', 'mediaCtrl','donateCtrl']);
 
 })();
 
@@ -248,6 +249,15 @@
           }
         }
       })
+      .state('app.donate', {
+        url: "donate",
+        views: {
+          'content@': {
+            templateUrl: 'views/donate.html',
+            controller: 'DonateController as dc'
+          }
+        }
+      })
       .state('app.construction', {
         url: "underconstruction",
         views: {
@@ -283,6 +293,19 @@
       console.log(external);
       $window.open(redInfo.links(external), '_blank');
     }
+
+  }]);
+
+})();
+
+(function(){
+ "use strict";
+
+  angular.module('donateCtrl').controller('DonateController', ['$state', function($state){
+    var vm = this;
+    vm.title = "Donate";
+    vm.mainImage = "img/donate.jpg";
+
 
   }]);
 

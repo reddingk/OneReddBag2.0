@@ -7,10 +7,11 @@
 		angular.module('contactCtrl', ['ui.bootstrap']);
 		angular.module('newsCtrl', ['ui.bootstrap']);
 		angular.module('mediaCtrl', ['ui.bootstrap']);
+		angular.module('donateCtrl', ['ui.bootstrap']);
 		//
 		angular.module('dataconfig', []);
     angular.module('directives', []);
 
-    angular.module('ORBApp', ['ngMaterial','ngAnimate', 'ui.router','directives', 'config','dataconfig','homeCtrl','headerCtrl','helpUsCtrl','ourStoryCtrl','contactCtrl','newsCtrl', 'mediaCtrl']);
+    angular.module('ORBApp', ['ngMaterial','ngAnimate', 'ui.router','directives', 'config','dataconfig','homeCtrl','headerCtrl','helpUsCtrl','ourStoryCtrl','contactCtrl','newsCtrl', 'mediaCtrl','donateCtrl']);
 
 })();
