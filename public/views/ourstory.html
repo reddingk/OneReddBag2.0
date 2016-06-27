@@ -8,7 +8,7 @@
 
   <section class="mission-section">
     <h2>Our Mission</h2>
-    <p>"Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem."</p>
+    <p>"We structure our efforts to connect intimately with each and every life that we reach in order to leave a positive influence and provide access to much needed resources such as food, clothing, shelter and support."</p>
   </section>
 
   <section class="stories-section">
@@ -18,7 +18,7 @@
         <!--Main Story-->
         <div ng-if="tab.type == 'main-story'" class="{{tab.type}}">
           <div class="left-sub"><img ng-src="{{tab.img}}"></div>
-          <div class="right-sub"><h3>{{tab.contentTitle}}</h3><p>"{{tab.content}}"</p></div>
+          <div class="right-sub"><h3>{{tab.contentTitle}}</h3><div ng-bind-html="oc.styleText(tab.content)"></div></div>
         </div>
         <!--Member Stories-->
         <div ng-if="tab.type == 'member-stories'" class="{{tab.type}}">

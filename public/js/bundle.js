@@ -158,10 +158,8 @@
        vm.trips_date = [{title:'D.C. meetup', start:new Date("2016-06-25 13:00:00"), end:new Date("2016-06-25 18:00:00"), allDay:false, location: "Washington D.C. Union Station"},{title:'D.C. meetup', start:new Date("2016-07-02 13:00:00"), end:new Date("2016-07-02 18:00:00"), allDay:false, location: "Washington D.C. Union Station"}];
        /*Stories*/
        vm.testimonies = [
-          {"name":"Kristopher Redding","img":"", "story":"As a former student at the University of Delaware I have been apart of many young adult run orginizations but never before been apart of one that has such a hands on mindset.  I have watched this group grow from the vision of my brother and am proud to see the dedication and passion he has for this mission of serving his community."},
-          {"name":"Test Wilson","img":"", "story":"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit."},
-          {"name":"Test Star","img":"", "story":"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem."},
-          {"name":"Test Johnson","img":"", "story":"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem."}];
+          {"name":"Kristopher Redding","img":"", "story":"As a former student at the University of Delaware I have been apart of many young adult run orginizations but never before been apart of one that has such a hands on mindset.  I have watched this group grow from the vision of my brother and am proud to see the dedication and passion he has for this mission of serving his community."}
+        ];
 
        //vm.folder_imgs = null;//{"folders":["test"]};
 
@@ -170,7 +168,7 @@
 
          $http({ method: 'GET', url: "/imgapi/all/77"})
          .then(function successCallback(response) {
-            def.resolve(response.data);            
+            def.resolve(response.data);
           }, function errorCallback(response) { def.reject(response); });
 
           return def.promise;
@@ -343,7 +341,7 @@
       /*Cards*/
       vm.cards = [
         {"id":"0", "type":"mail-link", "icon":"fa-envelope", "header":"Join Email List", "link":"mailto:1Reddbag@gmail.com?subject=Join The Email List", "text":"Join our email list to get updates on our volenteering event schedule and general information on how you can help as well as join us."},
-        {"id":"1", "type":"text-link", "icon":"fa-usd", "header":"Donate", "link":"app.construction", "text":"Visit our 'Go Fund Me' page to donate to our mission, we are a nonprofit organization therefor all donations go directly to mission by either paying for food or supplies for all of our bags."},
+        {"id":"1", "type":"text-link", "icon":"fa-usd", "header":"Donate", "link":"app.construction", "text":"Visit our 'PayPal' page to donate to our mission, we are a nonprofit organization therefor all donations are tax deductable and go directly to mission by either paying for food or supplies."},
         {"id":"2", "type":"text-link", "icon":"fa-sign-language", "header":"Become A Sponsor", "link":"app.construction", "text":"Checkout our sponsorship packages and learn about how you or your business can become an official sponsor of our group and support our mission."}
       ];
       /*Calender*/
@@ -398,7 +396,7 @@
       vm.bagCount = redInfo.bags.count();
       vm.recentNews = redInfo.news.recent();
       vm.cards = [
-        {"id":0, "type":"text-link", "icon":"fa-heartbeat", "header":"Our Mission", "text":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", "link":"app.ourstory"},
+        {"id":0, "type":"text-link", "icon":"fa-heartbeat", "header":"Our Mission", "text":"We structure our efforts to connect intimately with each and every life that we reach in order to leave a positive influence and provide access to much needed resources such as food, clothing, shelter and support.", "link":"app.ourstory"},
         {"id":1, "type":"text-link", "icon":"fa-users", "header":"How To Help", "text":"Learn ways that you can help us to accomplish our mission of feeding the homeless and less fortionate, these include volunteering, donating, and even becoming a sponsor.", "link":"app.helpus"},
         {"id":2, "type":"news-link", "icon":"fa-newspaper-o", "header":"News", "date":vm.recentNews.date, "text":(vm.recentNews.content.length > 90 ? vm.recentNews.content.substring(0,90) : vm.recentNews.content )+"...", "link":"app.news"}
       ];
@@ -467,17 +465,27 @@
 (function(){
  "use strict";
 
-  angular.module('ourStoryCtrl').controller('OurStoryController', ['$state', 'redInfo',function($state,redInfo){
+  angular.module('ourStoryCtrl').controller('OurStoryController', ['$state', '$sce', 'redInfo',function($state, $sce, redInfo){
     var vm = this;
     vm.title = "Our Story";
     vm.mainImage = "img/ourstory.jpg";
     vm.stories = redInfo.testimonies.all();
 
+    vm.styleText = styleText;
+
     vm.tabs = [
-      {"id":0, "title":"About One Red Bag", "type":"main-story", "img":"img/aboutorb.jpg", "contentTitle":"Our Story", "content":"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?"},
+      {"id":0, "title":"About One Red Bag", "type":"main-story", "img":"img/aboutorb.jpg", "contentTitle":"Our Story", "content":"{0}May 2015 I was on the way to a conference in Washington D.C, something that I saw would change my life forever and inspire me to take a step out on faith. While driving past a park I saw a man and a woman feeding the homeless out of the trunk of their car. They handed out bagels, and cups of juice to all that were near. This made me think of exactly what I could do to make a difference also.{1}{0}On May 22, 2015 I took a step out on faith: {1}{0}I loaded up a Red luggage bag with 30 bag lunches: each with a personalized note of encouragement, water bottle, snacks and sandwich and headed to Washington D.C to hand them out.  It took me 8 hours but I knew something great was started.  Following this weekend I asked a friend to join me, from here the rest is history. {1}{0}2015 was our pilot year, we were able to provide 1,031 meals to those in need. We have grown from a single red luggage bag and a dream to a registered 501c(3).  We spend our time rolling around Washington D.C, Maryland & Virginia looking for the people many people overlook.  It not only brings tears to my eyes but there’s too when they see that someone cares for them.{1}{0}We hope that this story inspires you to get involved in whatever way possible.{1}{0}Thank you for your time.{1}"},
       {"id":1, "title":"What We Do", "type":"story-timeline","stories":[{"title":"Building", "img":"fa-truck","content":"By meeting together to organize as well as hand make every bagged lunch that we hand out we aim to build and environment where we can create a healthy meal for those we reach."},{"title":"Encouraging", "img":"fa-thumbs-o-up","content":"Each bag includes a note that was personally written by the founder to provide an encouraging word those that are less fortionate.  This note is ment to let them know that they always have the power of Jesus with them and there are better days ahead."},{"title":"Reaching Out", "img":"img/Logo_bw.png","content":"We personally walk through the cities that we visit and hand these bags out so that we can provide a personal connection with those we meet and give them a face behind the bag as well as a kind word or quick prayer."}]},
       {"id":2, "title":"Volenteer Stories", "type":"member-stories", "stories": redInfo.testimonies.all() }
     ];
+
+    function styleText(content){
+      //var tmp = content.replace("{0}", "<p>").replace("{1}", "</p>");
+      var tmp1 = content.split("{0}").join("<p>");
+      var tmp2 = tmp1.split("{1}").join("</p>");
+
+      return($sce.trustAsHtml(tmp2));
+    }
 
   }]);
 
