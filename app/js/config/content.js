@@ -105,6 +105,11 @@
             tst:function() {
               return {"folders":["test2"]};
             }
+          },
+          videos: {
+            all: function() {
+              return null;
+            }
           }
         }
       }
