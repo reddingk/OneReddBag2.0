@@ -84,6 +84,18 @@
             case 'ex.youtube':
               return "https://www.youtube.com/watch?v=raoNTII7JGM";
               break;
+            case 'ex.twitter':
+              return "https://twitter.com/1reddbag";
+              break;
+            case 'ex.linkedin':
+              return "https://www.linkedin.com/";
+              break;
+            case 'ex.snapchat':
+              return "https://www.snapchat.com/onereddbag";
+              break;
+            case 'ex.instagram':
+              return "https://www.instagram.com/1reddbag/";
+              break;
             default:
               return;
           }

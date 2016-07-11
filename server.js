@@ -10,6 +10,7 @@ var methodOverride = require('method-override');
 var fs = require('fs');
 var path = require("path");
 var recursive = require('recursive-readdir');
+//var modRewrite = require('connect-modrewrite');
 
 // configuration
 
@@ -21,6 +22,10 @@ var port = process.env.PORT || 7777;
 
 // connect to mongoDB database
 // mongoose.connect(db.url);
+
+// Catch all routes
+
+
 
 // get all data of the body (POST) params
 // parse application/json
@@ -37,6 +42,7 @@ app.use(methodOverride('X-HTTP-Method-Override'));
 
 // set the static files location /public/img will be /img for users
 app.use(express.static(__dirname + '/public'));
+
 
 // routes
 // Route for database set up
