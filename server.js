@@ -43,7 +43,7 @@ app.use(express.static(__dirname + '/public'));
 //require('./app/routes')(app);
 
 // file list of imgs
-var media = null;
+/*var media = null;
 var folders = [];
 fs.readdir(__dirname + '/public/img/media_imgs', function(err, files) {
     if (err) return;
@@ -64,7 +64,7 @@ recursive(__dirname + '/public/img/media_imgs', function (err, files) {
 
 app.get('/imgapi/all/:paramID',function(req, res){
         return res.json(media);
-});
+});*/
 
 // start app
 app.listen(port);
