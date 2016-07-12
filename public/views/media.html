@@ -29,17 +29,12 @@
         </nav>
       </div>
   </section>
-  <!--<section>
-    <h2>Folders:</h2>
-    <p ng-repeat="folder in mc.media.photos.folders">{{folder}}</p>
 
-    <h2>Images:</h2>
-    <p ng-repeat="image in mc.media.photos.images">{{image}}</p>
+  <section class="media-content">
+    <p ng-if="mc.pageMedia==null">NO CONTENT YET</p>
+    <p ng-if="mc.pageMedia!=null" ng-repeat="pageContent in mc.pageMedia.content">{{pageContent}}</p>
 
-    <h2>Selected TEST:</h2>
-    <p ng-repeat="simg in mc.selectedFolderImages">{{simg}}</p>
-
-  </section>-->
+  </section>
 
   <div style="clear:both"></div>
 </div>

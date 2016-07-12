@@ -459,6 +459,7 @@
     vm.mainImage = "img/";
     vm.media = undefined;
     vm.selectedFolderImages =[];
+    vm.pageMedia = null;
 
     vm.getMedia = function() {
       redInfo.media.imgs.all().then(
@@ -483,6 +484,7 @@
       vm.activeNav = { "level":1, "items":[{"title":"photos"}, {"title":"videos"}]};
       vm.activeLevel = {"id":1, "parent":""};
     }
+
     vm.mediaNav = function(navItem) {
       var action = (navItem == "<<"? 0: 1);
 
@@ -492,9 +494,10 @@
       { vm.activeLevel.id += 1; }
 
       if(vm.activeLevel.id < 2)
-        {vm.buildNavigation();}
-      else if(vm.activeLevel.id == 2){
-        vm.activeLevel = {"id":1, "parent":navItem};
+      {vm.buildNavigation();}
+      else if(vm.activeLevel.id == 2)
+      {
+        vm.activeLevel.parent = navItem;
         vm.activeNav = { "level":2, "items":[{"title":"<<"}]};
         if(navItem == "photos"){
           if(vm.media.photos != null){
@@ -509,12 +512,42 @@
           }
         }
       }
-
-
+      else if(vm.activeLevel.id == 3)
+      {
+        vm.activeLevel.parent = navItem;
+        vm.activeNav = { "level":3, "items":[{"title":"<<"}, {"title":navItem}]};
+      }
+      vm.changeMedia();
     }
 
     vm.getNavId = function(level) {
       return "lvl"+level;
+    }
+
+    vm.changeMedia = function() {
+      if(vm.activeLevel.id == 1) {
+        vm.pageMedia = null;
+      }
+      else if(vm.activeLevel.id == 2) {
+          if(vm.activeLevel.parent == "photos" && vm.media.photos != null){
+            vm.pageMedia = {"type":"folder", "content":[]};
+            for(var i =0; i < vm.media.photos.folders.length; i++) {
+              vm.pageMedia.content.push(vm.media.photos.folders[i]);
+            }
+          }
+      }
+      else if(vm.activeLevel.id == 3)
+      {
+        if(vm.media.photos.images != null)
+        {
+          vm.pageMedia = {"type":"photos", "content":[]};
+          for(var i =0; i < vm.media.photos.images.length; i++) {
+            if(vm.media.photos.images[i].indexOf(vm.activeLevel.parent > -1))
+              vm.pageMedia.content.push(vm.media.photos.images[i]);
+          }
+        }
+      }
+      console.log(vm.pageMedia);
     }
 
   }]);

@@ -55,18 +55,7 @@ app.use(express.static(__dirname + '/public'));
 // file list of imgs
 var media = null;
 var folders = [];
-/*fs.readdir(__dirname + '/public/img/media_imgs', function(err, files) {
-    if (err) return;
 
-    files.map(function (file) {
-        return path.join(__dirname + '\\public\\img\\media_imgs', file);
-    }).filter(function (file) {
-        return fs.statSync(file).isDirectory();
-    }).forEach(function (file) {
-        folders.push(file.substring(file.lastIndexOf("\\") + 1, file.length))
-    });
-
-});*/
 var files = fs.readdirSync(__dirname + '/public/img/media_imgs');
 
 recursive(__dirname + '/public/img/media_imgs', function (err, files) {
@@ -79,7 +68,7 @@ recursive(__dirname + '/public/img/media_imgs', function (err, files) {
     var tmpdir = tmp[tmp.length - 2];
     if(folders.indexOf(tmpdir) < 0){
       folders.push(tmpdir);
-    }     
+    }
   }
   // Files is an array of filename
   media = {"folders": folders, "images":files};
