@@ -25,6 +25,7 @@ var port = process.env.PORT || 7777;
 // Beautify routes
 app.get('/ourstory', function(req, res) { res.redirect('/#/ourstory'); });
 app.get('/helpus', function(req, res) { res.redirect('/#/helpus'); });
+app.get('/media', function(req, res) { res.redirect('/#/media'); });
 app.get('/underconstruction', function(req, res) { res.redirect('/#/underconstruction'); });
 app.get('/news', function(req, res) { res.redirect('/#/news'); });
 app.get('/contact', function(req, res) { res.redirect('/#/contact'); });
@@ -73,10 +74,11 @@ recursive(__dirname + '/public/img/media_imgs', function (err, files) {
   for(var i in files)
   {
     var tmp = files[i].split("\\");
-    var tmpdir = tmp[tmp.length - 2];
+    /*var tmpdir = tmp[tmp.length - 2];
     if(folders.indexOf(tmpdir) < 0){
       folders.push(tmpdir);
-    }
+    }*/
+    folders.push(tmp.length + "-" + tmp[tmp.length - 1]);
   }
   // Files is an array of filename
   media = {"folders": folders, "images":files};
