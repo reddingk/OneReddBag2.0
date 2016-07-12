@@ -57,13 +57,13 @@ var folders = [];
 fs.readdir(__dirname + '/public/img/media_imgs', function(err, files) {
     if (err) return;
 
-    files.map(function (file) {
+    /*files.map(function (file) {
         return path.join(__dirname + '\\public\\img\\media_imgs', file);
     }).filter(function (file) {
         return fs.statSync(file).isDirectory();
     }).forEach(function (file) {
         folders.push(file.substring(file.lastIndexOf("\\") + 1, file.length))
-    });
+    });*/
 
 });
 recursive(__dirname + '/public/img/media_imgs', function (err, files) {
