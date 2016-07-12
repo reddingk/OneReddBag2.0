@@ -73,7 +73,9 @@ recursive(__dirname + '/public/img/media_imgs', function (err, files) {
 
   for(var i in files)
   {
-    var tmp = files[i].replace("\\"," ").replace("//"," ").replace("/"," ").split(" ");
+    //var tmp = files[i].replace("\\"," ").replace("/"," ").split(" ");
+    var tmp = files[i].split(/(\\|\/)/g);
+
     var tmpdir = tmp[tmp.length - 2];
     /*if(folders.indexOf(tmpdir) < 0){
       folders.push(tmpdir);
