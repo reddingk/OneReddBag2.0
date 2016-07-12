@@ -1,12 +1,22 @@
 <div class="donateBody">
   <section class="page-section-header">
     <div class="header-text">
-      <i class="fa fa-3x fa-money"></i>
-      <h1>Donate</h1>
+      <h2>With $20.00 we can feed up to 15 people</h2>
+      <p>Your tax deductable donation goes directly to providing food to those in need and increasing the access to much needed resources to sustain and improve everyday life.</p>
     </div>
   </section>
 
-  <!--<section class="gofundme-section">
-    <iframe src="https://www.gofundme.com/1reddbag" sandbox></iframe>
-  </section>-->
+  <section class="donation-section">
+    <h1>Donate Today</h1>
+    <div class="donate-icons">
+      <i class="fa fa-money"></i>
+      <i class="fa fa-cutlery"></i>
+      <i class="fa fa-smile-o"></i>
+    </div>
+    <div class="donate-btns">
+      <md-button ng-repeat="donation in dc.donationAmounts" class="donate-btn md-raised" ng-click="dc.makeDonation(donation)" ng-class="dc.DonationType(donation)">${{donation}}</md-button>
+      <md-button class="donate-btn md-raised other" ng-click="dc.makeDonation('?')">Other Amount</md-button>
+    </div>
+
+  </section>
 </div>

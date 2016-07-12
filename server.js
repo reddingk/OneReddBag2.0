@@ -10,7 +10,6 @@ var methodOverride = require('method-override');
 var fs = require('fs');
 var path = require("path");
 var recursive = require('recursive-readdir');
-//var modRewrite = require('connect-modrewrite');
 
 // configuration
 
@@ -23,9 +22,13 @@ var port = process.env.PORT || 7777;
 // connect to mongoDB database
 // mongoose.connect(db.url);
 
-// Catch all routes
-
-
+// Beautify routes
+app.get('/ourstory', function(req, res) { res.redirect('/#/ourstory'); });
+app.get('/helpus', function(req, res) { res.redirect('/#/helpus'); });
+app.get('/underconstruction', function(req, res) { res.redirect('/#/underconstruction'); });
+app.get('/news', function(req, res) { res.redirect('/#/news'); });
+app.get('/contact', function(req, res) { res.redirect('/#/contact'); });
+app.get('/donate', function(req, res) { res.redirect('/#/donate'); });
 
 // get all data of the body (POST) params
 // parse application/json
@@ -49,10 +52,10 @@ app.use(express.static(__dirname + '/public'));
 //require('./app/routes')(app);
 
 // file list of imgs
-/*var media = null;
+var media = null;
 var folders = [];
 fs.readdir(__dirname + '/public/img/media_imgs', function(err, files) {
-    if (err) return;
+    /*if (err) return;
 
     files.map(function (file) {
         return path.join(__dirname + '\\public\\img\\media_imgs', file);
@@ -60,7 +63,7 @@ fs.readdir(__dirname + '/public/img/media_imgs', function(err, files) {
         return fs.statSync(file).isDirectory();
     }).forEach(function (file) {
         folders.push(file.substring(file.lastIndexOf("\\") + 1, file.length))
-    });
+    });*/
 
 });
 recursive(__dirname + '/public/img/media_imgs', function (err, files) {
@@ -68,7 +71,7 @@ recursive(__dirname + '/public/img/media_imgs', function (err, files) {
   media = {"folders": folders, "images":files};
 });
 
-app.get('/imgapi/all/:paramID',function(req, res){
+/*app.get('/imgapi/all/:paramID',function(req, res){
         return res.json(media);
 });*/
 

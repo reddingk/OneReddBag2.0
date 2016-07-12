@@ -18,6 +18,50 @@
       }
     }
 
+    &.donation-section {
+      text-align: center;
+      h1 { display: block; font-weight: bold;}
+      .donate-icons {
+        text-align: center;
+        padding: 10px 0;
+        i {
+          display: inline-block;
+          border: 3px solid #000000;
+          font-size: 2rem;
+          width: 80px;
+          height: 80px;
+          border-radius: 50px;
+          padding: 20px;
+          text-align: center;
+
+          -webkit-transition: all 1s;
+          transition: all 1s;
+
+          &+i { margin-left: 20px;}
+          &:hover { background-color: @mainColorBack; }
+        }
+      }
+      .donate-btns {
+        width: 25%;
+        margin: 0 auto;
+        padding-top: 20px;
+        .donate-btn {
+          font-weight: bold;
+          &.basic { background-color: rgba(255,255,255,1); }
+          &.sponsorship { background-color: rgba(255,0,0,1); color: rgba(255,255,255,1); }
+          &.other {
+            background-color:
+            rgba(0,0,0,1);
+            color: rgba(255,255,255,1);
+            min-width: 296px;
+            @media @tablet-screen, @mobile-screen { min-width:100%; }
+          }
+
+          &:hover { opacity: 0.7; text-decoration: underline;}
+        }
+      }
+    }
+
 
   }
 }
