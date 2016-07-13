@@ -467,8 +467,6 @@
           vm.media = {"photos": retResults, "videos": redInfo.media.videos.all()};
           console.log(vm.media);
           vm.buildNavigation();
-          // TEST
-          //vm.getFolderImages("6-27-15");
          },
         function(error) { console.log("ERROR - No Results")}
       );
@@ -482,7 +480,7 @@
 
     vm.buildNavigation = function() {
       vm.activeNav = { "level":1, "items":[{"title":"photos"}, {"title":"videos"}]};
-      vm.activeLevel = {"id":1, "parent":""};
+      vm.activeLevel = {"id":1, "parent":"", "title":""};
     }
 
     vm.mediaNav = function(navItem) {
@@ -497,9 +495,10 @@
       {vm.buildNavigation();}
       else if(vm.activeLevel.id == 2)
       {
-        vm.activeLevel.parent = navItem;
         vm.activeNav = { "level":2, "items":[{"title":"<<"}]};
-        if(navItem == "photos"){
+        if(vm.activeLevel.parent == "photos" || navItem == "photos"){
+          vm.activeLevel.parent = "photos";
+          vm.activeLevel.title = "photos";
           if(vm.media.photos != null){
             for(var i =0; i < vm.media.photos.folders.length; i++){
               vm.activeNav.items.push( {"title":vm.media.photos.folders[i]} );
@@ -507,15 +506,16 @@
           }
         }
         else{
-          if(vm.media.videos != null){
-
-          }
+          vm.activeLevel.parent = "videos";
+          vm.activeLevel.title = "videos";
+          vm.activeNav.items.push( {"title":"Videos", "noLink":1} );
+          if(vm.media.videos != null){ }
         }
       }
       else if(vm.activeLevel.id == 3)
       {
-        vm.activeLevel.parent = navItem;
-        vm.activeNav = { "level":3, "items":[{"title":"<<"}, {"title":navItem}]};
+        vm.activeLevel.title = navItem;
+        vm.activeNav = { "level":3, "items":[{"title":"<<"}, {"title":navItem, "noLink":1}]};
       }
       vm.changeMedia();
     }
@@ -529,11 +529,14 @@
         vm.pageMedia = null;
       }
       else if(vm.activeLevel.id == 2) {
-          if(vm.activeLevel.parent == "photos" && vm.media.photos != null){
-            vm.pageMedia = {"type":"folder", "content":[]};
+          if(vm.activeLevel.title == "photos" && vm.media.photos != null){
+            vm.pageMedia = {"type":"folders", "content":[]};
             for(var i =0; i < vm.media.photos.folders.length; i++) {
               vm.pageMedia.content.push(vm.media.photos.folders[i]);
             }
+          }
+          else if(vm.activeLevel.title == "videos"){
+              vm.pageMedia = {"type":"videos", "content":[]};
           }
       }
       else if(vm.activeLevel.id == 3)
@@ -542,12 +545,14 @@
         {
           vm.pageMedia = {"type":"photos", "content":[]};
           for(var i =0; i < vm.media.photos.images.length; i++) {
-            if(vm.media.photos.images[i].indexOf(vm.activeLevel.parent > -1))
-              vm.pageMedia.content.push(vm.media.photos.images[i]);
+            if(vm.media.photos.images[i].indexOf(vm.activeLevel.title) > -1){
+              var imgLoc = vm.media.photos.images[i];
+              vm.pageMedia.content.push(imgLoc.substring(imgLoc.indexOf("img")));
+            }
           }
         }
       }
-      console.log(vm.pageMedia);
+      //console.log(vm.pageMedia);
     }
 
   }]);
