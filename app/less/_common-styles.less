@@ -76,7 +76,7 @@ html, body {
     }
     .container {
       .navbar-header {
-        .nav-logo {      
+        .nav-logo {
           display: none;
         }
       }
@@ -93,7 +93,8 @@ html, body {
               border-top:2px solid rgba(0,0,0,1);
               color: rgba(255,255,255,1);
               &:hover, &:focus{
-                background-color: rgba(204,204,204,0.5);
+                background-color: rgba(255,255,255,0.9);
+                color: rgba(0,0,0,1);
                 border-top:2px solid rgba(204,204,204,0.2);
               }
               &.active {
@@ -105,7 +106,7 @@ html, body {
                 background-color: @mainColor;
                 border-top: 2px solid @mainColor;
                 &.active { background-color:transparent;  }
-                &:hover, &:focus{ background-color: rgba(204,204,204,0.5); border-top:2px solid rgba(204,204,204,0.2); }
+                &:hover, &:focus{ background-color: rgba(255,255,255,0.9); border-top:2px solid rgba(204,204,204,0.2); color: @mainColor; }
               }
             }
           }
@@ -139,6 +140,7 @@ html, body {
       a {
         display: block;
         color: @mainColor;
+        &:hover { text-decoration: none; color: rgba(255,255,255,0.9); }
       }
     }
     .contact-links {
@@ -146,6 +148,7 @@ html, body {
         display: inline-block;
         color: @mainColor;
         padding: 1% 2%;
+        &:hover { text-decoration: none; color: rgba(255,255,255,0.9); }
       }
       span { color: rgba(255,255,255,1);}
     }
@@ -201,7 +204,7 @@ html, body {
       -webkit-transition: all 1s;
       transition: all 1s;
       .card-icon { color: rgba(0,0,0,1); }
-      .more-link { display: block; }
+      //.more-link { display: block; }
     }
     .card-icon {
       text-align: center;
@@ -217,6 +220,6 @@ html, body {
         span { font-weight: bold;}
       }
     }
-    .more-link { margin-top: 2.5rem; text-align: right; display: none; color: rgba(0,0,0,1); font-weight: bold;}
+    .more-link { margin-top: 2.5rem; text-align: right; color: rgba(0,0,0,1); font-weight: bold;}
   }
 }

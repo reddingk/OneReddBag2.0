@@ -121,6 +121,9 @@
             case 'ex.instagram':
               return "https://www.instagram.com/1reddbag/";
               break;
+            case 'ex.periscope':
+              return "https://www.periscope.tv/1reddbag";
+              break;
             default:
               return;
           }
@@ -162,22 +165,20 @@
 
        /*Bag Dates*/
        vm.bag_date = [
-         {"date":new Date("2015-10-11"), "delivered":1031}
+         {"date":new Date("2015-10-11 00:00:00"), "delivered":1031}
        ];
        /*News Feed*/
        vm.newsfeed = [
-         {"date":new Date("2016-06-24"), "title":"Website Release", "imgsrc":"img/newsimgs/News_site.png", "content":"The new One Redd Bag website has offically been released and is live.  This site will include all the information pertaining to the One Redd Bag group that is focused on feeding and providing motivation to the homeless and less fortionate of the Washington D.C. & Maryland area's.  Check here for news, general information, as well as calender updates for meet ups and trips involving our orginization.  Feel free to join our email lists to stay updated with our events, we aim to serve the community and help to build those that need it."},
-         {"date":new Date("2016-07-11"), "title":"What Keeps Us Going", "imgsrc":"img/newsimgs/News_pop.jpg", "content":"During the summer months we implement Popsicle handing them out and cutting them for our friends. One day when we were in D.C I handed a Popsicle to a man what he said has been one of the reasons that I sacrifice soo much in order to help.  With tears in his eyes he said 'I haven’t had one of these since I was 17 years old…' He went on to tell me about his life, and how some unforeseen events have led to his current position, remaining hopeful I prayed with him to encourage him even further. This story reminds me that the people that we see on the street and in everyday passing are people just like we are. It’s our duty to remain humble, caring and persistent for some of our own personal dreams, while striving to use every single opportunity, job, degree and day that we get to help someone else."}
+         {"date":new Date("2016-07-14 00:00:00"), "title":"Website Release", "imgsrc":"img/newsimgs/News_site.png", "content":"The new One Redd Bag website has offically been released and is live.  This site will include all the information pertaining to the One Redd Bag group that is focused on feeding and providing motivation to the homeless and less fortionate of the Washington D.C. & Maryland area's.  Check here for news, general information, as well as calender updates for meet ups and trips involving our orginization.  Feel free to join our email lists to stay updated with our events, we aim to serve the community and help to build those that need it."},
+         {"date":new Date("2016-07-15 00:00:00"), "title":"What Keeps Us Going", "imgsrc":"img/newsimgs/News_pop.jpg", "content":"During the summer months we implement Popsicle handing them out and cutting them for our friends. One day when we were in D.C I handed a Popsicle to a man what he said has been one of the reasons that I sacrifice soo much in order to help.  With tears in his eyes he said 'I haven’t had one of these since I was 17 years old…' He went on to tell me about his life, and how some unforeseen events have led to his current position, remaining hopeful I prayed with him to encourage him even further. This story reminds me that the people that we see on the street and in everyday passing are people just like we are. It’s our duty to remain humble, caring and persistent for some of our own personal dreams, while striving to use every single opportunity, job, degree and day that we get to help someone else."}
 
        ];
        /*Trips*/
-       vm.trips_date = [{title:'D.C. meetup', start:new Date("2016-06-25 13:00:00"), end:new Date("2016-06-25 18:00:00"), allDay:false, location: "Washington D.C. Union Station"},{title:'D.C. meetup', start:new Date("2016-07-02 13:00:00"), end:new Date("2016-07-02 18:00:00"), allDay:false, location: "Washington D.C. Union Station"}];
+       vm.trips_date = [{title:'D.C. meetup', start:new Date("2016-07-17 13:00:00"), end:new Date("2016-07-17 18:00:00"), allDay:false, location: "Washington D.C."}];
        /*Stories*/
        vm.testimonies = [
           {"name":"Kristopher Redding","img":"", "story":"As a former student at the University of Delaware I have been apart of many young adult run orginizations but never before been apart of one that has such a hands on mindset.  I have watched this group grow from the vision of my brother and am proud to see the dedication and passion he has for this mission of serving his community."}
         ];
-
-       //vm.folder_imgs = null;//{"folders":["test"]};
 
        vm.get_imgs = function() {
          var def = $q.defer();
@@ -300,13 +301,14 @@
 
     /*Cards*/
     vm.cards = [
-      {"id":"0", "type":"contact-link", "connectType":"email", "icon":"fa-envelope", "header":"Email", "linkText":"Message 1Reddbag@gmail.com", "url":"ex.mail"},
+      {"id":"0", "type":"contact-link", "connectType":"email", "icon":"fa-envelope", "header":"Email", "linkText":"1Reddbag@gmail.com", "url":"ex.mail"},
       {"id":"1", "type":"contact-link", "connectType":"facebook", "icon":"fa-facebook-square", "header":"Facebook", "linkText":"Visit Out Page", "url":"ex.facebook"},
       {"id":"2", "type":"contact-link", "connectType":"youtube", "icon":"fa-youtube-play", "header":"YouTube", "linkText":"Watch Our Video", "url":"ex.youtube"},
       {"id":"3", "type":"contact-link", "connectType":"instagram", "icon":"fa-instagram", "header":"Instagram", "linkText":"Follow 1ReddBag", "url":"ex.instagram"},
       {"id":"4", "type":"contact-link", "connectType":"twitter", "icon":"fa-twitter-square", "header":"Twitter", "linkText":"Tweet At Us", "url":"ex.twitter"},
       {"id":"5", "type":"contact-link", "connectType":"linkedin", "icon":"fa-linkedin-square", "header":"Linkedin", "linkText":"Visit our Page", "url":"ex.linkedin"},
-      {"id":"6", "type":"contact-link", "connectType":"snapchat", "icon":"fa-snapchat-square", "header":"SnapChat", "linkText":"Follow OneReddBag", "url":"ex.snapchat"}
+      {"id":"6", "type":"contact-link", "connectType":"snapchat", "icon":"fa-snapchat-square", "header":"SnapChat", "linkText":"Follow OneReddBag", "url":"ex.snapchat"},
+      {"id":"7", "type":"contact-link", "connectType":"periscope", "icon":"fa-map-marker", "header":"Periscope", "linkText":"Follow 1ReddBag", "url":"ex.periscope"}
     ];
     vm.externalUrlLink = function(external) {
       console.log(external);
@@ -386,7 +388,7 @@
       /*Cards*/
       vm.cards = [
         {"id":"0", "type":"mail-link", "icon":"fa-envelope", "header":"Join Email List", "link":"mailto:1Reddbag@gmail.com?subject=Join The Email List", "text":"Join our email list to get updates on our volenteering event schedule and general information on how you can help as well as join us."},
-        {"id":"1", "type":"text-link", "icon":"fa-usd", "header":"Donate", "link":"app.construction", "text":"Visit our 'PayPal' page to donate to our mission, we are a nonprofit organization therefor all donations are tax deductable and go directly to mission by either paying for food or supplies."},
+        {"id":"1", "type":"text-link", "icon":"fa-usd", "header":"Donate", "link":"app.donate", "text":"Visit our 'PayPal' page to donate to our mission, we are a nonprofit organization therefor all donations are tax deductable and go directly to mission by either paying for food or supplies."},
         {"id":"2", "type":"text-link", "icon":"fa-sign-language", "header":"Become A Sponsor", "link":"app.construction", "text":"Checkout our sponsorship packages and learn about how you or your business can become an official sponsor of our group and support our mission."}
       ];
       /*Calender*/
