@@ -61,8 +61,26 @@ html, body {
       position:fixed;
       top:0;
       width:100%;
+      .container {
+        .navbar-header {
+          .nav-logo {
+            height: 35px;
+            margin: 8px 0px 0px 15px;
+            -webkit-filter: invert(100%);
+            filter: invert(100%);
+            display: none;
+            @media @tablet-screen, @mobile-screen { display: inline-block; }
+          }
+        }
+      }
     }
     .container {
+      .navbar-header {
+        .nav-logo {      
+          display: none;
+        }
+      }
+
       .navbar-collapse {
         #orb-inside-nav {
           width:100%;

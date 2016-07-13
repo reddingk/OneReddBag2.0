@@ -14,8 +14,8 @@
       .nav-container {
         .nav {
           .container {
-            .navbar-header { }
-            .navbar-collapse {
+            .navbar-header { .mobile-icon { color: rgba(255,255,255,1);}}
+            .navbar-collapse-media {
               .nav {
                 width: 100%;
                 li {
@@ -56,11 +56,12 @@
             }
             .photo-icons {
               display: inline-block;
-              width: 31%;
+              width: 33%;
               height: 300px;
               text-align: center;
               overflow: hidden;
               padding-right: 5px;
+              @media @tablet-screen, @mobile-screen { width: 50%; height: 150px; }
               img { width: 100%;}
             }
             .no-content { padding: 50px 0px; text-align: center; font-size: 3rem; color: #cccccc;}
