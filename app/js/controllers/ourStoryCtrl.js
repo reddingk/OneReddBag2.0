@@ -16,7 +16,6 @@
     ];
 
     function styleText(content){
-      //var tmp = content.replace("{0}", "<p>").replace("{1}", "</p>");
       var tmp1 = content.split("{0}").join("<p>");
       var tmp2 = tmp1.split("{1}").join("</p>");
 

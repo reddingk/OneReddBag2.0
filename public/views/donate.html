@@ -14,8 +14,12 @@
       <i class="fa fa-smile-o"></i>
     </div>
     <div class="donate-btns">
+      <!--
       <md-button ng-repeat="donation in dc.donationAmounts" class="donate-btn md-raised" ng-click="dc.makeDonation(donation)" ng-class="dc.DonationType(donation)">${{donation}}</md-button>
       <md-button class="donate-btn md-raised other" ng-click="dc.makeDonation('?')">Other Amount</md-button>
+      -->
+      <md-button ng-repeat="donation in dc.donationAmounts" class="donate-btn md-raised" ui-sref="app.construction" ng-class="dc.DonationType(donation)">${{donation}}</md-button>
+      <md-button class="donate-btn md-raised other" ui-sref="app.construction">Other Amount</md-button>
     </div>
 
   </section>
