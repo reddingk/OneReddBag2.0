@@ -84,6 +84,21 @@
             case 'ex.youtube':
               return "https://www.youtube.com/watch?v=raoNTII7JGM";
               break;
+            case 'ex.twitter':
+              return "https://twitter.com/1reddbag";
+              break;
+            case 'ex.linkedin':
+              return "https://www.linkedin.com/";
+              break;
+            case 'ex.snapchat':
+              return "https://www.snapchat.com/onereddbag";
+              break;
+            case 'ex.instagram':
+              return "https://www.instagram.com/1reddbag/";
+              break;
+            case 'ex.periscope':
+              return "https://www.periscope.tv/1reddbag";
+              break;
             default:
               return;
           }
@@ -105,6 +120,11 @@
             tst:function() {
               return {"folders":["test2"]};
             }
+          },
+          videos: {
+            all: function() {
+              return null;
+            }
           }
         }
       }
@@ -120,23 +140,20 @@
 
        /*Bag Dates*/
        vm.bag_date = [
-         {"date":new Date("2015-10-11"), "delivered":1031}
+         {"date":new Date("2015-10-11 00:00:00"), "delivered":1031}
        ];
        /*News Feed*/
        vm.newsfeed = [
-         {"date":new Date("2016-06-24"), "title":"Website Release", "content":"The new One Redd Bag website has offically been released and is live.  This site will include all the information pertaining to the One Redd Bag group that is focused on feeding and providing motivation to the homeless and less fortionate of the Washington D.C. & Maryland area's.  Check here for news, general information, as well as calender updates for meet ups and trips involving our orginization.  Feel free to join our email lists to stay updated with our events, we aim to serve the community and help to build those that need it."},
-         {"date":new Date("2015-07-01"), "title":"TEST News", "content":"Test News - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."},
-         {"date":new Date("2016-04-11"), "title":"TEST News 2", "content":"Test News2 - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."},
-         {"date":new Date("2016-05-15"), "title":"TEST News 3", "content":"Test News3 - Short"}
+         {"date":new Date("2016-07-14 00:00:00"), "title":"Website Release", "imgsrc":"img/newsimgs/News_site.png", "content":"The new One Redd Bag website has offically been released and is live.  This site will include all the information pertaining to the One Redd Bag group that is focused on feeding and providing motivation to the homeless and less fortionate of the Washington D.C. & Maryland area's.  Check here for news, general information, as well as calender updates for meet ups and trips involving our orginization.  Feel free to join our email lists to stay updated with our events, we aim to serve the community and help to build those that need it."},
+         {"date":new Date("2016-07-15 00:00:00"), "title":"What Keeps Us Going", "imgsrc":"img/newsimgs/News_pop.jpg", "content":"During the summer months we implement Popsicle handing them out and cutting them for our friends. One day when we were in D.C I handed a Popsicle to a man what he said has been one of the reasons that I sacrifice soo much in order to help.  With tears in his eyes he said 'I haven’t had one of these since I was 17 years old…' He went on to tell me about his life, and how some unforeseen events have led to his current position, remaining hopeful I prayed with him to encourage him even further. This story reminds me that the people that we see on the street and in everyday passing are people just like we are. It’s our duty to remain humble, caring and persistent for some of our own personal dreams, while striving to use every single opportunity, job, degree and day that we get to help someone else."}
+
        ];
        /*Trips*/
-       vm.trips_date = [{title:'D.C. meetup', start:new Date("2016-06-25 13:00:00"), end:new Date("2016-06-25 18:00:00"), allDay:false, location: "Washington D.C. Union Station"},{title:'D.C. meetup', start:new Date("2016-07-02 13:00:00"), end:new Date("2016-07-02 18:00:00"), allDay:false, location: "Washington D.C. Union Station"}];
+       vm.trips_date = [{title:'D.C. meetup', start:new Date("2016-07-17 13:00:00"), end:new Date("2016-07-17 18:00:00"), allDay:false, location: "Washington D.C."}];
        /*Stories*/
        vm.testimonies = [
           {"name":"Kristopher Redding","img":"", "story":"As a former student at the University of Delaware I have been apart of many young adult run orginizations but never before been apart of one that has such a hands on mindset.  I have watched this group grow from the vision of my brother and am proud to see the dedication and passion he has for this mission of serving his community."}
         ];
-
-       //vm.folder_imgs = null;//{"folders":["test"]};
 
        vm.get_imgs = function() {
          var def = $q.defer();

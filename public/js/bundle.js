@@ -109,6 +109,21 @@
             case 'ex.youtube':
               return "https://www.youtube.com/watch?v=raoNTII7JGM";
               break;
+            case 'ex.twitter':
+              return "https://twitter.com/1reddbag";
+              break;
+            case 'ex.linkedin':
+              return "https://www.linkedin.com/";
+              break;
+            case 'ex.snapchat':
+              return "https://www.snapchat.com/onereddbag";
+              break;
+            case 'ex.instagram':
+              return "https://www.instagram.com/1reddbag/";
+              break;
+            case 'ex.periscope':
+              return "https://www.periscope.tv/1reddbag";
+              break;
             default:
               return;
           }
@@ -130,6 +145,11 @@
             tst:function() {
               return {"folders":["test2"]};
             }
+          },
+          videos: {
+            all: function() {
+              return null;
+            }
           }
         }
       }
@@ -145,23 +165,20 @@
 
        /*Bag Dates*/
        vm.bag_date = [
-         {"date":new Date("2015-10-11"), "delivered":1031}
+         {"date":new Date("2015-10-11 00:00:00"), "delivered":1031}
        ];
        /*News Feed*/
        vm.newsfeed = [
-         {"date":new Date("2016-06-24"), "title":"Website Release", "content":"The new One Redd Bag website has offically been released and is live.  This site will include all the information pertaining to the One Redd Bag group that is focused on feeding and providing motivation to the homeless and less fortionate of the Washington D.C. & Maryland area's.  Check here for news, general information, as well as calender updates for meet ups and trips involving our orginization.  Feel free to join our email lists to stay updated with our events, we aim to serve the community and help to build those that need it."},
-         {"date":new Date("2015-07-01"), "title":"TEST News", "content":"Test News - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."},
-         {"date":new Date("2016-04-11"), "title":"TEST News 2", "content":"Test News2 - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."},
-         {"date":new Date("2016-05-15"), "title":"TEST News 3", "content":"Test News3 - Short"}
+         {"date":new Date("2016-07-14 00:00:00"), "title":"Website Release", "imgsrc":"img/newsimgs/News_site.png", "content":"The new One Redd Bag website has offically been released and is live.  This site will include all the information pertaining to the One Redd Bag group that is focused on feeding and providing motivation to the homeless and less fortionate of the Washington D.C. & Maryland area's.  Check here for news, general information, as well as calender updates for meet ups and trips involving our orginization.  Feel free to join our email lists to stay updated with our events, we aim to serve the community and help to build those that need it."},
+         {"date":new Date("2016-07-15 00:00:00"), "title":"What Keeps Us Going", "imgsrc":"img/newsimgs/News_pop.jpg", "content":"During the summer months we implement Popsicle handing them out and cutting them for our friends. One day when we were in D.C I handed a Popsicle to a man what he said has been one of the reasons that I sacrifice soo much in order to help.  With tears in his eyes he said 'I haven’t had one of these since I was 17 years old…' He went on to tell me about his life, and how some unforeseen events have led to his current position, remaining hopeful I prayed with him to encourage him even further. This story reminds me that the people that we see on the street and in everyday passing are people just like we are. It’s our duty to remain humble, caring and persistent for some of our own personal dreams, while striving to use every single opportunity, job, degree and day that we get to help someone else."}
+
        ];
        /*Trips*/
-       vm.trips_date = [{title:'D.C. meetup', start:new Date("2016-06-25 13:00:00"), end:new Date("2016-06-25 18:00:00"), allDay:false, location: "Washington D.C. Union Station"},{title:'D.C. meetup', start:new Date("2016-07-02 13:00:00"), end:new Date("2016-07-02 18:00:00"), allDay:false, location: "Washington D.C. Union Station"}];
+       vm.trips_date = [{title:'D.C. meetup', start:new Date("2016-07-17 13:00:00"), end:new Date("2016-07-17 18:00:00"), allDay:false, location: "Washington D.C."}];
        /*Stories*/
        vm.testimonies = [
           {"name":"Kristopher Redding","img":"", "story":"As a former student at the University of Delaware I have been apart of many young adult run orginizations but never before been apart of one that has such a hands on mindset.  I have watched this group grow from the vision of my brother and am proud to see the dedication and passion he has for this mission of serving his community."}
         ];
-
-       //vm.folder_imgs = null;//{"folders":["test"]};
 
        vm.get_imgs = function() {
          var def = $q.defer();
@@ -267,7 +284,8 @@
 
 
       $urlRouterProvider.otherwise('/');
-      //$locationProvider.html5Mode(true);
+      $locationProvider.html5Mode(true);
+
     }]);
 
 
@@ -283,9 +301,14 @@
 
     /*Cards*/
     vm.cards = [
-      {"id":"0", "type":"contact-link", "connectType":"email", "icon":"fa-envelope", "header":"Email", "linkText":"Message 1Reddbag@gmail.com", "url":"ex.mail"},
+      {"id":"0", "type":"contact-link", "connectType":"email", "icon":"fa-envelope", "header":"Email", "linkText":"1Reddbag@gmail.com", "url":"ex.mail"},
       {"id":"1", "type":"contact-link", "connectType":"facebook", "icon":"fa-facebook-square", "header":"Facebook", "linkText":"Visit Out Page", "url":"ex.facebook"},
-      {"id":"2", "type":"contact-link", "connectType":"youtube", "icon":"fa-youtube-play", "header":"YouTube", "linkText":"Watch Our Video", "url":"ex.youtube"}
+      {"id":"2", "type":"contact-link", "connectType":"youtube", "icon":"fa-youtube-play", "header":"YouTube", "linkText":"Watch Our Video", "url":"ex.youtube"},
+      {"id":"3", "type":"contact-link", "connectType":"instagram", "icon":"fa-instagram", "header":"Instagram", "linkText":"Follow 1ReddBag", "url":"ex.instagram"},
+      {"id":"4", "type":"contact-link", "connectType":"twitter", "icon":"fa-twitter-square", "header":"Twitter", "linkText":"Tweet At Us", "url":"ex.twitter"},
+      {"id":"5", "type":"contact-link", "connectType":"linkedin", "icon":"fa-linkedin-square", "header":"Linkedin", "linkText":"Visit our Page", "url":"ex.linkedin"},
+      {"id":"6", "type":"contact-link", "connectType":"snapchat", "icon":"fa-snapchat-square", "header":"SnapChat", "linkText":"Follow OneReddBag", "url":"ex.snapchat"},
+      {"id":"7", "type":"contact-link", "connectType":"periscope", "icon":"fa-map-marker", "header":"Periscope", "linkText":"Follow 1ReddBag", "url":"ex.periscope"}
     ];
     vm.externalUrlLink = function(external) {
       console.log(external);
@@ -304,6 +327,30 @@
     vm.title = "Donate";
     vm.mainImage = "img/donate.jpg";
 
+    vm.donationAmounts = [ 10, 20, 40, 100, 300, 500, 650, 800, 1000];
+
+    vm.DonationType = function(amount) {
+        if(amount < 300)
+          return 'basic';
+        else {
+          return 'sponsorship';
+        }
+    }
+
+    vm.makeDonation = function(amount) {
+      if(amount == '?') {
+        console.log('$ OTHER');
+        window.open('https://www.gofundme.com/1ReddBag/donate', '_blank');
+      }
+      else if(amount < 300){
+        console.log('$' + amount + ' - normal');
+        window.open('https://www.gofundme.com/1ReddBag/donate', '_blank');
+      }
+      else {
+        console.log('$' + amount + ' - sponsor');
+        window.open('https://www.gofundme.com/1ReddBag/donate', '_blank');
+      }
+    }
 
   }]);
 
@@ -341,7 +388,7 @@
       /*Cards*/
       vm.cards = [
         {"id":"0", "type":"mail-link", "icon":"fa-envelope", "header":"Join Email List", "link":"mailto:1Reddbag@gmail.com?subject=Join The Email List", "text":"Join our email list to get updates on our volenteering event schedule and general information on how you can help as well as join us."},
-        {"id":"1", "type":"text-link", "icon":"fa-usd", "header":"Donate", "link":"app.construction", "text":"Visit our 'PayPal' page to donate to our mission, we are a nonprofit organization therefor all donations are tax deductable and go directly to mission by either paying for food or supplies."},
+        {"id":"1", "type":"text-link", "icon":"fa-usd", "header":"Donate", "link":"app.donate", "text":"Visit our 'PayPal' page to donate to our mission, we are a nonprofit organization therefor all donations are tax deductable and go directly to mission by either paying for food or supplies."},
         {"id":"2", "type":"text-link", "icon":"fa-sign-language", "header":"Become A Sponsor", "link":"app.construction", "text":"Checkout our sponsorship packages and learn about how you or your business can become an official sponsor of our group and support our mission."}
       ];
       /*Calender*/
@@ -414,13 +461,14 @@
     vm.mainImage = "img/";
     vm.media = undefined;
     vm.selectedFolderImages =[];
+    vm.pageMedia = null;
 
     vm.getMedia = function() {
       redInfo.media.imgs.all().then(
         function(retResults) {
-          vm.media = retResults;
-          // TEST
-          vm.getFolderImages("6-27-15");
+          vm.media = {"photos": retResults, "videos": redInfo.media.videos.all()};
+          console.log(vm.media);
+          vm.buildNavigation();
          },
         function(error) { console.log("ERROR - No Results")}
       );
@@ -430,6 +478,83 @@
       vm.media.images
       .filter(function(image) { return (image.indexOf("media_imgs\\"+folder) > -1)})
       .forEach(function (image) { vm.selectedFolderImages.push(image.substring(image.lastIndexOf("\\") + 1, image.length)); });
+    }
+
+    vm.buildNavigation = function() {
+      vm.activeNav = { "level":1, "items":[{"title":"photos"}, {"title":"videos"}]};
+      vm.activeLevel = {"id":1, "parent":"", "title":""};
+    }
+
+    vm.mediaNav = function(navItem) {
+      var action = (navItem == "<<"? 0: 1);
+
+      if(action == 0 && vm.activeLevel.id > 1)
+      { vm.activeLevel.id -= 1; }
+      else if(action == 1)
+      { vm.activeLevel.id += 1; }
+
+      if(vm.activeLevel.id < 2)
+      {vm.buildNavigation();}
+      else if(vm.activeLevel.id == 2)
+      {
+        vm.activeNav = { "level":2, "items":[{"title":"<<"}]};
+        if(vm.activeLevel.parent == "photos" || navItem == "photos"){
+          vm.activeLevel.parent = "photos";
+          vm.activeLevel.title = "photos";
+          if(vm.media.photos != null){
+            for(var i =0; i < vm.media.photos.folders.length; i++){
+              vm.activeNav.items.push( {"title":vm.media.photos.folders[i]} );
+            }
+          }
+        }
+        else{
+          vm.activeLevel.parent = "videos";
+          vm.activeLevel.title = "videos";
+          vm.activeNav.items.push( {"title":"Videos", "noLink":1} );
+          if(vm.media.videos != null){ }
+        }
+      }
+      else if(vm.activeLevel.id == 3)
+      {
+        vm.activeLevel.title = navItem;
+        vm.activeNav = { "level":3, "items":[{"title":"<<"}, {"title":navItem, "noLink":1}]};
+      }
+      vm.changeMedia();
+    }
+
+    vm.getNavId = function(level) {
+      return "lvl"+level;
+    }
+
+    vm.changeMedia = function() {
+      if(vm.activeLevel.id == 1) {
+        vm.pageMedia = null;
+      }
+      else if(vm.activeLevel.id == 2) {
+          if(vm.activeLevel.title == "photos" && vm.media.photos != null){
+            vm.pageMedia = {"type":"folders", "content":[]};
+            for(var i =0; i < vm.media.photos.folders.length; i++) {
+              vm.pageMedia.content.push(vm.media.photos.folders[i]);
+            }
+          }
+          else if(vm.activeLevel.title == "videos"){
+              vm.pageMedia = {"type":"videos", "content":[]};
+          }
+      }
+      else if(vm.activeLevel.id == 3)
+      {
+        if(vm.media.photos.images != null)
+        {
+          vm.pageMedia = {"type":"photos", "content":[]};
+          for(var i =0; i < vm.media.photos.images.length; i++) {
+            if(vm.media.photos.images[i].indexOf(vm.activeLevel.title) > -1){
+              var imgLoc = vm.media.photos.images[i];
+              vm.pageMedia.content.push(imgLoc.substring(imgLoc.indexOf("img")));
+            }
+          }
+        }
+      }
+      //console.log(vm.pageMedia);
     }
 
   }]);

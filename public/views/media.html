@@ -6,15 +6,50 @@
     </div>
   </section>
 
-  <section>
-    <h2>Folders:</h2>
-    <p ng-repeat="folder in mc.media.folders">{{folder}}</p>
+  <section class="media-controls">
+    <div class="nav-container">
+        <nav class="nav navbar-inverse" id="orb-media-nav" role="navigation" nav-hold>
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse-media">
+              <span class="sr-only">Toggle navigation</span>
+              <!--<span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>-->
+              <span class="fa fa-map-signs mobile-icon"></span>
+              </button>
+            </div>
+            <div class="navbar-collapse navbar-collapse-media collapse">
+              <ul class="nav navbar-nav" id="orb-inside-media-nav">
+                <li ng-repeat="navitem in mc.activeNav.items" ng-class="mc.getNavId(mc.activeLevel.id)"><a class="controls" ng-click="mc.mediaNav(navitem.title)" ng-if="navitem.noLink != 1">{{navitem.title}}</a> <span ng-if="navitem.noLink == 1">{{navitem.title}}</span></li>
+                <!--<li class="lvl1"><a class="controls" ng-click="mc.mediaNav('photos')">Photos</a></li>
+                <li class="lvl1"><a class="controls" ng-click="mc.mediaNav('videos')">Videos</a></li>-->
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </div>
+  </section>
 
-    <h2>Images:</h2>
-    <p ng-repeat="image in mc.media.images">{{image}}</p>
-
-    <h2>Selected TEST:</h2>
-    <p ng-repeat="simg in mc.selectedFolderImages">{{simg}}</p>
+  <section class="media-content">
+    <div class="content-area no-content" ng-if="mc.pageMedia==null">PLEASE SELECT CONTENT <span class="fa-stack fa-lg"> <i class="fa fa-desktop fa-stack-2x"></i> <i class="fa fa-file-image-o fa-stack-1x"></i></span> </div>
+    <!--<p ng-if="mc.pageMedia!=null" ng-repeat="pageContent in mc.pageMedia.content">{{pageContent}}</p>-->
+    <div class="content-area media-areas">
+      <div class="media-area" ng-if="mc.pageMedia.type == 'folders'">
+        <div class="folder-icons" ng-repeat="content in mc.pageMedia.content" ng-click="mc.mediaNav(content)">
+          <i class="fa fa-folder-open-o"></i>
+          <span>{{content}}</span>
+        </div>
+      </div>
+      <div class="media-area" ng-if="mc.pageMedia.type == 'photos'">
+        <div class="photo-icons" ng-repeat="content in mc.pageMedia.content">
+          <img ng-src="{{content}}">
+        </div>
+      </div>
+      <div class="media-area" ng-if="mc.pageMedia.type == 'videos'">
+        <div class="no-content" ng-if="mc.pageMedia.content.length == 0">NO VIDEOS YET <span class="fa-stack fa-lg"><i class="fa fa-desktop fa-stack-2x"></i> <i class="fa fa-file-video-o fa-stack-1x"></i></span></div>
+      </div>
+    </div>
 
   </section>
 

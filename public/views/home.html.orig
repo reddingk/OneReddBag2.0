@@ -4,11 +4,11 @@
         <div class="carousel-cover">
 <<<<<<< HEAD
           <div class="cover-title">One <span>Redd</span> Bag</div>
-          <div class="cover-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+          <div class="cover-text">We structure our efforts to connect intimately with each and every life that we reach in order to leave a positive influence and provide access to much needed resources such as food, clothing, shelter and support.</div>
 =======
-          <div class="cover-title">One <span>Red</span> Bag</div>
-          <div class="cover-text">Changing the world through service, ending physical and emotional hunger by intimately connecting with humanity while providing physical needs such as food, water and friendship.</div>
->>>>>>> af31364994a1e75353c17d1c311ffad9c56f3713
+          <div class="cover-title">1 <span>Redd</span> Bag</div>
+          <div class="cover-text">Providing access to much needed resources such as Food, Clothing, Shelter, & Support for those in need.</div>
+>>>>>>> 0269bc0ae6e327b5068972bdceb2b3c6c79a0ae1
         </div>
         <uib-slide ng-repeat="slide in hc.slides track by slide.id" index="slide.id">
           <img ng-src="{{slide.image}}" style="margin:auto;">

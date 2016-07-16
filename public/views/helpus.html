@@ -16,11 +16,11 @@
       <div class="right-sub">
         <h3>All interested volunteers please send an email titled “Interested In Changing Lives” with your name and contact information to 1ReddBag@gmail.com.  View our calender of events to see when you can help us with our next meet up.</h3>
         <div class="meetups">
-          <h2>Next meet ups:</h2>
+          <h2>Future Service Events:</h2>
           <table class="future-meetups">
             <tbody>
               <tr ng-repeat="next in huc.newFewTrips">
-                <td>{{next.start | date: 'MMM-dd-yy'}}</td>
+                <td>{{next.start | date: 'MMM-dd-yyyy'}}</td>
                 <td>{{next.start | date: 'hh:mm a'}}</td>
                 <td>{{next.location}}</td>
               </tr>

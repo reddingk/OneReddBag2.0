@@ -1,5 +1,74 @@
 .mediaBody {
   section {
-    
+    &.page-section-header {
+      min-height: 200px;
+      text-align: center;
+      vertical-align: middle;
+      .header-text {
+         padding: 4% 2%;
+         h1, i { display: inline-block; padding: 0 1%; }
+       }
+    }
+
+    &.media-controls {
+      .nav-container {
+        .nav {
+          .container {
+            .navbar-header { .mobile-icon { color: rgba(255,255,255,1);}}
+            .navbar-collapse-media {
+              .nav {
+                width: 100%;
+                li {
+                  text-align: center;
+                  &.lvl1 { width: 50%;}
+                  &.lvl2 { width: 20%;}
+                  .controls { cursor: pointer;}
+                  span {
+                    height: 100%;
+                    font-weight: bold;
+                    color: @mainColor;
+                    padding: 15px;
+                    display: block;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    &.media-content {
+      .content-area {
+        &.no-content { padding: 50px 0px; text-align: center; font-size: 3rem; color: #cccccc;}
+        &.media-areas {
+          width: 80%;
+          margin: 0 auto;
+          .media-area {
+            padding: 30px 0;
+            .folder-icons {
+              padding: 20px 10px;
+              display: inline-block;
+              width: 50%;
+              text-align: center;
+              &:hover { background-color: rgba(0,0,0,0.5); cursor: pointer;}
+              i { color: @mainColor; font-size: 4rem; }
+              span { color: rgba(0,0,0,1); display: block; font-size: 1.5rem;}
+            }
+            .photo-icons {
+              display: inline-block;
+              width: 33%;
+              height: 300px;
+              text-align: center;
+              overflow: hidden;
+              padding-right: 5px;
+              @media @tablet-screen, @mobile-screen { width: 50%; height: 150px; }
+              img { width: 100%;}
+            }
+            .no-content { padding: 50px 0px; text-align: center; font-size: 3rem; color: #cccccc;}
+          }
+        }
+      }
+    }
+
   }
 }

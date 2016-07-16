@@ -8,7 +8,7 @@
 
   <section class="news-section">
     <div class="headline-news col-md-8">
-        <div class="news-recent-photo"><img ng-src="{{nc.mainImage}}"></div>
+        <div class="news-recent-photo"><img ng-src="{{nc.mainImage}}" ng-if="nc.selectedItem.imgsrc == '' "><img ng-src="{{nc.selectedItem.imgsrc}}" ng-if="nc.selectedItem.imgsrc != '' "></div>
         <h2 class="news-title">{{nc.selectedItem.title}}</h2>
         <p class="news-date">{{nc.selectedItem.date | date: 'MM/dd/yyyy'}}</p>
         <p class="news-content">{{nc.selectedItem.content}}</p>
@@ -25,8 +25,9 @@
             <div class="news-read">Read <i class="fa fa-angle-double-right"></i></div>
             <hr ng-if="!$last" />
         </div>
+      </div>
     </div>
-    </div>
+    <div style="clear:both"></div>
   </section>
 
   <div style="clear:both"></div>
