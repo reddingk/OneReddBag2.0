@@ -102,7 +102,7 @@
           }
         }
       }
-      console.log(vm.pageMedia);
+      //console.log(vm.pageMedia);
     }
 
     vm.loadImgs = function() {
@@ -110,7 +110,7 @@
       var newCount = (vm.pageMedia.content.length < (oldCount + 9) ? vm.pageMedia.content.length : (oldCount + 9))
       vm.pageMedia.displayedcount = newCount;
 
-      console.log("| content " + vm.pageMedia.content.length +" | old "+ oldCount + " | new " + newCount)
+      //console.log("| content " + vm.pageMedia.content.length +" | old "+ oldCount + " | new " + newCount)
 
       for(var i = oldCount; i < newCount; i++) {
         vm.pageMedia.displayedContent.push(vm.pageMedia.content[i]);
