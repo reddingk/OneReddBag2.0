@@ -64,6 +64,32 @@
               @media @tablet-screen, @mobile-screen { width: 50%; height: 150px; }
               img { width: 100%;}
             }
+            .load-content {
+              display: block;
+              width: 33%;
+              height: 100px;
+              text-align: center;
+              border: 2px solid rgba(0,0,0,1);
+              margin: 20px auto 0px auto;
+              span {
+                padding-top: 30px;
+                display: block;
+                font-size: 1.5rem;
+              }
+
+              &:hover {
+                background-color: @mainColor;
+                span { font-weight: bold; color: rgba(255,255,255,1);}
+              }
+            }
+            .img-count {
+              display: block;
+              width: 335;
+              font-size: 1.5rem;
+              font-weight: bold;
+              margin: 20px auto 0px auto;
+              color: @mainColor;
+            }
             .no-content { padding: 50px 0px; text-align: center; font-size: 3rem; color: #cccccc;}
           }
         }

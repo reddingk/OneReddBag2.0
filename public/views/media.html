@@ -42,9 +42,11 @@
         </div>
       </div>
       <div class="media-area" ng-if="mc.pageMedia.type == 'photos'">
-        <div class="photo-icons" ng-repeat="content in mc.pageMedia.content">
+        <div class="photo-icons" ng-repeat="content in mc.pageMedia.displayedContent">
           <img ng-src="{{content}}">
         </div>
+        <div class="load-content" ng-click="mc.loadImgs()" ng-if="mc.pageMedia.displayedContent.length < mc.pageMedia.content.length"><span>Load More Photos</span></div>
+        <div class="img-count"><span>{{mc.pageMedia.displayedContent.length}} / {{mc.pageMedia.content.length}}</span></div>
       </div>
       <div class="media-area" ng-if="mc.pageMedia.type == 'videos'">
         <div class="no-content" ng-if="mc.pageMedia.content.length == 0">NO VIDEOS YET <span class="fa-stack fa-lg"><i class="fa fa-desktop fa-stack-2x"></i> <i class="fa fa-file-video-o fa-stack-1x"></i></span></div>

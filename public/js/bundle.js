@@ -293,6 +293,39 @@
 })();
 
 (function(){
+   "use strict";
+
+    angular.module('directives').directive('navHold', ['$window', function($window) {
+      return {
+        restrict: 'EA',
+        link: function ($scope, element, attrs) {
+
+          angular.element($window).bind("scroll", function() {
+
+            var topSection = angular.element(document.getElementsByClassName("mainBody"))[0];
+            var windowp = angular.element($window)[0];
+            var topThreshhold = topSection.offsetTop - element[0].clientHeight
+
+            if(windowp.pageYOffset >= topThreshhold){
+              if(!element.hasClass("screenPass")){
+                element.addClass("screenPass");
+              }
+            }
+            else {
+              if(element.hasClass("screenPass")){
+                element.removeClass("screenPass");
+              }
+            }
+
+          });
+        }
+      }
+
+    }]);
+
+})();
+
+(function(){
  "use strict";
 
   angular.module('contactCtrl').controller('ContactController', ['$state','redInfo','$window', function($state, redInfo, $window){
@@ -547,16 +580,30 @@
       {
         if(vm.media.photos.images != null)
         {
-          vm.pageMedia = {"type":"photos", "content":[]};
+          vm.pageMedia = {"type":"photos", "content":[], "displayedContent":[], "displayedcount":9};
           for(var i =0; i < vm.media.photos.images.length; i++) {
             if(vm.media.photos.images[i].indexOf(vm.activeLevel.title) > -1){
               var imgLoc = vm.media.photos.images[i];
               vm.pageMedia.content.push(imgLoc.substring(imgLoc.indexOf("img")));
+              if(vm.pageMedia.displayedContent.length < 9)
+                {vm.pageMedia.displayedContent.push(imgLoc.substring(imgLoc.indexOf("img")));}
             }
           }
         }
       }
-      //console.log(vm.pageMedia);
+      console.log(vm.pageMedia);
+    }
+
+    vm.loadImgs = function() {
+      var oldCount = vm.pageMedia.displayedcount;
+      var newCount = (vm.pageMedia.content.length < (oldCount + 9) ? vm.pageMedia.content.length : (oldCount + 9))
+      vm.pageMedia.displayedcount = newCount;
+
+      console.log("| content " + vm.pageMedia.content.length +" | old "+ oldCount + " | new " + newCount)
+
+      for(var i = oldCount; i < newCount; i++) {
+        vm.pageMedia.displayedContent.push(vm.pageMedia.content[i]);
+      }
     }
 
   }]);
@@ -614,38 +661,5 @@
     }
 
   }]);
-
-})();
-
-(function(){
-   "use strict";
-
-    angular.module('directives').directive('navHold', ['$window', function($window) {
-      return {
-        restrict: 'EA',
-        link: function ($scope, element, attrs) {
-
-          angular.element($window).bind("scroll", function() {
-
-            var topSection = angular.element(document.getElementsByClassName("mainBody"))[0];
-            var windowp = angular.element($window)[0];
-            var topThreshhold = topSection.offsetTop - element[0].clientHeight
-
-            if(windowp.pageYOffset >= topThreshhold){
-              if(!element.hasClass("screenPass")){
-                element.addClass("screenPass");
-              }
-            }
-            else {
-              if(element.hasClass("screenPass")){
-                element.removeClass("screenPass");
-              }
-            }
-
-          });
-        }
-      }
-
-    }]);
 
 })();
