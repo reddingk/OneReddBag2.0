@@ -5,7 +5,7 @@
       //uiCalendarConfig
       var vm = this;
       vm.title = "Help Us";
-      vm.mainImage = "img/helpus.jpg";
+      vm.mainImage = "img/page_imgs/helpus.jpg";
       vm.trips = redInfo.trips.all();
       vm.newFewTrips = redInfo.trips.nextFew();
       vm.selectedTrip = null;

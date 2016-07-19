@@ -4,7 +4,7 @@
   angular.module('newsCtrl').controller('NewsController', ['$state', 'redInfo',function($state, redInfo){
     var vm = this;
     vm.title = "News";
-    vm.mainImage = "img/news.jpg";
+    vm.mainImage = "img/page_imgs/news.jpg";
 
     vm.news = redInfo.news.all();
     vm.selectedItem = vm.news[0];

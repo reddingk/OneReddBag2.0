@@ -4,7 +4,7 @@
   angular.module('donateCtrl').controller('DonateController', ['$state', function($state){
     var vm = this;
     vm.title = "Donate";
-    vm.mainImage = "img/donate.jpg";
+    vm.mainImage = "img/page_imgs/donate.jpg";
 
     vm.donationAmounts = [ 10, 20, 40, 100, 300, 500, 650, 800, 1000];
 

@@ -8,11 +8,12 @@
       vm.active = 0;
 
       vm.slides = [
-        {"id":0,"image":"img/t0.jpg","text":""},
-        {"id":1,"image":"img/t1.jpg","text":""},
-        {"id":2,"image":"img/t2.jpg","text":""},
-        {"id":3,"image":"img/t3.jpg","text":""},
-        {"id":4,"image":"img/t4.jpg","text":""}];
+        {"id":0,"image":"img/page_imgs/t0.jpg","text":""},
+        {"id":1,"image":"img/page_imgs/t1.jpg","text":""},
+        {"id":2,"image":"img/page_imgs/t2.jpg","text":""},
+        {"id":3,"image":"img/page_imgs/t3.jpg","text":""},
+        {"id":4,"image":"img/page_imgs/t4.jpg","text":""},
+        {"id":5,"image":"img/page_imgs/t5.jpg","text":""}];
 
       vm.bagCount = redInfo.bags.count();
       vm.recentNews = redInfo.news.recent();

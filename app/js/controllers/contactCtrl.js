@@ -4,7 +4,7 @@
   angular.module('contactCtrl').controller('ContactController', ['$state','redInfo','$window', function($state, redInfo, $window){
     var vm = this;
     vm.title = "Help Us";
-    vm.mainImage = "img/contactus.jpg";
+    vm.mainImage = "img/page_imgs/contactus.jpg";
 
     /*Cards*/
     vm.cards = [
