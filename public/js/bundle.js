@@ -165,7 +165,7 @@
 
        /*Bag Dates*/
        vm.bag_date = [
-         {"date":new Date("2015-10-11 00:00:00"), "delivered":1031},{"date":new Date("2016-07-17 00:00:00"), "delivered":200}
+         {"date":new Date("2015-10-11 00:00:00"), "delivered":1031},{"date":new Date("2016-07-17 00:00:00"), "delivered":200},{"date":new Date("2016-07-31 00:00:00"), "delivered":200}
        ];
        /*News Feed*/
        vm.newsfeed = [
@@ -175,7 +175,8 @@
        ];
        /*Trips*/
        vm.trips_date = [{title:'D.C. meetup', start:new Date("2016-07-17 13:00:00"), end:new Date("2016-07-17 18:00:00"), allDay:false, location: "Washington D.C."},
-                        {title:'D.C. meetup', start:new Date("2016-07-31 14:00:00"), end:new Date("2016-07-31 18:00:00"), allDay:false, location: "Washington D.C."}];
+                        {title:'D.C. meetup', start:new Date("2016-07-31 14:00:00"), end:new Date("2016-07-31 18:00:00"), allDay:false, location: "Washington D.C."},
+                        {title:'D.C. meetup', start:new Date("2016-08-21 15:00:00"), end:new Date("2016-08-21 18:00:00"), allDay:false, location: "Washington D.C."}];
        /*Stories*/
        vm.testimonies = [
           {"name":"Kristopher Redding","img":"", "story":"As a former student at the University of Delaware I have been apart of many young adult run orginizations but never before been apart of one that has such a hands on mindset.  I have watched this group grow from the vision of my brother and am proud to see the dedication and passion he has for this mission of serving his community."}
@@ -289,6 +290,39 @@
 
     }]);
 
+
+})();
+
+(function(){
+   "use strict";
+
+    angular.module('directives').directive('navHold', ['$window', function($window) {
+      return {
+        restrict: 'EA',
+        link: function ($scope, element, attrs) {
+
+          angular.element($window).bind("scroll", function() {
+
+            var topSection = angular.element(document.getElementsByClassName("mainBody"))[0];
+            var windowp = angular.element($window)[0];
+            var topThreshhold = topSection.offsetTop - element[0].clientHeight
+
+            if(windowp.pageYOffset >= topThreshhold){
+              if(!element.hasClass("screenPass")){
+                element.addClass("screenPass");
+              }
+            }
+            else {
+              if(element.hasClass("screenPass")){
+                element.removeClass("screenPass");
+              }
+            }
+
+          });
+        }
+      }
+
+    }]);
 
 })();
 
@@ -558,7 +592,7 @@
           }
         }
       }
-      console.log(vm.pageMedia);
+      //console.log(vm.pageMedia);
     }
 
     vm.loadImgs = function() {
@@ -566,7 +600,7 @@
       var newCount = (vm.pageMedia.content.length < (oldCount + 9) ? vm.pageMedia.content.length : (oldCount + 9))
       vm.pageMedia.displayedcount = newCount;
 
-      console.log("| content " + vm.pageMedia.content.length +" | old "+ oldCount + " | new " + newCount)
+      //console.log("| content " + vm.pageMedia.content.length +" | old "+ oldCount + " | new " + newCount)
 
       for(var i = oldCount; i < newCount; i++) {
         vm.pageMedia.displayedContent.push(vm.pageMedia.content[i]);
@@ -628,38 +662,5 @@
     }
 
   }]);
-
-})();
-
-(function(){
-   "use strict";
-
-    angular.module('directives').directive('navHold', ['$window', function($window) {
-      return {
-        restrict: 'EA',
-        link: function ($scope, element, attrs) {
-
-          angular.element($window).bind("scroll", function() {
-
-            var topSection = angular.element(document.getElementsByClassName("mainBody"))[0];
-            var windowp = angular.element($window)[0];
-            var topThreshhold = topSection.offsetTop - element[0].clientHeight
-
-            if(windowp.pageYOffset >= topThreshhold){
-              if(!element.hasClass("screenPass")){
-                element.addClass("screenPass");
-              }
-            }
-            else {
-              if(element.hasClass("screenPass")){
-                element.removeClass("screenPass");
-              }
-            }
-
-          });
-        }
-      }
-
-    }]);
 
 })();
