@@ -198,20 +198,21 @@ html, body {
     display: table-cell;
     width:33%;
     padding:2%;
+    -webkit-transition: all 1s;
+    transition: all 1s;
 
     @media @tablet-screen, @mobile-screen { display: block; width:100%; }
-    &:hover {
+    &:hover, &:focus {
       background-color: @mainColorBack;
       color: rgba(255,255,255,1);
       cursor: pointer;
-      -webkit-transition: all 1s;
-      transition: all 1s;
-      .card-icon { color: rgba(0,0,0,1); }
-      //.more-link { display: block; }
+      .card-icon { color: rgba(0,0,0,1); transform: scale(1.2);}
     }
     .card-icon {
       text-align: center;
       color: @mainColor;
+      -webkit-transition: all 1s;
+      transition: all 1s;
     }
     .card-text {
       h2 {
