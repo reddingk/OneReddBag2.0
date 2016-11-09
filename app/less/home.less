@@ -1,5 +1,5 @@
 @carosel-height: 700px;
-@mobile-height: 500px;
+@mobile-height: 300px;
 
 .homeBody {
   section {
@@ -64,7 +64,12 @@
               bottom: 0;
               opacity: 0.7;
 
-              @media @tablet-screen, @mobile-screen { min-height: @mobile-height;}
+              @media @tablet-screen, @mobile-screen {
+                min-height: @mobile-height;
+                background-size: contain;
+                background-attachment: inherit;
+                background-position: inherit;
+              }
             }
           }
         }
@@ -100,6 +105,15 @@
         text-align: center;
         font-weight: bold;
         font-size: 3.5rem;
+      }
+      .cards-container {
+        .content-card {
+          @media @tablet-screen, @mobile-screen {
+            border: 1px solid rgba(0,0,0,1);
+            padding: 10px;
+            &+.content-card { margin-top: 10px;}
+          }
+        }
       }
     }
 
