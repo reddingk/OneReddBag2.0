@@ -1,10 +1,11 @@
+@carosel-height: 700px;
 .homeBody {
   section {
     &.orb-carousel {
-      min-height: 500px;
+      min-height: @carosel-height;
       .carousel {
         .carousel-inner {
-          min-height: 500px;
+          min-height: @carosel-height;
           .carousel-cover {
             position: absolute;
             top: 0;
@@ -31,9 +32,9 @@
               @media @tablet-screen, @mobile-screen { font-size: 1.4rem; }
             }
           }
-          .item {
+          .item {            
             img {
-              height: 500px;
+              height: @carosel-height;
               width: 100%;
             }
           }
