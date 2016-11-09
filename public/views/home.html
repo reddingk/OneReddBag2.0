@@ -2,8 +2,10 @@
     <section class="orb-carousel">
       <uib-carousel active="hc.active" interval="hc.myInterval" no-wrap="false" no-pause="true">
         <div class="carousel-cover">
-          <div class="cover-title">1 <span>Redd</span> Bag</div>
-          <div class="cover-text">We are a Not-For-Profit 501(c)3 aimed at hand delivering food, water & encouragement to those in need.  Come change the world with us!</div>
+          <div class="cover-content">
+            <div class="cover-title">1 <span>Redd</span> Bag</div>
+            <div class="cover-text">We are a Not-For-Profit 501(c)3 aimed at hand delivering food, water & encouragement to those in need.  Come change the world with us!</div>
+          </div>
         </div>
         <uib-slide ng-repeat="slide in hc.slides track by slide.id" index="slide.id">
           <img back-img="{{slide.image}}">
@@ -26,7 +28,8 @@
           <div class="card-icon"><i class="fa fa-5x" ng-class="card.icon"></i></div>
           <div class="card-text">
   					<h2>{{card.header}}</h2>
-  					<p><span ng-show="card.type == 'news-link'">{{card.date | date: 'MM/dd/yyyy'}}:</span> {{card.text}}</p>
+            <p ng-show="card.type == 'news-link'"><span>{{card.title}}</span> <br> <span>{{card.date | date: 'MM/dd/yyyy'}}</span> </p>
+  					<p>{{card.text}}</p>
 				  </div>
           <div class="more-link"><span>See More <i class="fa fa-angle-double-right"></i></span></div>
         </div>

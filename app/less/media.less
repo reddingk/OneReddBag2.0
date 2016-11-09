@@ -4,6 +4,7 @@
       min-height: 200px;
       text-align: center;
       vertical-align: middle;
+      @media @tablet-screen, @mobile-screen { min-height: 115px;}
       .header-text {
          padding: 4% 2%;
          h1, i { display: inline-block; padding: 0 1%; }
@@ -20,9 +21,10 @@
                 width: 100%;
                 li {
                   text-align: center;
+
                   &.lvl1 { width: 50%;}
                   &.lvl2 { width: 20%;}
-                  .controls { cursor: pointer;}
+                  .controls { cursor: pointer; text-transform: capitalize;}
                   span {
                     height: 100%;
                     font-weight: bold;
@@ -50,8 +52,13 @@
               display: inline-block;
               width: 50%;
               text-align: center;
-              &:hover { background-color: rgba(0,0,0,0.5); cursor: pointer;}
-              i { color: @mainColor; font-size: 4rem; }
+              transition: all 1s ease-in-out;
+              &:hover {
+                background-color: rgba(230,230,230,0.5);
+                cursor: pointer;
+                i { transform: scale(1.2);}
+              }
+              i { color: @mainColor; font-size: 4rem; transition: all 1s ease-in-out; }
               span { color: rgba(0,0,0,1); display: block; font-size: 1.5rem;}
             }
             .photo-icons {
@@ -60,9 +67,10 @@
               height: 300px;
               text-align: center;
               overflow: hidden;
-              padding-right: 5px;
+              margin-right: 4px;
               @media @tablet-screen, @mobile-screen { width: 50%; height: 150px; }
-              img { width: 100%;}
+              img { width: 100%; transition: all 1s ease-in-out; }
+              &:hover, &:focus { img { transform: scale(1.2);} }
             }
             .load-content {
               display: block;

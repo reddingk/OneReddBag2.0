@@ -4,6 +4,8 @@
     &.connection-section {
       min-height: 500px;
       padding: 2% 10%;
+      overflow:hidden;
+      @media @tablet-screen, @mobile-screen { padding: 2%;}
       h1 { display: block; text-align: center; font-weight: bold;}
       .cards-container {
         display: table;
@@ -18,7 +20,19 @@
           &.linkedin { &:hover { background-color:rgba(0, 160, 220,0.5); } .card-icon { color:rgba(0, 160, 220,1); }}
           &.snapchat { &:hover { background-color:rgba(255, 252, 0,0.5); } .card-icon { color:rgba(255, 252, 0,1); }}
           &.periscope { &:hover { background-color:rgba(64,164,196,0.5); } .card-icon { color:rgba(64,164,196,1); }}
+          @media @tablet-screen, @mobile-screen {
+            height:150px;
+            width: 150px;
+            display: inline-block;
+            padding: 5px;
+            overflow: hidden;
+            border: 1px solid #000;
+            background-color: rgba(255,255,255,0.9);
+            &+.content-card { margin-left: 5px;}
+            .more-link { text-align: center;}
+          }
         }
+        @media @tablet-screen, @mobile-screen { overflow-x: auto; overflow-y: hidden; height: 170px; padding: 10px; white-space:nowrap; display: block; background-color: rgba(219,77,77,0.5);}
       }
     }
   }

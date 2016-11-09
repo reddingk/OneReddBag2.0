@@ -4,6 +4,8 @@
       min-height: 200px;
       text-align: center;
       vertical-align: middle;
+
+      @media @tablet-screen, @mobile-screen { min-height: 115px;}
       .header-text {
          padding: 4% 2%;
          h1, i { display: inline-block; padding: 0 1%; }
@@ -32,10 +34,11 @@
       }
       .side-news {
         background-color: @mainColorBack;
+        padding-top: 15px;
         padding-bottom: 15px;
         margin-top: 1%;
         min-height: 350px;
-        
+
         h2 { font-weight: bold; font-size: 1.9rem; text-align: center;}
         .side-cards-container {
           overflow-y: auto;
@@ -45,18 +48,23 @@
             padding: 2% 4%;
             .news-title { font-weight: bold; font-size: 1.1rem;}
             .news-date { font-size: .9rem; }
-            .news-content {  font-size: 1rem; }
+            .news-content {  font-size: 1rem; @media @tablet-screen, @mobile-screen { display: none; }}
             .news-read { font-weight: bold; font-size: .7rem; padding: 2% 0 0 2px;}
-            hr { margin-bottom: 0px;}
+            hr { margin-bottom: 0px; border-top: 1px solid #000; @media @tablet-screen, @mobile-screen { display: none}}
 
             &:hover { background: rgba(242,242,242,0.8); box-shadow: 0 0 10px rgba(0,0,0,0.5); .news-read { color: @mainColor; } }
             &.selected {
+              font-weight: bold;
               .news-title { color: @mainColor;}
               .news-read { display: none; }
               &:hover { background: none; box-shadow: none; }
+              @media @tablet-screen, @mobile-screen { background-color: rgba(255,255,255,1);}
             }
+            @media @tablet-screen, @mobile-screen { height:80px; width: 200px; display: inline-block; padding: 5px; overflow: hidden;  border: 1px solid #000; &+.news-card { margin-left: 5px;} }
           }
+          @media @tablet-screen, @mobile-screen { overflow-x: auto; overflow-y: hidden; height: 100px; padding: 10px; white-space:nowrap;}
         }
+        @media @tablet-screen, @mobile-screen { min-height: 170px; }
       }
 
     }

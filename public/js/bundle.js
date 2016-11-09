@@ -170,7 +170,8 @@
        /*News Feed*/
        vm.newsfeed = [
          {"date":new Date("2016-07-14 00:00:00"), "title":"Website Release", "imgsrc":"img/newsimgs/News_site.png", "content":"The new One Redd Bag website has offically been released and is live.  This site will include all the information pertaining to the One Redd Bag group that is focused on feeding and providing motivation to the homeless and less fortionate of the Washington D.C. & Maryland area's.  Check here for news, general information, as well as calender updates for meet ups and trips involving our orginization.  Feel free to join our email lists to stay updated with our events, we aim to serve the community and help to build those that need it."},
-         {"date":new Date("2016-07-15 00:00:00"), "title":"What Keeps Us Going", "imgsrc":"img/newsimgs/News_pop.jpg", "content":"During the summer months we implement Popsicle handing them out and cutting them for our friends. One day when we were in D.C I handed a Popsicle to a man what he said has been one of the reasons that I sacrifice soo much in order to help.  With tears in his eyes he said 'I haven’t had one of these since I was 17 years old…' He went on to tell me about his life, and how some unforeseen events have led to his current position, remaining hopeful I prayed with him to encourage him even further. This story reminds me that the people that we see on the street and in everyday passing are people just like we are. It’s our duty to remain humble, caring and persistent for some of our own personal dreams, while striving to use every single opportunity, job, degree and day that we get to help someone else."}
+         {"date":new Date("2016-07-15 00:00:00"), "title":"What Keeps Us Going", "imgsrc":"img/newsimgs/News_pop.jpg", "content":"During the summer months we implement Popsicle handing them out and cutting them for our friends. One day when we were in D.C I handed a Popsicle to a man what he said has been one of the reasons that I sacrifice soo much in order to help.  With tears in his eyes he said 'I haven’t had one of these since I was 17 years old…' He went on to tell me about his life, and how some unforeseen events have led to his current position, remaining hopeful I prayed with him to encourage him even further. This story reminds me that the people that we see on the street and in everyday passing are people just like we are. It’s our duty to remain humble, caring and persistent for some of our own personal dreams, while striving to use every single opportunity, job, degree and day that we get to help someone else."},
+         {"date":new Date("2016-11-04 00:00:00"), "title":"1 Redd Bag Clothing Drive", "imgsrc":"img/newsimgs/Clothing_Drive.png", "content":"Bring your donations of lightly used Coats, Hats, Gloves and Clothing for Men Women Or Children! All donations support Central Union Mission providing food, counseling and shelter for over 100 men in need! Help Us Reach our goal of 1,000 Coats! Please Contact 1ReddBag@gmail.com to donate."}
 
        ];
        /*Trips*/
@@ -447,7 +448,7 @@
       vm.cards = [
         {"id":0, "type":"text-link", "icon":"fa-heartbeat", "header":"Our Mission", "text":"We structure our efforts to connect intimately with each and every life that we reach in order to leave a positive influence and provide access to much needed resources such as food, clothing, shelter and support.", "link":"app.ourstory"},
         {"id":1, "type":"text-link", "icon":"fa-users", "header":"How To Help", "text":"Learn ways that you can help us to accomplish our mission of feeding the homeless and less fortionate, these include volunteering, donating, and even becoming a sponsor.", "link":"app.helpus"},
-        {"id":2, "type":"news-link", "icon":"fa-newspaper-o", "header":"News", "date":vm.recentNews.date, "text":(vm.recentNews.content.length > 90 ? vm.recentNews.content.substring(0,90) : vm.recentNews.content )+"...", "link":"app.news"}
+        {"id":2, "type":"news-link", "icon":"fa-newspaper-o", "header":"News", "title":vm.recentNews.title,"date":vm.recentNews.date, "text":(vm.recentNews.content.length > 90 ? vm.recentNews.content.substring(0,90) : vm.recentNews.content )+"...", "link":"app.news"}
       ];
 
     }]);
@@ -676,6 +677,67 @@
         }
       }
 
+    }]);
+
+})();
+
+(function(){
+   "use strict";
+
+    angular.module('directives').directive('randomMotion', ['$timeout', function($timeout) {
+      return {
+        restrict: 'EA',
+        link: function ($scope, element, attrs) {
+          console.log("Start Motion");
+          var parentContainer = element[0].offsetParent;
+
+          // Randomly Set Postion & Velocity
+          var maxVelocity = 150;
+          var posX = (Math.random() * parentContainer.clientWidth);//Math.min(0, Math.max(20, (Math.random() * 0)));
+          var posY = (Math.random() * parentContainer.clientHeight);//Math.min(0, Math.max(20, (Math.random() * 10)));
+          var velX = (Math.random() * maxVelocity);
+          var velY = (Math.random() * maxVelocity);
+          var timestamp = null;
+
+
+
+          // Move Object
+          (function tick() {
+            var now = new Date().getTime();
+            var borderX = 250; //parentContainer.clientWidth *.05;
+            var borderY = 250; //parentContainer.clientHeight *.20;
+
+            var maxX = parentContainer.clientWidth - borderX;
+            var maxY = parentContainer.clientHeight - borderY;
+
+            var elapsed = (timestamp || now) - now;
+            timestamp = now;
+            posX += elapsed * velX / 1000;
+            posY += elapsed * velY / 1000;
+
+            if (posX > maxX) {
+                posX = 2 * maxX - posX;
+                velX *= -1;
+            }
+            if (posX < -60) {
+                posX = -60;
+                velX *= -1;
+            }
+            if (posY > maxY) {
+                posY = 2 * maxY - posY;
+                velY *= -1;
+            }
+            if (posY < -60) {
+                posY = -60;
+                velY *= -1;
+            }
+            element.css({ "top": posY, "left": posX });
+            // Set Position to $element top and left
+            // Loop to Move object
+            $timeout(tick, 30);
+          })();
+        }
+      }
     }]);
 
 })();

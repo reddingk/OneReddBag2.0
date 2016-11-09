@@ -1,7 +1,7 @@
 <div class="mediaBody">
   <section class="page-section-header">
     <div class="header-text">
-      <i class="fa fa-3x fa-picture-o"></i>
+      <i class="fa fa-camera-retro"></i>
       <h1>Media</h1>
     </div>
   </section>
@@ -21,7 +21,11 @@
             </div>
             <div class="navbar-collapse navbar-collapse-media collapse">
               <ul class="nav navbar-nav" id="orb-inside-media-nav">
-                <li ng-repeat="navitem in mc.activeNav.items" ng-class="mc.getNavId(mc.activeLevel.id)"><a class="controls" ng-click="mc.mediaNav(navitem.title)" ng-if="navitem.noLink != 1">{{navitem.title}}</a> <span ng-if="navitem.noLink == 1">{{navitem.title}}</span></li>
+                <li ng-repeat="navitem in mc.activeNav.items" ng-class="mc.getNavId(mc.activeLevel.id)">
+                  <a class="controls" ng-click="mc.mediaNav(navitem.title)" ng-if="navitem.noLink != 1 && navitem.title != '<<'">{{navitem.title}}</a>
+                  <a class="controls" ng-click="mc.mediaNav(navitem.title)" ng-if="navitem.noLink != 1 && navitem.title == '<<'"><i class="fa fa-chevron-left"></i></a>
+                  <span ng-if="navitem.noLink == 1">{{navitem.title}}</span>
+                </li>
                 <!--<li class="lvl1"><a class="controls" ng-click="mc.mediaNav('photos')">Photos</a></li>
                 <li class="lvl1"><a class="controls" ng-click="mc.mediaNav('videos')">Videos</a></li>-->
               </ul>

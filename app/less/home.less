@@ -1,35 +1,49 @@
 @carosel-height: 700px;
+@mobile-height: 500px;
+
 .homeBody {
   section {
     &.orb-carousel {
       min-height: @carosel-height;
+      position: relative;
+      overflow: hidden;
+
+      @media @tablet-screen, @mobile-screen { min-height: @mobile-height;}
       .carousel {
         .carousel-inner {
           min-height: @carosel-height;
+          @media @tablet-screen, @mobile-screen { min-height: @mobile-height;}
           .carousel-cover {
             position: absolute;
             top: 0;
             background-color: rgba(255,0,0,0.3);
             z-index:8;
             height:100%;
-            padding: 10%;
+            //padding: 10%;
             text-align: center;
             width:100%;
-            .cover-title {
-              font-size: 9rem;
-              font-weight: bold;
-              color:rgba(255,255,255,1);
-              span { color:rgba(0,0,0,1);}
+            .cover-content {
+              position: absolute;
+              top: 50%;
+              transform: translateY(-50%);
+              width: 100%;
+              text-align: center;
+              .cover-title {
+                font-size: 9rem;
+                font-weight: bold;
+                color:rgba(255,255,255,1);
+                span { color:rgba(0,0,0,1);}
 
-              @media @tablet-screen, @mobile-screen { font-size: 5rem; }
-            }
-            .cover-text {
-              font-size: 1.5rem;
-              font-weight: bold;
-              color:rgba(255,255,255,1);
-              padding: 0 20%;
+                @media @tablet-screen, @mobile-screen { font-size: 5rem; }
+              }
+              .cover-text {
+                font-size: 1.5rem;
+                font-weight: bold;
+                color:rgba(255,255,255,1);
+                padding: 0 20%;
 
-              @media @tablet-screen, @mobile-screen { font-size: 1.4rem; }
+                @media @tablet-screen, @mobile-screen { font-size: 1.4rem; }
+              }
             }
           }
           .item {
@@ -49,6 +63,8 @@
               position: absolute;
               bottom: 0;
               opacity: 0.7;
+
+              @media @tablet-screen, @mobile-screen { min-height: @mobile-height;}
             }
           }
         }
@@ -83,6 +99,7 @@
       h1 {
         text-align: center;
         font-weight: bold;
+        font-size: 3.5rem;
       }
     }
 
