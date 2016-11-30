@@ -15,6 +15,8 @@
         {"id":4,"image":"img/page_imgs/t4.jpg","text":""},
         {"id":5,"image":"img/page_imgs/t5.jpg","text":""}];
 
+      vm.recentMedia = {"type":"video", "media":"videos/MOV_4664.3gp", "title":"", "text":""};
+
       vm.bagCount = redInfo.bags.count();
       vm.recentNews = redInfo.news.recent();
       vm.cards = [
