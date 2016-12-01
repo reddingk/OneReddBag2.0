@@ -128,11 +128,15 @@ html, body {
   .footer-container {
     padding:2%;
     div {
+      &.col-md-4 {
+        min-height: 158px;
+        &+.col-md-4 { border-left: 1px solid rgba(255,255,255,1);}
+      }
       .footer-title {
         color: #ffffff;
 	      font-weight:bold;
 	      font-size: 1.2rem;
-        margin-bottom: 1%;
+        margin-bottom: 7px;
         &.title2 { margin-top: 3%;}
       }
       font-size: .8rem;

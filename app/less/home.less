@@ -82,6 +82,7 @@
       padding: 2% 10%;
       max-height: 200px;
       color: rgba(115,115,115,1);
+      @media @tablet-screen, @mobile-screen { padding: 5% 10%;}
       .bg-count-text {
         display: inline-block;
         border-right: 1px solid #000;
@@ -98,9 +99,38 @@
       }
     }
 
+    &.new-media {
+      min-height: 300px;
+      padding: 5% 10%;
+      background-color: @mainColor;
+      h1 {
+        text-align: center;
+        font-weight: bold;
+        font-size: 3.5rem;
+      }
+      .content-container {
+        margin-top: 5%;
+        .media-content {
+          width: 50%;
+          display: inline-block;
+          padding-bottom: 10px;
+          @media @tablet-screen, @mobile-screen { width: 100%;}
+        }
+        .media-section {
+          width: 49%;
+          display: inline-block;
+          padding: 5px 5px 5px 20px;
+          vertical-align: top;
+          @media @tablet-screen, @mobile-screen { width: 100%; }
+          .media-title { font-weight: bold; font-size: 1.5rem; padding-bottom: 15px; }
+          .media-text { line-height: 2.0rem; }
+        }
+      }
+    }
+
     &.content-links {
       min-height: 500px;
-      padding: 2% 10%;
+      padding: 5% 10%;
       h1 {
         text-align: center;
         font-weight: bold;
