@@ -390,6 +390,8 @@
       vm.trips = redInfo.trips.all();
       vm.newFewTrips = redInfo.trips.nextFew();
       vm.selectedTrip = null;
+      // scroll to top
+      document.body.scrollTop = document.documentElement.scrollTop = 0;
 
       /*Cards*/
       vm.cards = [

@@ -9,7 +9,7 @@
       vm.trips = redInfo.trips.all();
       vm.newFewTrips = redInfo.trips.nextFew();
       vm.selectedTrip = null;
-
+      
       /*Cards*/
       vm.cards = [
         {"id":"0", "type":"mail-link", "icon":"fa-envelope", "header":"Join Email List", "link":"mailto:1Reddbag@gmail.com?subject=Join The Email List", "text":"Join our email list to get updates on our volenteering event schedule and general information on how you can help as well as join us."},
