@@ -35,7 +35,7 @@
         </div>
       </div>
     </div>
-    <div class="transition-container"><div class="transition white"></div></div>
+    <div class="transition-container"><div class="transition light-grey"></div></div>
   </section>
 
   <section class="more-info">
@@ -47,9 +47,8 @@
             <div class="card-image"><img src="{{card.image}}"></div>
             <div class="card-text">
     					<div class="card-header">{{card.header}}</div>
-              <div class="news-info" ng-show="card.type == 'news-link'"><span>{{card.title}}</span> <br> <span>{{card.date | date: 'MM/dd/yyyy'}}</span> </div>
+              <div class="news-info" ng-if="card.type == 'news-link'"><div class="news-date">{{card.date | date: 'MM/dd/yyyy'}}</div> <div class="news-title">{{card.title}}</div> </div>
     					<p>{{card.text}}</p>
-              <div class="more-link"><span>See More <i class="fa fa-angle-right"></i></span></div>
   				  </div>
 
           </div>
