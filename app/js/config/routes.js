@@ -42,7 +42,7 @@
         url: "ourstory",
         views: {
           'content@': {
-            templateUrl: 'views/ourstory.html',
+            templateUrl: 'views2/ourstory.html',
             controller: 'OurStoryController as oc'
           }
         }

@@ -1,0 +1,45 @@
+<div class="ourStoryBody">
+  <section class="page-section-header transition-section">
+    <i class="fa fa-book"></i>
+    <div class="header-text"><h1>Our Story</h1></div>
+    <div class="header-img"><img ng-src="{{oc.mainImage}}" ></div>
+    <div class="transition-container"><div class="transition white"></div></div>
+  </section>
+
+  <section class="mission-section transition-section">
+    <div class="section-container">
+      <h1 class="subsection-header"><i class="fa fa-globe" aria-hidden="true"></i> <span>Our Mission</span></h1>
+      <p>"We structure our efforts to connect intimately with each and every life that we reach in order to leave a positive influence and provide access to much needed resources such as food, clothing, shelter and support."</p>
+    </div>
+    <div class="transition-container"><div class="transition light-grey"></div></div>
+  </section>
+
+  <section class="about-section transition-section">
+    <div class="section-container">
+      <h1 class="subsection-header"><span>About 1 Redd Bag</span></h1>
+      <div ng-bind-html="oc.styleText(oc.tabs[0].content)" is-visible></div>
+    </div>
+    <div class="transition-container"><div class="transition main-red"></div></div>
+  </section>
+
+  <section class="we-do-section transition-section">
+    <div class="section-container">
+      <h1 class="subsection-header"><span>What We Do</span></h1>
+
+      <div class="we-do-container" is-visible>
+        <div class="we-item" ng-repeat="card in oc.tabs[1].stories">
+          <div class="content-card">
+            <div class="card-icon">
+              <i class="fa {{ card.img }}" ng-if="card.img.indexOf('img/') < 0 "></i>
+              <img ng-src="{{card.img}}" ng-if="card.img.indexOf('img/') >= 0 ">
+            </div>
+            <div class="card-text">
+              <div class="card-title">{{card.title}}</div>
+              <p>{{card.content}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

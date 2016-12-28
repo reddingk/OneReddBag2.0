@@ -32,7 +32,7 @@ html, body {
   section {
     position: relative;
     &.transition-section {
-      padding-bottom: 200px;
+      padding-bottom: 200px !important;
     }
     .section-container {
       padding: 0 10%;
@@ -66,6 +66,7 @@ html, body {
       .black:before { box-shadow: 0px 200px 0px 600px rgba(0,0,0,1); }
       .light-grey:before { box-shadow: 0px 200px 0px 600px rgba(245,245,245,1); }
       .white:before { box-shadow: 0px 200px 0px 600px rgba(255,255,255,1); }
+      .main-red:before { box-shadow: 0px 200px 0px 600px @mainColor; }
     }
 
     .page-cards {
@@ -74,6 +75,40 @@ html, body {
         width: 33.33%;
         padding: 0 10px;
         @media @tablet-screen, @mobile-screen { display:block; width: 100%;}
+      }
+    }
+
+    &.page-section-header {
+      overflow: hidden;
+      min-height: 500px;
+      background: rgba(239,71,58,1); /* fallback for old browsers */
+      background: -webkit-linear-gradient(to left, rgba(203,45,62,1) , rgba(239,71,58,1)); /* Chrome 10-25, Safari 5.1-6 */
+      background: linear-gradient(to left, rgba(203,45,62,1) , rgba(239,71,58,1)); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+      position: relative;
+      padding: 85px 10% 10px;
+      i {
+        font-size: 25rem;
+        position: absolute;
+        top: 10%;
+        left:-5rem;
+        opacity: 0.5;
+        z-index: 5;
+      }
+      .header-text {
+        position: relative;
+        z-index: 9;
+        color: rgba(255,255,255,1);
+        display: inline-block;
+        width: 50%;
+        vertical-align: top;
+        h1 { font-size: 8rem; text-align: center; }
+      }
+      .header-img {
+        display: inline-block;
+        width: 49%;
+        padding: 10px 30px;
+        overflow: hidden;
+        img {  width: 100%; opacity: 0.8; }
       }
     }
   }
@@ -230,6 +265,25 @@ html, body {
         .title2 { font-weight: bold;  }
       }
     }
+  }
+}
+/*Site Items*/
+.subsection-header {
+  text-align: center;
+  i {
+    border: 3px solid rgba(255,255,255,1);
+    border-radius: 50%;
+    //color: rgba(255,255,255,1);
+    font-size: 3rem;
+    display: inline-block;
+    padding: 10px;
+  }
+  span {
+    display: inline-block;
+    //color: rgba(255,255,255,1);
+    padding-left: 10px;
+    font-weight: bold;
+    font-size: 3rem;
   }
 }
 
