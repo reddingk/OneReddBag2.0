@@ -13,7 +13,7 @@ var config = {
       'app/js/*.js'
     ],
     appLess: [
-      'app/less/**/*.less'
+      'app/less2/**/*.less'
     ],
     libsJs: [
       'app/libs/jquery/dist/jquery.min.js',
@@ -93,4 +93,12 @@ gulp.task('build', function(done){
   runSequence('clean', ['app-js', 'app-less', 'lib-js', 'lib-css'], done);
 });
 
-gulp.task('default', ['build'], function () { });
+gulp.task('watch', function() {
+  gulp.watch(config.src.appJs, ['build']);
+  gulp.watch(config.src.appLess, ['build']);
+  gulp.watch(config.src.libsJs, ['lib-js']);
+  gulp.watch(config.src.libsCSS, ['lib-css']);
+});
+
+//gulp.task('default', ['build'], function () { });
+gulp.task('default', ['watch','build']);

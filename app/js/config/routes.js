@@ -8,15 +8,15 @@
         url: "/",
         views: {
           'content':{
-            templateUrl: 'views/home.html',
+            templateUrl: 'views2/home.html',
             controller: 'HomeController as hc'
           },
           'header':{
-            templateUrl: 'views/templates/_header.html',
+            templateUrl: 'views2/templates/_header.html',
             controller: 'HeaderController as hdc'
           },
           'footer':{
-            templateUrl: 'views/templates/_footer.html'
+            templateUrl: 'views2/templates/_footer.html'
           }
         }
       })
