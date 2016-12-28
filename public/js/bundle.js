@@ -294,6 +294,116 @@
 })();
 
 (function(){
+   "use strict";
+
+    angular.module('directives').directive('backImg', ['$window', function($window) {
+      return {
+        restrict: 'EA',
+        link: function ($scope, element, attrs) {
+          var url = attrs.backImg;
+          element.css({'background-image': 'url(' + url +')'});
+        }
+      }
+
+    }]);
+
+})();
+
+(function(){
+   "use strict";
+
+    angular.module('directives').directive('navHold', ['$window', function($window) {
+      return {
+        restrict: 'EA',
+        link: function ($scope, element, attrs) {
+
+          angular.element($window).bind("scroll", function() {
+
+            var topSection = angular.element(document.getElementsByClassName("mainBody"))[0];
+            var windowp = angular.element($window)[0];
+            var topThreshhold = topSection.offsetTop - element[0].clientHeight
+
+            if(windowp.pageYOffset >= topThreshhold){
+              if(!element.hasClass("screenPass")){
+                element.addClass("screenPass");
+              }
+            }
+            else {
+              if(element.hasClass("screenPass")){
+                element.removeClass("screenPass");
+              }
+            }
+
+          });
+        }
+      }
+
+    }]);
+
+})();
+
+(function(){
+   "use strict";
+
+    angular.module('directives').directive('randomMotion', ['$timeout', function($timeout) {
+      return {
+        restrict: 'EA',
+        link: function ($scope, element, attrs) {
+          console.log("Start Motion");
+          var parentContainer = element[0].offsetParent;
+
+          // Randomly Set Postion & Velocity
+          var maxVelocity = 150;
+          var posX = (Math.random() * parentContainer.clientWidth);//Math.min(0, Math.max(20, (Math.random() * 0)));
+          var posY = (Math.random() * parentContainer.clientHeight);//Math.min(0, Math.max(20, (Math.random() * 10)));
+          var velX = (Math.random() * maxVelocity);
+          var velY = (Math.random() * maxVelocity);
+          var timestamp = null;
+
+
+
+          // Move Object
+          (function tick() {
+            var now = new Date().getTime();
+            var borderX = 250; //parentContainer.clientWidth *.05;
+            var borderY = 250; //parentContainer.clientHeight *.20;
+
+            var maxX = parentContainer.clientWidth - borderX;
+            var maxY = parentContainer.clientHeight - borderY;
+
+            var elapsed = (timestamp || now) - now;
+            timestamp = now;
+            posX += elapsed * velX / 1000;
+            posY += elapsed * velY / 1000;
+
+            if (posX > maxX) {
+                posX = 2 * maxX - posX;
+                velX *= -1;
+            }
+            if (posX < -60) {
+                posX = -60;
+                velX *= -1;
+            }
+            if (posY > maxY) {
+                posY = 2 * maxY - posY;
+                velY *= -1;
+            }
+            if (posY < -60) {
+                posY = -60;
+                velY *= -1;
+            }
+            element.css({ "top": posY, "left": posX });
+            // Set Position to $element top and left
+            // Loop to Move object
+            $timeout(tick, 30);
+          })();
+        }
+      }
+    }]);
+
+})();
+
+(function(){
  "use strict";
 
   angular.module('contactCtrl').controller('ContactController', ['$state','redInfo','$window', function($state, redInfo, $window){
@@ -390,9 +500,7 @@
       vm.trips = redInfo.trips.all();
       vm.newFewTrips = redInfo.trips.nextFew();
       vm.selectedTrip = null;
-      // scroll to top
-      document.body.scrollTop = document.documentElement.scrollTop = 0;
-
+      
       /*Cards*/
       vm.cards = [
         {"id":"0", "type":"mail-link", "icon":"fa-envelope", "header":"Join Email List", "link":"mailto:1Reddbag@gmail.com?subject=Join The Email List", "text":"Join our email list to get updates on our volenteering event schedule and general information on how you can help as well as join us."},
@@ -438,25 +546,24 @@
     angular.module('homeCtrl').controller('HomeController', ['$state','redInfo',function($state, redInfo){
       var vm = this;
       vm.title = "Home";
-      vm.myInterval = 5000;
+      vm.myInterval = 7000;
       vm.active = 0;
 
       vm.slides = [
         {"id":0,"image":"img/page_imgs/t0.jpg","text":""},
         {"id":1,"image":"img/page_imgs/t1.jpg","text":""},
-        {"id":2,"image":"img/page_imgs/t2.jpg","text":""},
-        {"id":3,"image":"img/page_imgs/t3.jpg","text":""},
-        {"id":4,"image":"img/page_imgs/t4.jpg","text":""},
-        {"id":5,"image":"img/page_imgs/t5.jpg","text":""}];
+        {"id":2,"image":"img/page_imgs/t7.jpg","text":""},
+        {"id":3,"image":"img/page_imgs/t4.jpg","text":""},
+        {"id":4,"image":"img/page_imgs/t6.jpg","text":""}];
 
       vm.recentMedia = {"type":"video", "media":"videos/MOV_4664.3gp", "title":"Holiday Food Drive", "text":"Hear a word from our president about our holiday work with Central Union Mission.  We will be feeding those in need Saturday December 10th 4:30pm - 6:30pm, to learn how you can help us please contact us at 1ReddBag@gmail.com.  Have a wonderful and blessed holiday season."};
 
       vm.bagCount = redInfo.bags.count();
       vm.recentNews = redInfo.news.recent();
       vm.cards = [
-        {"id":0, "type":"text-link", "icon":"fa-heartbeat", "header":"Our Mission", "text":"We structure our efforts to connect intimately with each and every life that we reach in order to leave a positive influence and provide access to much needed resources such as food, clothing, shelter and support.", "link":"app.ourstory"},
-        {"id":1, "type":"text-link", "icon":"fa-users", "header":"How To Help", "text":"Learn ways that you can help us to accomplish our mission of feeding the homeless and less fortionate, these include volunteering, donating, and even becoming a sponsor.", "link":"app.helpus"},
-        {"id":2, "type":"news-link", "icon":"fa-newspaper-o", "header":"News", "title":vm.recentNews.title,"date":vm.recentNews.date, "text":(vm.recentNews.content.length > 90 ? vm.recentNews.content.substring(0,90) : vm.recentNews.content )+"...", "link":"app.news"}
+        {"id":0, "type":"text-link", "icon":"fa-heartbeat", "image":"img/page_imgs/c1.jpg", "header":"Our Mission", "text":"We structure our efforts to connect intimately with each and every life that we reach in order to leave a positive influence and provide access to much needed resources such as food, clothing, shelter and support.", "link":"app.ourstory"},
+        {"id":1, "type":"text-link", "icon":"fa-users", "image":"img/page_imgs/c2.jpg", "header":"How To Help", "text":"Learn ways that you can help us to accomplish our mission of feeding the homeless and less fortionate, these include volunteering, donating, and even becoming a sponsor.", "link":"app.helpus"},
+        {"id":2, "type":"news-link", "icon":"fa-newspaper-o", "image":"img/page_imgs/c3.jpg", "header":"News", "title":vm.recentNews.title,"date":vm.recentNews.date, "text":(vm.recentNews.content.length > 90 ? vm.recentNews.content.substring(0,90) : vm.recentNews.content )+"...", "link":"app.news"}
       ];
 
     }]);
@@ -637,115 +744,5 @@
     }
 
   }]);
-
-})();
-
-(function(){
-   "use strict";
-
-    angular.module('directives').directive('backImg', ['$window', function($window) {
-      return {
-        restrict: 'EA',
-        link: function ($scope, element, attrs) {
-          var url = attrs.backImg;
-          element.css({'background-image': 'url(' + url +')'});
-        }
-      }
-
-    }]);
-
-})();
-
-(function(){
-   "use strict";
-
-    angular.module('directives').directive('navHold', ['$window', function($window) {
-      return {
-        restrict: 'EA',
-        link: function ($scope, element, attrs) {
-
-          angular.element($window).bind("scroll", function() {
-
-            var topSection = angular.element(document.getElementsByClassName("mainBody"))[0];
-            var windowp = angular.element($window)[0];
-            var topThreshhold = topSection.offsetTop - element[0].clientHeight
-
-            if(windowp.pageYOffset >= topThreshhold){
-              if(!element.hasClass("screenPass")){
-                element.addClass("screenPass");
-              }
-            }
-            else {
-              if(element.hasClass("screenPass")){
-                element.removeClass("screenPass");
-              }
-            }
-
-          });
-        }
-      }
-
-    }]);
-
-})();
-
-(function(){
-   "use strict";
-
-    angular.module('directives').directive('randomMotion', ['$timeout', function($timeout) {
-      return {
-        restrict: 'EA',
-        link: function ($scope, element, attrs) {
-          console.log("Start Motion");
-          var parentContainer = element[0].offsetParent;
-
-          // Randomly Set Postion & Velocity
-          var maxVelocity = 150;
-          var posX = (Math.random() * parentContainer.clientWidth);//Math.min(0, Math.max(20, (Math.random() * 0)));
-          var posY = (Math.random() * parentContainer.clientHeight);//Math.min(0, Math.max(20, (Math.random() * 10)));
-          var velX = (Math.random() * maxVelocity);
-          var velY = (Math.random() * maxVelocity);
-          var timestamp = null;
-
-
-
-          // Move Object
-          (function tick() {
-            var now = new Date().getTime();
-            var borderX = 250; //parentContainer.clientWidth *.05;
-            var borderY = 250; //parentContainer.clientHeight *.20;
-
-            var maxX = parentContainer.clientWidth - borderX;
-            var maxY = parentContainer.clientHeight - borderY;
-
-            var elapsed = (timestamp || now) - now;
-            timestamp = now;
-            posX += elapsed * velX / 1000;
-            posY += elapsed * velY / 1000;
-
-            if (posX > maxX) {
-                posX = 2 * maxX - posX;
-                velX *= -1;
-            }
-            if (posX < -60) {
-                posX = -60;
-                velX *= -1;
-            }
-            if (posY > maxY) {
-                posY = 2 * maxY - posY;
-                velY *= -1;
-            }
-            if (posY < -60) {
-                posY = -60;
-                velY *= -1;
-            }
-            element.css({ "top": posY, "left": posX });
-            // Set Position to $element top and left
-            // Loop to Move object
-            $timeout(tick, 30);
-          })();
-        }
-      }
-    }]);
 
 })();

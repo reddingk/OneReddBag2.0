@@ -19,11 +19,63 @@ html, body {
 }
 .header {
   z-index:100;
+  position: fixed;
+  width: 100%;
+  top:0;
+  left:0;
 }
 .mainBody {
   z-index:50;
   min-height: 100%;
   background-color: #fff;
+
+  section {
+    position: relative;
+    &.transition-section {
+      padding-bottom: 200px;
+    }
+    .section-container {
+      padding: 0 10%;
+    }
+    .transition-container {
+      //overflow: hidden;
+      position: absolute;
+      bottom: 0;
+      left:0;
+      width: 100%;
+      z-index: 11;
+      .transition {
+        top: 100%;
+        left: -100%;
+        width: 200%;
+        height: 200px;
+        position: relative;
+        overflow: hidden;
+        z-index: 11;
+      }
+      .transition:before {
+         content: '';
+         position: absolute;
+         bottom: 50%;
+         width: 100%;
+         height: 100%;
+         border-radius: 100%;
+         z-index: 11;
+         //box-shadow: 0px 200px 0px 600px rgba(0,0,0,1);
+      }
+      .black:before { box-shadow: 0px 200px 0px 600px rgba(0,0,0,1); }
+      .white:before { box-shadow: 0px 200px 0px 600px rgba(255,255,255,1); }
+    }
+
+    .page-cards {
+      display: inline-block;
+      &.c3 {
+        width: 33.33333%;
+        padding: 0 10px;
+        @media @tablet-screen, @mobile-screen { display:block; width: 100%;}
+      }
+    }
+  }
 }
 
 // Navigation
@@ -55,33 +107,18 @@ html, body {
   }
 
   #orb-main-nav {
-    background-color: rgba(0,0,0,0.9);
+    background-color: rgba(255,255,255,.5);
     z-index: 100;
-    /*&.screenPass {
-      position:fixed;
-      top:0;
-      width:100%;
-      .container {
-        .navbar-header {
-          .nav-logo {
-            height: 35px;
-            margin: 8px 0px 0px 15px;
-            -webkit-filter: invert(100%);
-            filter: invert(100%);
-            display: none;
-            @media @tablet-screen, @mobile-screen { display: inline-block; }
-          }
-        }
-      }
-    }*/
-    .container {
+
+    .container-fluid {
       .navbar-header {
+        height: 75px;
         .navbar-brand {
-          width: 50px;
+          width: 75px;
+          height: 100%;
+          padding: 7px;
           .nav-logo {
             width: 100%;
-            -webkit-filter: invert(100%);
-            filter: invert(100%);
           }
         }
       }
@@ -91,28 +128,25 @@ html, body {
           float: right !important;
           @media @tablet-screen, @mobile-screen { width: inherit;}
           li {
-            //width:16%;
+            height: 75px;
             @media @tablet-screen { width:100%; }
             @media @mobile-screen { width:100%; }
             a {
               text-align: center;
-              border-top:2px solid rgba(0,0,0,1);
-              color: rgba(255,255,255,1);
+              color: rgba(0,0,0,1);
+              padding: 27.5px 15px;
               &:hover, &:focus{
-                background-color: rgba(255,255,255,0.9);
-                color: rgba(0,0,0,1);
-                border-top:2px solid rgba(204,204,204,0.2);
+                background-color: rgba(0,0,0,0.5);
+                color: rgba(255,255,255,1);
               }
               &.active {
                 color:@mainColor;
-                border-top: 2px solid @mainColor;
                 font-weight: bold;
               }
               &.donate-link {
                 background-color: @mainColor;
-                border-top: 2px solid @mainColor;
                 &.active { background-color:transparent;  }
-                &:hover, &:focus{ background-color: rgba(255,255,255,0.9); border-top:2px solid rgba(204,204,204,0.2); color: @mainColor; }
+                &:hover, &:focus{ background-color: rgba(255,255,255,0.9); color: @mainColor; }
               }
             }
           }
