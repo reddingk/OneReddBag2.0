@@ -24,7 +24,7 @@
         url: "helpus",
         views: {
           'content@': {
-            templateUrl: 'views/helpus.html',
+            templateUrl: 'views2/helpus.html',
             controller: 'HelpUsController as huc'
           }
         }
@@ -60,7 +60,7 @@
         url: "media",
         views: {
           'content@': {
-            templateUrl: 'views/media.html',
+            templateUrl: 'views2/media.html',
             controller: 'MediaController as mc'
           }
         }

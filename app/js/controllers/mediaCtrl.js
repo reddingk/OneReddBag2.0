@@ -116,6 +116,9 @@
         vm.pageMedia.displayedContent.push(vm.pageMedia.content[i]);
       }
     }
+    vm.styleFolder = function(title){
+      return title.split("-").join(".");
+    }
 
   }]);
 

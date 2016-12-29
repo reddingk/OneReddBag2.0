@@ -9,12 +9,12 @@
       vm.trips = redInfo.trips.all();
       vm.newFewTrips = redInfo.trips.nextFew();
       vm.selectedTrip = null;
-      
+
       /*Cards*/
       vm.cards = [
-        {"id":"0", "type":"mail-link", "icon":"fa-envelope", "header":"Join Email List", "link":"mailto:1Reddbag@gmail.com?subject=Join The Email List", "text":"Join our email list to get updates on our volenteering event schedule and general information on how you can help as well as join us."},
-        {"id":"1", "type":"text-link", "icon":"fa-usd", "header":"Donate", "link":"app.donate", "text":"Visit our 'PayPal' page to donate to our mission, we are a nonprofit organization therefor all donations are tax deductable and go directly to mission by either paying for food or supplies."},
-        {"id":"2", "type":"text-link", "icon":"fa-sign-language", "header":"Become A Sponsor", "link":"app.construction", "text":"Checkout our sponsorship packages and learn about how you or your business can become an official sponsor of our group and support our mission."}
+        {"id":"0", "type":"mail-link", "specialid":"","icon":"fa-envelope", "header":"Join Email List", "link":"mailto:1Reddbag@gmail.com?subject=Join The Email List", "text":"Join our email list to get updates on our volenteering event schedule and general information on how you can help as well as join us."},
+        {"id":"1", "type":"text-link", "specialid":"emphasize", "icon":"fa-usd", "header":"Donate", "link":"app.donate", "text":"Visit our 'PayPal' page to donate to our mission, we are a nonprofit organization therefor all donations are tax deductable and go directly to mission by either paying for food or supplies."},
+        {"id":"2", "type":"text-link", "specialid":"","icon":"fa-sign-language", "header":"Become A Sponsor", "link":"app.construction", "text":"Checkout our sponsorship packages and learn about how you or your business can become an official sponsor of our group and support our mission."}
       ];
       /*Calender*/
       vm.alertOnEventClick = function(date, jsEvent, view) {

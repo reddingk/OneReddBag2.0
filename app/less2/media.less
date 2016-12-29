@@ -1,0 +1,92 @@
+.mediaBody {
+  .page-section-header { .header-text { padding-bottom: 100px; }}
+
+  .media-controls {
+    .nav-container {
+      #orb-media-nav {
+        .orb-container {
+          padding: 10px 5%;
+          .navbar-collapse-media {
+            #orb-inside-media-nav {
+              width: 100%;
+              li {
+                font-size: 2rem;
+                font-weight: bold;
+                text-transform: capitalize;
+                padding: 0px 20px;
+                a { cursor: pointer; }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .media-content {
+    min-height: 200px;
+    padding: 10px 0px;
+    background-color: rgba(245,245,245,1);
+    .content-area {
+      &.no-content { padding: 100px 0px; font-size: 5rem; font-weight: bold; opacity: 0.5;}
+
+      &.media-areas {
+        padding: 100px 0px;
+
+        .media-area {
+          .folder-icons {
+            width: 24%;
+            padding: 10px;
+            text-align: center;
+            font-size: 4rem;
+            font-weight: bold;
+            display: inline-block;
+            transition: 1s all ease;
+            border: 1px solid rgba(0,0,0,0);
+            i { color: @mainColor; display: block; transition: 1s all ease;}
+            span { }
+
+            &:hover {
+              -webkit-animation:1.5s tada ease;
+              animation:1.5s tada ease;
+              border: 1px solid @mainColor;
+              i { transform: scale(1.2); }
+            }
+          }
+          .photo-icons {
+            width: 32%;
+            height: 300px;
+            position: relative;
+            display: inline-block;
+            overflow: hidden;
+            transition: 1s all ease;
+            margin-right: 5px;
+
+            img {  width: 100%; min-height: 100%; overflow: hidden; transition: 1s all ease;}
+            &:hover, &:focus { img { transform: scale(1.2);} }
+          }
+          .load-content {
+            text-align: center;
+            padding: 20px 0px;
+            span {
+              color: rgba(255,255,255,1);
+              border-radius: 15px;
+              padding: 10px;
+              background: #D31027; /* fallback for old browsers */
+              background: -webkit-linear-gradient(to left, #D31027 , #EA384D); /* Chrome 10-25, Safari 5.1-6 */
+              background: linear-gradient(to left, #D31027 , #EA384D); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+              opacity: 0.5;
+              transition: 1s all ease;
+              &:hover {
+                opacity: 1;
+                -webkit-animation:1.5s tada ease;
+                animation:1.5s tada ease;
+              }
+            }
+          }
+          .no-content { padding: 100px 0px; font-size: 5rem; font-weight: bold; opacity: 0.5; }
+        }
+      }
+    }
+  }
+}
