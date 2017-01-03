@@ -1,18 +1,28 @@
 .contactUsBody {
+  .page-section-header { }
 
-  section {
-    &.connection-section {
-      min-height: 500px;
-      padding: 2% 10%;
-      overflow:hidden;
-      @media @tablet-screen, @mobile-screen { padding: 2%;}
-      h1 { display: block; text-align: center; font-weight: bold;}
+  .connect-section {
+    background-color: rgba(245,245,245,1);
+    .section-container {
+      padding-top: 30px;
+      .subsection-header { }
       .cards-container {
-        display: table;
-        width: 100%;
         .content-card {
-          display: inline-table;
-          width: 24%;          
+          display: inline-block;
+          width: 24%;
+          text-align: center;
+          padding: 10px;
+          border-radius: 5px;
+          -webkit-transition: all 1s;
+          transition: all 1s;
+          visibility:hidden;
+          &.screenVisible {
+            visibility: visible;
+            -webkit-animation:1.5s rollIn ease;
+            animation:1.5s rollIn ease;
+          }
+
+          &.youtube { &:hover { background-color: @mainColorBack; } .card-icon { color: @mainColorBack; }}
           &.email { &:hover { background-color:rgba(44,178,160,0.5); } .card-icon { color: rgba(44,178,160,1); }}
           &.facebook { &:hover { background-color:rgba(59,89,152,0.5);} .card-icon { color:rgba(59,89,152,1); }}
           &.instagram { &:hover { background-color:rgba(155, 105, 84,0.5); } .card-icon { color:rgba(155, 105, 84,1); }}
@@ -31,9 +41,15 @@
             &+.content-card { margin-left: 5px;}
             .more-link { text-align: center;}
           }
+
+          .card-icon {
+            -webkit-transition: all 1s;
+            transition: all 1s;
+            &:hover{ transform: scale(1.2); }
+          }
         }
-        @media @tablet-screen, @mobile-screen { overflow-x: auto; overflow-y: hidden; height: 170px; padding: 10px; white-space:nowrap; display: block; background-color: rgba(219,77,77,0.5);}
       }
     }
+
   }
 }

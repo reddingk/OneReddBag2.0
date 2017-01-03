@@ -33,7 +33,7 @@
         url: "contact",
         views: {
           'content@': {
-            templateUrl: 'views/contact.html',
+            templateUrl: 'views2/contact.html',
             controller: 'ContactController as cc'
           }
         }
@@ -51,7 +51,7 @@
         url: "news",
         views: {
           'content@': {
-            templateUrl: 'views/news.html',
+            templateUrl: 'views2/news.html',
             controller: 'NewsController as nc'
           }
         }

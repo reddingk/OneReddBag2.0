@@ -7,28 +7,30 @@
   </section>
 
   <section class="news-section">
-    <div class="headline-news col-md-8">
-        <div class="news-recent-photo"><img ng-src="{{nc.mainImage}}" ng-if="nc.selectedItem.imgsrc == '' "><img ng-src="{{nc.selectedItem.imgsrc}}" ng-if="nc.selectedItem.imgsrc != '' "></div>
-        <h2 class="news-title">{{nc.selectedItem.title}}</h2>
-        <p class="news-date">{{nc.selectedItem.date | date: 'MM/dd/yyyy'}}</p>
-        <p class="news-content">{{nc.selectedItem.content}}</p>
-    </div>
+    <div class="section-container">
+      <div class="headline-news">
+          <div class="news-recent-photo"><img ng-src="{{nc.mainImage}}" ng-if="nc.selectedItem.imgsrc == '' "><img ng-src="{{nc.selectedItem.imgsrc}}" ng-if="nc.selectedItem.imgsrc != '' "></div>
+          <div class="news-recent-content">
+            <h2 class="news-title">{{nc.selectedItem.title}}</h2>
+            <p class="news-date">{{nc.selectedItem.date | date: 'MM/dd/yyyy'}}</p>
+            <p class="news-content">{{nc.selectedItem.content}}</p>
+          </div>
+      </div>
 
-    <div class="side-news col-md-4">
-      <h2>All News Stories</h2>
-      <div class="side-cards-container">
-        <div class="news-card" ng-repeat="item in nc.news" ng-click="nc.selectNews(item)" ng-class="nc.isSelected(item)">
-            <div class="news-title">{{item.title}}</div>
-            <div class="news-date">{{item.date | date: 'MM/dd/yyyy' }}</div>
-            <div class="news-content" ng-if="item.content.length >= 70">{{ item.content.substring(0, 70) }}...</div>
-            <div class="news-content" ng-if="item.content.length < 70">{{ item.content.substring(0, item.content.length) }}...</div>
-            <div class="news-read">Read <i class="fa fa-angle-double-right"></i></div>
-            <hr ng-if="!$last" />
+      <div class="side-news">
+        <h2>All News Stories</h2>
+        <div class="side-cards-container">
+          <div class="news-card" ng-repeat="item in nc.news" ng-click="nc.selectNews(item)" ng-class="nc.isSelected(item)">
+              <div class="news-title">{{item.title}}</div>
+              <div class="news-date">{{item.date | date: 'MM/dd/yyyy' }}</div>
+              <div class="news-content" ng-if="item.content.length >= 70">{{ item.content.substring(0, 70) }}...</div>
+              <div class="news-content" ng-if="item.content.length < 70">{{ item.content.substring(0, item.content.length) }}...</div>
+              <div class="news-read">Read <i class="fa fa-angle-double-right"></i></div>
+              <hr ng-if="!$last" />
+          </div>
         </div>
       </div>
     </div>
-    <div style="clear:both"></div>
   </section>
 
-  <div style="clear:both"></div>
 </div>
