@@ -6,10 +6,12 @@
     vm.title = "Donate";
     vm.mainImage = "img/page_imgs/donate.jpg";
 
-    vm.donationAmounts = [ 10, 20, 40, 100, 300, 500, 650, 800, 1000];
+    //vm.donationAmounts = [ 10, 20, 40, 100, 300, 500, 650, 800, 1000];
+    vm.donationDayAmounts = [ 10, 20, 40, 100, 200];
+    vm.donationSeasonAmounts = [ 500, 650, 800, 1000];
 
     vm.DonationType = function(amount) {
-        if(amount < 300)
+        if(amount < 400)
           return 'basic';
         else {
           return 'sponsorship';

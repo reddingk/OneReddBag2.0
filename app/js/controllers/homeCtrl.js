@@ -24,6 +24,19 @@
         {"id":2, "type":"news-link", "icon":"fa-newspaper-o", "image":"img/page_imgs/c3.jpg", "header":"News", "title":vm.recentNews.title,"date":vm.recentNews.date, "text":(vm.recentNews.content.length > 90 ? vm.recentNews.content.substring(0,90) : vm.recentNews.content )+"...", "link":"app.news"}
       ];
 
+      function getMedia() {
+        redInfo.media.imgs.byFolder('12-10-16').then(
+          function(retResults) {
+            vm.recentEventMedia = {"photos": retResults};
+            console.log(vm.recentEventMedia);
+           },
+          function(error) { console.log("ERROR - No Results")}
+        );
+      }
+
+      // fire function
+      getMedia();
+
     }]);
 
 })();

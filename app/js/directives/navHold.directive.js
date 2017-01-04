@@ -10,7 +10,7 @@
 
             var topSection = angular.element(document.getElementsByClassName("mainBody"))[0];
             var windowp = angular.element($window)[0];
-            var topThreshhold = topSection.offsetTop - element[0].clientHeight
+            var topThreshhold = 50;
 
             if(windowp.pageYOffset >= topThreshhold){
               if(!element.hasClass("screenPass")){

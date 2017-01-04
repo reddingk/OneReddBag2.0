@@ -78,6 +78,20 @@ app.get('/imgapi/all/:paramID',function(req, res){
         return res.json(media);
 });
 
+app.get('/imgapi/folder/:paramID',function(req, res){
+        var param = req.params.paramID;
+        var imgList = [];//$.grep(media.images, function(e){ return e.toLowerCase().indexOf(param.toLowerCase()) != -1 });
+        for(var i =0; i < media.images.length; i++){
+          if(media.images[i].toLowerCase().indexOf(param.toLowerCase()) != -1){
+            var imgLoc = media.images[i];
+            //imgList.push(media.images[i]);
+            imgList.push(imgLoc.substring(imgLoc.indexOf("img")));
+          }
+        }
+        var retMedia = {"folder": param, "images":imgList}
+        return res.json(retMedia);
+});
+
 // start app
 app.listen(port);
 // User message

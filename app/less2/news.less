@@ -11,7 +11,7 @@
       display: flex;
       -webkit-align-items: stretch;
       align-items: stretch;
-
+      @media @mobile-screen { display: block; }
       .headline-news {
         border-radius: 5px;
         //background-color: rgba(245,245,245,0.7);
@@ -20,6 +20,9 @@
         padding: 30px;
         width: 75%;
         display: inline-block;
+
+        @media @mobile-screen { width: 100%; }
+
         visibility:hidden;
         &.screenVisible {
           visibility: visible;
@@ -31,6 +34,7 @@
           width: 100%;
           height: 500px;
           overflow: hidden;
+          @media @mobile-screen { height: 200px; }
           img { height: 100%; }
         }
         .news-recent-content {
@@ -51,6 +55,13 @@
             -webkit-column-count: 3; /* Chrome, Safari, Opera */
             -moz-column-count: 3; /* Firefox */
             column-count: 3;
+
+            @media @mobile-screen {
+              font-size: 1.2rem; 
+              -webkit-column-count: 1; /* Chrome, Safari, Opera */
+              -moz-column-count: 1; /* Firefox */
+              column-count: 1;
+            }
           }
         }
       }
@@ -63,9 +74,14 @@
         color: rgba(255,255,255,1);
         padding: 20px;
         display: inline-block;
+
+        @media @mobile-screen { width: 100%; margin-left: 0; margin-top: 3%; }
         .side-cards-container {
+          @media @mobile-screen { padding: 10px 0px; overflow-x: auto; overflow-y: hidden; white-space: nowrap; }
           .news-card {
             padding: 10px;
+            &+.news-card { border-top: 1px solid rgba(0,0,0,1);}
+            @media @mobile-screen {  display: inline-block; &+.news-card { border-top: none; border-left: 1px solid rgba(255,255,255,1);}}
             .news-title { font-weight: bold; color: @mainColor;}
             .news-date {
               font-size: .89rem;
@@ -90,7 +106,7 @@
                 background: linear-gradient(to left, #D31027 , #EA384D); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
               }
             }
-            &.news-card { border-top: 1px solid rgba(0,0,0,1);}
+
           }
         }
       }

@@ -5,7 +5,7 @@
     background-color: rgba(245,245,245,1);
     .section-container {
       padding-top: 30px;
-      .subsection-header { }
+      .subsection-header {i { border-color: rgba(0,0,0,1);} }
       .cards-container {
         .content-card {
           display: inline-block;
@@ -31,14 +31,14 @@
           &.snapchat { &:hover { background-color:rgba(255, 252, 0,0.5); } .card-icon { color:rgba(255, 252, 0,1); }}
           &.periscope { &:hover { background-color:rgba(64,164,196,0.5); } .card-icon { color:rgba(64,164,196,1); }}
           @media @tablet-screen, @mobile-screen {
-            height:150px;
-            width: 150px;
+            height:50%;
+            width: 50%;
             display: inline-block;
             padding: 5px;
             overflow: hidden;
             border: 1px solid #000;
             background-color: rgba(255,255,255,0.9);
-            &+.content-card { margin-left: 5px;}
+            &+.content-card { margin-left: 0px;}
             .more-link { text-align: center;}
           }
 

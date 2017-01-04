@@ -115,7 +115,10 @@
               );
             },
             byFolder:function(folder) {
-              return;
+              return redBagData.getImgsFolder(folder).then(
+                function(results) { return results; },
+                function(error) { console.log("ERROR - No Results")}
+              );
             },
             tst:function() {
               return {"folders":["test2"]};
@@ -165,6 +168,16 @@
          var def = $q.defer();
 
          $http({ method: 'GET', url: "/imgapi/all/77"})
+         .then(function successCallback(response) {
+            def.resolve(response.data);
+          }, function errorCallback(response) { def.reject(response); });
+
+          return def.promise;
+       }
+       vm.getImgsFolder = function(folder) {
+         var def = $q.defer();
+
+         $http({ method: 'GET', url: "/imgapi/folder/"+folder})
          .then(function successCallback(response) {
             def.resolve(response.data);
           }, function errorCallback(response) { def.reject(response); });

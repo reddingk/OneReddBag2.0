@@ -11,7 +11,7 @@
 			     else { return false; }
 		  }
       var navMain = $("#orb-inside-nav");
-      navMain.on("click", "a", null, function () {
+      navMain.on("click", ".link", null, function () {
          navMain.collapse('hide');
        });
 

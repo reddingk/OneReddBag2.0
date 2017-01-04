@@ -140,7 +140,10 @@
               );
             },
             byFolder:function(folder) {
-              return;
+              return redBagData.getImgsFolder(folder).then(
+                function(results) { return results; },
+                function(error) { console.log("ERROR - No Results")}
+              );
             },
             tst:function() {
               return {"folders":["test2"]};
@@ -190,6 +193,16 @@
          var def = $q.defer();
 
          $http({ method: 'GET', url: "/imgapi/all/77"})
+         .then(function successCallback(response) {
+            def.resolve(response.data);
+          }, function errorCallback(response) { def.reject(response); });
+
+          return def.promise;
+       }
+       vm.getImgsFolder = function(folder) {
+         var def = $q.defer();
+
+         $http({ method: 'GET', url: "/imgapi/folder/"+folder})
          .then(function successCallback(response) {
             def.resolve(response.data);
           }, function errorCallback(response) { def.reject(response); });
@@ -274,7 +287,7 @@
         url: "donate",
         views: {
           'content@': {
-            templateUrl: 'views/donate.html',
+            templateUrl: 'views2/donate.html',
             controller: 'DonateController as dc'
           }
         }
@@ -283,7 +296,7 @@
         url: "underconstruction",
         views: {
           'content@': {
-            templateUrl: 'views/construction.html'
+            templateUrl: 'views2/wait.html'
           }
         }
       });
@@ -333,10 +346,12 @@
     vm.title = "Donate";
     vm.mainImage = "img/page_imgs/donate.jpg";
 
-    vm.donationAmounts = [ 10, 20, 40, 100, 300, 500, 650, 800, 1000];
+    //vm.donationAmounts = [ 10, 20, 40, 100, 300, 500, 650, 800, 1000];
+    vm.donationDayAmounts = [ 10, 20, 40, 100, 200];
+    vm.donationSeasonAmounts = [ 500, 650, 800, 1000];
 
     vm.DonationType = function(amount) {
-        if(amount < 300)
+        if(amount < 400)
           return 'basic';
         else {
           return 'sponsorship';
@@ -375,7 +390,7 @@
 			     else { return false; }
 		  }
       var navMain = $("#orb-inside-nav");
-      navMain.on("click", "a", null, function () {
+      navMain.on("click", ".link", null, function () {
          navMain.collapse('hide');
        });
 
@@ -459,6 +474,19 @@
         {"id":1, "type":"text-link", "icon":"fa-users", "image":"img/page_imgs/c2.jpg", "header":"How To Help", "text":"Learn ways that you can help us to accomplish our mission of feeding the homeless and less fortionate, these include volunteering, donating, and even becoming a sponsor.", "link":"app.helpus"},
         {"id":2, "type":"news-link", "icon":"fa-newspaper-o", "image":"img/page_imgs/c3.jpg", "header":"News", "title":vm.recentNews.title,"date":vm.recentNews.date, "text":(vm.recentNews.content.length > 90 ? vm.recentNews.content.substring(0,90) : vm.recentNews.content )+"...", "link":"app.news"}
       ];
+
+      function getMedia() {
+        redInfo.media.imgs.byFolder('12-10-16').then(
+          function(retResults) {
+            vm.recentEventMedia = {"photos": retResults};
+            console.log(vm.recentEventMedia);
+           },
+          function(error) { console.log("ERROR - No Results")}
+        );
+      }
+
+      // fire function
+      getMedia();
 
     }]);
 
@@ -707,7 +735,7 @@
 
             var topSection = angular.element(document.getElementsByClassName("mainBody"))[0];
             var windowp = angular.element($window)[0];
-            var topThreshhold = topSection.offsetTop - element[0].clientHeight
+            var topThreshhold = 50;
 
             if(windowp.pageYOffset >= topThreshhold){
               if(!element.hasClass("screenPass")){

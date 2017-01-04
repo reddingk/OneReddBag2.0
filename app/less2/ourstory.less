@@ -64,11 +64,13 @@
           -webkit-animation:1.5s flipInX ease;
           animation:1.5s flipInX ease;
         }
+        @media @mobile-screen { display: block; }
         .we-item {
           display: inline-block;
           width: 33.33%;
           display: flex;
-          &+.we-item { border-left: 1px solid rgba(255,255,255,1);}
+          @media @mobile-screen { width: 100%; }
+          &+.we-item { border-left: 1px solid rgba(255,255,255,1); @media @mobile-screen { border-left: none; border-top: 1px solid rgba(255,255,255,1); }}
           .content-card {
             padding: 7px;
             display: flex;

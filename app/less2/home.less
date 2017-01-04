@@ -12,6 +12,15 @@
     padding-left:10px;
     -webkit-animation:1.5s fadeInLeft ease;
     animation:1.5s fadeInLeft ease;
+
+    @media @mobile-screen {
+      bottom: 0;
+      left: 0;
+      top: initial;
+      border-radius: 0;
+      width: 100%;
+      text-align: center;
+    }
     .side-container {
       padding: 10px;
       .bag-count {
@@ -72,11 +81,13 @@
           }
         }
         .item {
+          @media @mobile-screen { height: 100%; }
           img{
             width: 100%;
             height: 100%;
             -webkit-filter: grayscale(80%); /* Safari 6.0 - 9.0 */
             filter: grayscale(80%);
+            @media @mobile-screen  { width: initial; max-width: initial;}
           }
         }
       }
@@ -126,7 +137,32 @@
       }
     }
   }
-
+  .new-media {
+    background-color: rgba(255,255,255,1);
+    .imgs-container {
+      height: 300px;
+      overflow-y: hidden;
+      overflow-x: auto;
+      white-space:nowrap;
+      padding: 10px;
+      margin-top: 5%;
+      .img-item {
+        height: 100%;
+        padding: 5px;
+        display: inline-block;
+        img { height: 100%;}
+      }
+    }
+    .img-instructions {
+      display: block;
+      width: 100%;
+      background: rgba(239,71,58,1); /* fallback for old browsers */
+      background: -webkit-linear-gradient(to left, rgba(203,45,62,1) , rgba(239,71,58,1)); /* Chrome 10-25, Safari 5.1-6 */
+      background: linear-gradient(to left, rgba(203,45,62,1) , rgba(239,71,58,1)); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+      text-align: center;
+      i, div {  padding: 5px 10px; display: inline-block; color: rgba(255,255,255,1); font-size: 1.5rem; }
+    }
+  }
   .more-info {
     background-color: rgba(245,245,245,1);
     min-height: 500px;
@@ -161,11 +197,18 @@
       -webkit-align-items: stretch;
       align-items: stretch;
       margin-top: 5%;
+      @media @mobile-screen { display: block;}
       .card-container {
         display: flex;
         transition: .5s all ease;
+
+        @media @mobile-screen {
+          display: block;
+          &+.card-container { padding-top: 10px;}
+        }
         &:hover {
           transform:translate3d(0,-12px,0);
+          cursor: pointer;
           .card-content {
             box-shadow:0 20px 30px 0 rgba(17,21,23,.1);
             background-color: rgba(255,255,255,1);
@@ -176,6 +219,7 @@
           flex-direction: column;
           width: 100%;
           transition: .5s all ease;
+          @media @mobile-screen { border: 1px solid rgba(0,0,0,0.5);}
           .card-image {
             height: 300px;
             overflow:hidden;

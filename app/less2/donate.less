@@ -1,0 +1,88 @@
+.donate-section {
+  background-color: rgba(255,255,255,1);
+  .section-container {
+    padding: 0 !important;
+    .donate-container {
+      min-height: 300px;
+      width: 100%;
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -moz-flex;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-align-items: stretch;
+      align-items: stretch;
+      @media @mobile-screen { display: block; }
+      .donate-card {
+        width: 33.33%;
+        min-height: 300px;
+        display: flex;
+        padding: 60px 30px;
+        position: relative;
+        z-index: 0;
+        flex-direction: column;
+        -webkit-animation:1.5s fadeInLeft ease backwards;
+        animation:1.5s fadeInLeft ease backwards;
+
+
+        @media @mobile-screen { width: 100%; }
+        &.donate-text {
+          background-color: rgba(100,100,100,1);
+          color: rgba(255,255,255,1);
+          z-index: 5;
+          animation-delay: 0;
+          //transition: 0s all ease;
+          .section-arrow { background-color:rgba(100,100,100,1); }
+        }
+        &.day-buttons {
+          background-color: rgba(175,175,175,1);
+          animation-delay: 1.5s;
+          z-index: 4;
+          //transition: 1.5s all ease;
+          .section-arrow { background-color:rgba(175,175,175,1); }
+        }
+        &.season-buttons {
+          background-color: rgba(255,255,255,1);
+          animation-delay: 3s;
+          z-index: 3;
+          //transition: 3s all ease;
+          .section-arrow { background-color:rgba(255,255,255,1); }
+        }
+        .section-arrow {
+          width: 100px;
+          height: 100px;
+          transform: rotate(45deg) translateY(-50%);
+          position: absolute;
+          right: 0px;
+          top: 50%;
+          z-index: 1;
+          @media @mobile-screen { bottom: -50px; top: initial; right: 50%; transform: rotate(45deg) translateX(-50%);}
+        }
+        .subsection-header { position: relative; z-index: 2; font-size: 2rem; font-weight: bold; margin-bottom: 20px; }
+        .sub-text { text-align: center; position: relative; z-index: 2; font-size: 1.5rem; span{ color: @mainColor; }}
+        .button-container {
+          width: 80%;
+          margin: 0 auto;
+          padding-top: 20px;
+          text-align: center;
+          position: relative;
+          z-index: 2;
+          .donate-btn {
+            font-weight: bold;
+            &.basic { background-color: rgba(255,255,255,1); }
+            &.sponsorship { background-color: rgba(255,0,0,1); color: rgba(255,255,255,1); }
+            &.other {
+              background-color:
+              rgba(0,0,0,1);
+              color: rgba(255,255,255,1);
+              min-width: 190px;
+              @media @tablet-screen, @mobile-screen { min-width:100%; }
+            }
+            &:hover { opacity: 0.7; text-decoration: underline;}
+          }
+        }
+      }
+    }
+  }
+}

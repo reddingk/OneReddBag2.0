@@ -69,7 +69,7 @@
         url: "donate",
         views: {
           'content@': {
-            templateUrl: 'views/donate.html',
+            templateUrl: 'views2/donate.html',
             controller: 'DonateController as dc'
           }
         }
@@ -78,7 +78,7 @@
         url: "underconstruction",
         views: {
           'content@': {
-            templateUrl: 'views/construction.html'
+            templateUrl: 'views2/wait.html'
           }
         }
       });

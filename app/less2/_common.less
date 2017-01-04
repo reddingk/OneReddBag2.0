@@ -109,6 +109,7 @@ html, body {
         display: inline-block;
         width: 50%;
         vertical-align: top;
+        @media @mobile-screen { width: 100%;}
         h1 { font-size: 8rem; text-align: center; }
         p { font-size: 1.8rem; text-align: center; }
       }
@@ -117,6 +118,7 @@ html, body {
         width: 49%;
         padding: 10px 30px;
         overflow: hidden;
+        @media @mobile-screen { width: 100%;}
         img {  width: 100%; opacity: 0.8; }
       }
     }
@@ -152,26 +154,56 @@ html, body {
   }
 
   #orb-main-nav {
-    background-color: rgba(255,255,255,.5);
     z-index: 100;
+    background-color: rgba(255,255,255,0);
+    transition: 1s all ease;
+
+    &.screenPass {
+      background-color: rgba(255,255,255,.5);
+      .container-fluid { .navbar-header { .navbar-brand { .nav-logo { opacity: 0.3; } .nav-text { display: block; } } } }
+    }
 
     .container-fluid {
       .navbar-header {
         height: 75px;
         .navbar-brand {
-          width: 75px;
+          width: 110px;
           height: 100%;
           padding: 7px;
+          position: relative;
+          transition: 1s all ease;
           .nav-logo {
+            width: 70%;
+            margin: 0px auto;
+            opacity: 1;
+            transition: 1s all ease;
+          }
+          .nav-text {
+            position: absolute;
+            display: none;
+            top: 50%;
+            left: 0;
             width: 100%;
+            text-align: center;
+            transform: translateY(-50%);
+            color: rgba(0,0,0,1);
+            text-transform: uppercase;
+            transition: 1s all ease;
+            span { color: @mainColor; }
           }
         }
+        .navbar-toggle { border-color: rgba(0,0,0,0); .icon-bar { background-color: rgba(0,0,0,1);}}
       }
 
       .navbar-collapse {
+        @media @mobile-screen {
+          padding: 0;
+          &.collapse, &.collapsing { background-color: rgba(255,255,255,0.8);}
+        }
+
         #orb-inside-nav {
           float: right !important;
-          @media @tablet-screen, @mobile-screen { width: inherit;}
+          @media @mobile-screen { width: 100%; margin: 0;}
           li {
             height: 75px;
             @media @tablet-screen { width:100%; }

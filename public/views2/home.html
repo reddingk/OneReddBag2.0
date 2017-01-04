@@ -35,10 +35,22 @@
         </div>
       </div>
     </div>
-    <div class="transition-container bottom"><div class="transition light-grey"></div></div>
+    <div class="transition-container bottom"><div class="transition white"></div></div>
   </section>
 
-  <section class="more-info">
+  <section class="new-media">
+    <div class="section-container">
+      <h1 class="subsection-header"><span>Recent Events</span></h1>
+
+      <div class="imgs-container">
+        <div class="img-item" ng-repeat="item in hc.recentEventMedia.photos.images"><img ng-src="{{item}}" /></div>
+      </div>
+      <div class="img-instructions"><i class="fa fa-angle-left"></i> <div>Scroll</div> <i class="fa fa-angle-right"></i></div>
+    </div>
+  </section>
+
+  <section class="more-info transition-section top bottom">
+    <div class="transition-container top"><div class="transition flip white"></div></div>
     <div class="section-container">
       <h1><i class="fa fa-info" aria-hidden="true"></i> <span>More Information</span></h1>
       <div class="cards-container">
@@ -55,5 +67,7 @@
         </div>
       </div>
     </div>
+    <div class="transition-container bottom"><div class="transition black"></div></div>
   </section>
+
 </div>
