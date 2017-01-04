@@ -1,27 +1,27 @@
 <div class="contactUsBody">
-  <section class="page-section-header">
-    <div class="header-img left-sub"><img ng-src="{{cc.mainImage}}" ></div>
-    <div class="header-text right-sub">
-      <i class="fa fa-comments-o"></i>
+  <section class="page-section-header transition-section bottom">
+    <i class="fa fa-comments-o"></i>
+    <div class="header-text">
       <h1>Contact Us</h1>
       <p>If you are interested in volunteering with 1 Redd Bag please contact us at through email or any of our social platforms. Our team is ready to answer any questions that you may have on partnerships, why we are answering this call and how you may become a part of our team.</p>
     </div>
+    <div class="header-img"><img ng-src="{{cc.mainImage}}" ></div>
+    <div class="transition-container bottom"><div class="transition light-grey"></div></div>
   </section>
 
-  <section class="connection-section">
-    <h1>Ways To Connect</h1>
-    <div class="cards-container">
-      <div class="content-card {{ card.connectType }}" ng-repeat="card in cc.cards" ng-click="cc.externalUrlLink(card.url)">
-        <div class="card-icon"><i class="fa fa-5x" ng-class="card.icon"></i></div>
-        <div class="card-text">
-          <h2>{{card.header}}</h2>
+  <section class="connect-section transition-section bottom">
+    <div class="section-container">
+      <h1 class="subsection-header"><i class="fa fa-plug" aria-hidden="true"></i> <span>Ways To Connect</span></h1>
+      <div class="cards-container">
+        <div class="content-card {{ card.connectType }}" ng-repeat="card in cc.cards" ng-click="cc.externalUrlLink(card.url)" is-visible voffset="-500">
+          <div class="card-icon"><i class="fa fa-5x" ng-class="card.icon"></i></div>
+          <div class="card-text">
+            <h2>{{card.header}}</h2>
+          </div>
+          <div class="more-link"><span>{{card.linkText}} <i class="fa fa-angle-double-right"></i></span></div>
         </div>
-        <div class="more-link"><span>{{card.linkText}} <i class="fa fa-angle-double-right"></i></span></div>
       </div>
     </div>
-  </section>
-
-  <section class="">
   </section>
 
 </div>

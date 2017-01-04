@@ -13,7 +13,7 @@ var config = {
       'app/js/*.js'
     ],
     appLess: [
-      'app/less2/**/*.less'
+      'app/less/**/*.less'
     ],
     libsJs: [
       'app/libs/jquery/dist/jquery.min.js',

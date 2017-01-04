@@ -226,15 +226,15 @@
         url: "/",
         views: {
           'content':{
-            templateUrl: 'views2/home.html',
+            templateUrl: 'views/home.html',
             controller: 'HomeController as hc'
           },
           'header':{
-            templateUrl: 'views2/templates/_header.html',
+            templateUrl: 'views/templates/_header.html',
             controller: 'HeaderController as hdc'
           },
           'footer':{
-            templateUrl: 'views2/templates/_footer.html'
+            templateUrl: 'views/templates/_footer.html'
           }
         }
       })
@@ -242,7 +242,7 @@
         url: "helpus",
         views: {
           'content@': {
-            templateUrl: 'views2/helpus.html',
+            templateUrl: 'views/helpus.html',
             controller: 'HelpUsController as huc'
           }
         }
@@ -251,7 +251,7 @@
         url: "contact",
         views: {
           'content@': {
-            templateUrl: 'views2/contact.html',
+            templateUrl: 'views/contact.html',
             controller: 'ContactController as cc'
           }
         }
@@ -260,7 +260,7 @@
         url: "ourstory",
         views: {
           'content@': {
-            templateUrl: 'views2/ourstory.html',
+            templateUrl: 'views/ourstory.html',
             controller: 'OurStoryController as oc'
           }
         }
@@ -269,7 +269,7 @@
         url: "news",
         views: {
           'content@': {
-            templateUrl: 'views2/news.html',
+            templateUrl: 'views/news.html',
             controller: 'NewsController as nc'
           }
         }
@@ -278,7 +278,7 @@
         url: "media",
         views: {
           'content@': {
-            templateUrl: 'views2/media.html',
+            templateUrl: 'views/media.html',
             controller: 'MediaController as mc'
           }
         }
@@ -287,7 +287,7 @@
         url: "donate",
         views: {
           'content@': {
-            templateUrl: 'views2/donate.html',
+            templateUrl: 'views/donate.html',
             controller: 'DonateController as dc'
           }
         }
@@ -296,7 +296,7 @@
         url: "underconstruction",
         views: {
           'content@': {
-            templateUrl: 'views2/wait.html'
+            templateUrl: 'views/wait.html'
           }
         }
       });

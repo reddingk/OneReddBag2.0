@@ -1,17 +1,20 @@
 <div class="newsBody">
-  <section class="page-section-header">
+  <section class="page-section-header transition-section bottom">
+    <i class="fa fa-newspaper-o"></i>
     <div class="header-text">
-      <i class="fa fa-3x fa-newspaper-o"></i>
       <h1>News</h1>
+      <p>Keep upto date on the latest news & articles about what we are doing, along with any publication that we have.</p>
     </div>
+    <div class="header-img"><img ng-src="{{nc.mainImage}}" ></div>
+    <div class="transition-container bottom"><div class="transition white"></div></div>
   </section>
 
-  <section class="news-section">
+  <section class="news-section transition-section bottom">
     <div class="section-container">
-      <div class="headline-news">
+      <div class="headline-news" is-visible voffset="-400">
           <div class="news-recent-photo"><img ng-src="{{nc.mainImage}}" ng-if="nc.selectedItem.imgsrc == '' "><img ng-src="{{nc.selectedItem.imgsrc}}" ng-if="nc.selectedItem.imgsrc != '' "></div>
           <div class="news-recent-content">
-            <h2 class="news-title">{{nc.selectedItem.title}}</h2>
+            <div class="news-title">{{nc.selectedItem.title}}</div>
             <p class="news-date">{{nc.selectedItem.date | date: 'MM/dd/yyyy'}}</p>
             <p class="news-content">{{nc.selectedItem.content}}</p>
           </div>
@@ -23,14 +26,14 @@
           <div class="news-card" ng-repeat="item in nc.news" ng-click="nc.selectNews(item)" ng-class="nc.isSelected(item)">
               <div class="news-title">{{item.title}}</div>
               <div class="news-date">{{item.date | date: 'MM/dd/yyyy' }}</div>
-              <div class="news-content" ng-if="item.content.length >= 70">{{ item.content.substring(0, 70) }}...</div>
-              <div class="news-content" ng-if="item.content.length < 70">{{ item.content.substring(0, item.content.length) }}...</div>
-              <div class="news-read">Read <i class="fa fa-angle-double-right"></i></div>
-              <hr ng-if="!$last" />
+              <!--<div class="news-content" ng-if="item.content.length >= 70">{{ item.content.substring(0, 70) }}...</div>
+              <div class="news-content" ng-if="item.content.length < 70">{{ item.content.substring(0, item.content.length) }}...</div>-->
+              <div class="news-read"><span>Read <i class="fa fa-angle-double-right"></i></span></div>
           </div>
         </div>
       </div>
     </div>
+    <div class="transition-container bottom"><div class="transition black"></div></div>
   </section>
 
 </div>

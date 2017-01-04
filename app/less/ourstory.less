@@ -1,73 +1,100 @@
 .ourStoryBody {
-  section {
-    h2 { text-align: center; font-weight: bold;}
-
-    &.page-section-header {
-      min-height: 450px;
-      background-color: rgba(236,183,19,.5);
-      .header-text { vertical-align: middle; text-align: right; h1 { font-size: 5rem;}}
+  .page-section-header { }
+  .mission-section {
+    min-height: 200px;
+    padding-bottom: 30px;
+    .section-container {
+      .subsection-header { color: rgba(0,0,0,1); }
+      p { padding: 0px 15%; font-size: 1.4rem; font-weight: bold; text-align: center; }
     }
-    &.mission-section {
-      background-color: @secondColorBack;
-      padding: 2% 10%;
-      max-height: 200px;
-    }
+  }
 
-    &.stories-section {
-      min-height: 500px;
-      padding: 2% 10%;
+  .about-section {
+    min-height: 200px;
+    padding-top: 5px;
+    background-color: rgba(245,245,245,1);
+    .section-container {
+      .subsection-header { color: rgba(0,0,0,1); i { border: none !important; } }
+      //p {
+        div {
+          padding: 0px 5%;
+          font-size: 1.4rem;
+          text-align: center;
+          visibility: hidden;
 
-      .nav-tabs {
-        li {
-          @media @tablet-screen, @mobile-screen { display: block; width:100%; }
-          a { color:rgba(236,183,19,1); } &.active { a { background-color:rgba(236,183,19,1); color: #555;}}
+          &.screenVisible {
+            visibility: visible;
+            -webkit-animation:1.5s bounceIn ease;
+            animation:1.5s bounceIn ease;
+          }
         }
-      }
-      .tab-content {
-        border: 1px solid #ddd;
-        border-top: none;
-        padding:2%;
-        max-height: 300px;
-        overflow-y: auto;
-        .tab-pane {
-          .main-story {
-            .left-sub { width: 30%; padding: 1%; img { width: 100%; }}
-            .right-sub {
-              width: 69%; vertical-align: middle; padding: 1%;
-              h3 { margin-top: 0px; text-align: center;}
-             div{ text-align: left; p { margin-bottom: 25px;}}
-            }
-          }
-          .member-stories {
-            .content-card {
-              display: inline-block;
-              padding: 1%;
-              width: 33%;
-              vertical-align: top;
+      //}
+    }
+  }
+
+  .we-do-section {
+    min-height: 200px;
+    padding-top: 10px;
+    background-color: @mainColor;
+    .section-container {
+      padding-bottom: 30px;
+      .subsection-header { color: rgba(0,0,0,1); }
+
+      .we-do-container {
+        padding: 20px;
+        margin-top: 15px;
+        border-radius: 5px;
+
+        background-color: rgba(0,0,0,0.7);
+        color: rgba(255,255,255,1);
+
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -moz-flex;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-align-items: stretch;
+        align-items: stretch;
+
+        visibility: hidden;
+
+        &.screenVisible {
+          visibility: visible;
+          -webkit-animation:1.5s flipInX ease;
+          animation:1.5s flipInX ease;
+        }
+        @media @mobile-screen { display: block; }
+        .we-item {
+          display: inline-block;
+          width: 33.33%;
+          display: flex;
+          @media @mobile-screen { width: 100%; }
+          &+.we-item { border-left: 1px solid rgba(255,255,255,1); @media @mobile-screen { border-left: none; border-top: 1px solid rgba(255,255,255,1); }}
+          .content-card {
+            padding: 7px;
+            display: flex;
+            flex-direction: column;
+            .card-icon {
               text-align: center;
+              font-size: 2rem;
 
-              @media @tablet-screen, @mobile-screen { display: block; width:100%; }
-            }
-          }
-          .story-timeline {
-            .story-cards {
-              display: inline-block;
-              width: 33%;
-              vertical-align: top;
-              @media @tablet-screen, @mobile-screen { display: block; width:100%; }
-              .content-card {
-                display: inline-block;
-                padding: 1%;
-                width: 90%;
-                vertical-align: top;
-                text-align: center;
-
-                .card-icon {
-                  img { height: 48px; }
-                }
+              i {
+                background-color: rgba(255,255,255,0.2);
+                padding: 10px;
+                border-radius: 50%;
               }
-
-              .story-arrow { display: inline-block; padding-top: 15%; }
+              img {
+                background-color: rgba(255,255,255,0.2);
+                padding: 10px;
+                border-radius: 50%;
+                width: 55px;
+              }
+            }
+            .card-text {
+              flex: 1 0 auto;
+              .card-title { text-align: center; font-weight: bold; font-size: 1.4rem;}
+              p { font-size: 1rem; text-align: center; }
             }
           }
         }
