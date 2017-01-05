@@ -7,11 +7,12 @@
       padding-top: 30px;
       .subsection-header {i { border-color: rgba(0,0,0,1);} }
       .cards-container {
+        padding-top:30px;
         .content-card {
           display: inline-block;
           width: 24%;
           text-align: center;
-          padding: 10px;
+          padding: 20px 10px;
           border-radius: 5px;
           -webkit-transition: all 1s;
           transition: all 1s;
@@ -21,6 +22,7 @@
             -webkit-animation:1.5s rollIn ease;
             animation:1.5s rollIn ease;
           }
+          &:hover { box-shadow:0 20px 30px 0 rgba(17,21,23,.1); transform:translate3d(0,-12px,0);}
 
           &.youtube { &:hover { background-color: @mainColorBack; } .card-icon { color: @mainColorBack; }}
           &.email { &:hover { background-color:rgba(44,178,160,0.5); } .card-icon { color: rgba(44,178,160,1); }}

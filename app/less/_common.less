@@ -160,7 +160,7 @@ html, body {
 
     &.screenPass {
       background-color: rgba(255,255,255,.5);
-      .container-fluid { .navbar-header { .navbar-brand { .nav-logo { opacity: 0.3; } .nav-text { display: block; } } } }
+      .container-fluid { .navbar-header { .navbar-brand { -webkit-animation:.7s swing ease;  animation:.7s swing ease; .nav-logo { opacity: 0.3; } .nav-text { display: block; } } } }
     }
 
     .container-fluid {
@@ -244,6 +244,7 @@ html, body {
   min-height: 200px;
   .footer-container {
     padding: 2%;
+    @media @mobile-screen { padding-bottom: 75px;}
     .footer-row {
       display: block;
       width: 100%;
